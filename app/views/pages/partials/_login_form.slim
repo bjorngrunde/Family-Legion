@@ -1,0 +1,12 @@
+form.ui.large.form
+  .ui.stacked.inverted.segment
+    h3.ui.center.aligned.header= t(:login)
+    .field
+      .ui.left.icon.input
+        i.user.icon
+        input type="text" name="email" placeholder="Email"
+    .field
+      .ui.left.icon.input
+        i.lock.icon
+        input type="password" name="password" placeholder="Password"
+    button type="submit" class="ui fluid large primary submit button"= t(:continue)

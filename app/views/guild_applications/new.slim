@@ -1,0 +1,13 @@
+.ui.one.column.grid.inverted.segment
+  .row
+    .column.ui.center.aligned
+      h3.ui.inverted.header= t(:guild_application_title)
+      p
+        = t(:guild_application_text)
+  .row
+    .column
+      - if flash[:success]
+        .ui.green.message
+          i.close.icon
+          p= flash[:success]
+      = render partial: "/guild_applications/partials/form"

@@ -1,0 +1,9 @@
+doctype html
+html
+  = render "layouts/partials/head"
+  = render "layouts/partials/navbar"
+  body
+    .ui.one.column.grid.container.inverted.segment
+    = render "layouts/partials/flash_message"
+      == yield
+    = render "layouts/partials/footer"

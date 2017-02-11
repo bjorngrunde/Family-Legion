@@ -1,0 +1,18 @@
+doctype html
+html
+  = render "layouts/partials/head"
+  = render "layouts/partials/navbar"
+  body
+    .ui.one.column.grid.container.inverted.segment
+      .ui.grid.container
+        .sixteen.wide.column
+          = render "layouts/partials/flash_message"
+
+      .ui.grid.container
+        .four.wide.column
+          = render "layouts/partials/admin_nav"
+
+        .twelve.wide.column
+          == yield
+
+    = render "layouts/partials/footer"

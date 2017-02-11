@@ -1,0 +1,9 @@
+table.ui.selectable.inverted.table
+  thead
+    tr
+      th= t(:name)
+      th= t(:status)
+      th= t(:edit)
+      th.right.aligned.collapsing= t(:created_at)
+  tbody
+    = cell(GuildApplication::Cell::Index, collection: model)

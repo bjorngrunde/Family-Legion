@@ -1,0 +1,60 @@
+en:
+  # In order:
+  # General
+  #Flash, Alert & Message
+  # GuildApplication
+  #User
+
+
+  #General
+  save:                     "Save"
+  edit:                     "Edit"
+  created_at:               "Created at"
+  name:                     "Name"
+  show:                     "Show"
+  login:                    "Login"
+  continue:                 "Continue"
+  cancel:                   "Cancel"
+
+  #Flash, Alert & Message
+  oh_dear:                  "Oh dear!"
+  oh_yeah:                  "Oh Yeah!"
+  unsuccessfull_delete:     "Something went really wrong. The object could not be deleted"
+  unsuccessfull_update:     "Something went really wrong. The object could not be updated"
+  successfull_delete:       "The object has been permamently deleted"
+  successfull_save:         "Your changes has been saved"
+  alert_delete:             "Are you sure you want to delete the object?"
+
+  #GuildApplication
+  first_name:               "First Name"
+  last_name:                "Last Name"
+  email:                    "Email"
+  username:                 "Character Name"
+  klass:                    "Your Class"
+  amory:                    "Armory Link"
+  server:                   "Server"
+  spec:                     "Specialization"
+  played:                   "What is the game time on your main character and/or meaningful alts?"
+  klass_played:             "Why did you choose to play this specific class and spec you are currently playing?"
+  bio:                      "Tell us more about yourself."
+  raid_experience:          "Tell us about your raid experience. If you have none, tell us abour some other gaming experiences."
+  reason:                   "What are you looking for in a guild and why did you apply to Family Legion."
+  old_guild:                "If you were/are a member in other guilds, tell us why you left/intend to leave."
+  progress_raid:            "What is your thoughts about progress raiding, achivements and raiding old content?"
+  attendance:               "We are using a rotation system based on attendance, what is your thoughts about that?"
+  screenshot:               "Please provide a screenshot on you interface."
+  submit:                   "Submit"
+  guild_application_title:  "Apply for Family Legion"
+  guild_application_text:   "It might take several days to process your application, be patient and check your email from time to time."
+  guild_application_from:   "Guild Application from %{name}"
+  accepted:                 "Accepted"
+  pending:                  "Pending"
+  declined:                 "Declined"
+  edit_application:         "Edit Application"
+  delete_application:       "Delete Application"
+  create_user_from:         "Create User From Application"
+  successfull_register:     "Thank you for your application! We will email you within a few days "
+  unsuccessfull_register:   "Something wen wrong and our hamsters could not handle your application. Please try again"
+
+  #User
+  create_user:                "Create User"

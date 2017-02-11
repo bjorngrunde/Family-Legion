@@ -1,0 +1,50 @@
+= form_for([:admin, model], html: { class: "ui equal width inverted form guild-application"}) do |f|
+  -if context[:form].errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
+  .fields
+    .field
+      = f.label :first_name
+        = t(:first_name)
+      = f.text_field :first_name
+
+    .field
+      = label_tag :last_name
+        = t(:last_name)
+      = f.text_field :last_name
+
+  .fields
+    .field
+      = f.label :email
+        = t(:email)
+      = f.email_field :email
+
+    .field
+      = label_tag :username
+        = t(:username)
+      = f.text_field :username
+
+  .fields
+    .field
+      = label_tag :server
+        = t(:server)
+      = f.text_field :server
+
+    .field
+      = label_tag :spec
+        = t(:spec)
+      = f.text_field :spec
+
+  .fields
+    .field
+      = label_tag :klass
+        = t(:klass)
+      = f.select :klass, GuildApplication.klasses.map { |klass| [klass.first.titleize, klass.first]}, {}, {class: "ui dropdown"}
+
+    .field
+      = label_tag :armory
+        = t(:armory)
+      = f.text_field :armory
+
+  .field
+    = f.submit :submit, class: "tiny ui button primary", value: t(:save)
+    = link_to t(:cancel), admin_guild_application_path(model), class: "tiny ui orange button"

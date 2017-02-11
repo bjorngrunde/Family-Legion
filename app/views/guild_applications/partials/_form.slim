@@ -1,0 +1,94 @@
+= form_tag({ controller: :guild_applications, action: :create}, class: "ui equal width inverted form error guild-application", multipart: true) do
+  .fields
+    .field
+      = label_tag :first_name
+        = t(:first_name)
+      = text_field_tag :first_name
+
+    .field
+      = label_tag :last_name
+        = t(:last_name)
+      = text_field_tag :last_name , '',class: "submit"
+
+  .fields
+    .field
+      = label_tag :email
+        = t(:email)
+      = email_field_tag :email
+
+    .field
+      = label_tag :username
+        = t(:username)
+      = text_field_tag :username
+
+  .fields
+    .field
+      = label_tag :server
+        = t(:server)
+      = text_field_tag :server
+
+    .field
+      = label_tag :spec
+        = t(:spec)
+      = text_field_tag :spec
+
+  .fields
+    .field
+      = label_tag :klass
+        = t(:klass)
+      = select_tag :klass, options_for_select([["Death Knight", 'death_knight'], ["Druid", 'druid'], ["Demon Hunter", 'demon_hunter'], ["Hunter", 'hunter'],
+      ["Mage", 'mage'], ["Monk", 'monk'], ["Priest", 'priest'], ["Paladin", 'paladin'], ["Rogue", 'rogue'],
+      ["Shaman", 'shaman'], ["Warlock", 'warlock'], ["Warrior", 'warrior']]), class: "ui dropdown"
+
+    .field
+      = label_tag :armory
+        = t(:armory)
+      = text_field_tag :armory
+
+  .field
+    = label_tag :played
+      = t(:played)
+    = text_area_tag :played
+
+  .field
+    = label_tag :klass_played
+      = t(:klass_played)
+    = text_area_tag :klass_played
+
+  .field
+    = label_tag :bio
+      = t(:bio)
+    = text_area_tag :bio
+
+  .field
+    = label_tag :raid_experience
+      = t(:raid_experience)
+    = text_area_tag :raid_experience
+
+  .field
+    = label_tag :reason
+      = t(:reason)
+    = text_area_tag :reason
+
+  .field
+    = label_tag :old_guild
+      = t(:old_guild)
+    = text_area_tag :old_guild
+
+  .field
+    = label_tag :progress_raid
+      = t(:progress_raid)
+    = text_area_tag :progress_raid
+
+  .field
+    = label_tag :attendance
+      = t(:attendance)
+    = text_area_tag :attendance
+
+  .field
+    = label_tag :screenshot
+      = t(:screenshot)
+    = file_field_tag :screenshot, class: "inverted field"
+
+  .field
+    = submit_tag :submit, class: "tiny ui button primary", value: t(:submit)

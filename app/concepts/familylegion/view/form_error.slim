@@ -1,0 +1,9 @@
+.ui.message
+  i.ui.close.icon
+  .header
+    = t(:Something_went_wrong)
+  ul.list
+    - context[:errors].each do |error, message|
+      li
+        p
+          = "#{error.to_s.titleize}: #{message[0]}."

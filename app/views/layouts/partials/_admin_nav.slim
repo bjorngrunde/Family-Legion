@@ -1,0 +1,14 @@
+.ui.inverted.vertical.menu
+  .item
+    .header= t(:guild_applications)
+    .menu
+      = link_to admin_guild_applications_path(status: :pending), class: "item" do
+        =t(:pending)
+        .ui.blue.label 3
+
+      = link_to t(:show_all), admin_guild_applications_path, class: "item"
+
+  .item
+    .header= t(:users)
+    .menu
+      = link_to t(:show_all), "#", class: "item"

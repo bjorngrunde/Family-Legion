@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    = render "layouts/partials/head"
+
+  body
+    = render "layouts/partials/landing_page_navigation"
+
+    .ui.one.column.grid.container
+      .ui.grid.container
+        .sixteen.wide.column
+          = render "layouts/partials/flash_message"
+      == yield
+    = render "layouts/partials/footer"

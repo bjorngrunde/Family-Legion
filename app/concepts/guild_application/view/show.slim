@@ -1,0 +1,51 @@
+
+.ui.grid.container
+  .sixteen.wide.column.right.aligned
+    = cell(GuildApplication::Cell::AdminMenu, model)
+  .sixteen.wide.column
+    h3
+      = t(:guild_application_from, name: full_name)
+  .eight.wide.column
+    h5 Character
+    p= username
+  .eight.wide.column
+    h5= t(:server)
+    p= server
+  .eight.wide.column
+    h5= t(:klass)
+    p= klass
+  .eight.wide.column
+    h5= t(:spec)
+    p= spec
+  .sixteen.wide.column
+    h5= t(:screenshot)
+    = screenshot
+  .sixteen.wide.column
+    h5= t(:played)
+    = played
+
+  .sixteen.wide.column
+    h5= t(:klass_played)
+    = klass_played
+
+  .sixteen.wide.column
+    h5= t(:bio)
+    = bio
+  .sixteen.wide.column
+    h5= t(:raid_experience)
+    = raid_experience
+  .sixteen.wide.column
+    h5= t(:reason)
+    = reason
+  .sixteen.wide.column
+    h5= t(:old_guild)
+    = old_guild
+  .sixteen.wide.column
+    h5= t(:progress_raid)
+    = progress_raid
+  .sixteen.wide.column
+    h5= t(:attendance)
+    = attendance
+  .sixteen.wide.column
+    h5= t(:other)
+    = other
