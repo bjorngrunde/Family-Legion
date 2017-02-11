@@ -31,7 +31,7 @@ en:
   email:                    "Email"
   username:                 "Character Name"
   klass:                    "Your Class"
-  amory:                    "Armory Link"
+  armory:                   "Armory Link"
   server:                   "Server"
   spec:                     "Specialization"
   played:                   "What is the game time on your main character and/or meaningful alts?"

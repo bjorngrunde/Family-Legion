@@ -2,27 +2,27 @@
   .ui.positive.message
     i.close.icon
     .header
-      = flash[:positive][:header] if flash[:positive][:header]
+      = flash[:positive][:header] if flash[:positive].include?(:header)
     p
-      = flash[:positive][:content] if flash[:positive][:content]
+      = flash[:positive][:content] if flash[:positive].include?(:content)
 -elsif flash[:negative]
   .ui.negative.message
     i.close.icon
     .header
-      = flash[:negative][:header] if flash[:negative][:header]
+      = flash[:negative][:header] if flash[:negative].include?(:header)
     p
-      = flash[:negative][:content] if flash[:negative][:content]
+      = flash[:negative][:content] if flash[:negative].include?(:content)
 -elsif flash[:warning]
   .ui.warning.message
     i.close.icon
     .header
-      = flash[:warning][:header] if flash[:warning][:header]
+      = flash[:warning][:header] if flash[:warning].include?(:header)
     p
-      = flash[:warning][:content] if flash[:warning][:content]
+      = flash[:warning][:content] if flash[:warning].include?(:content)
 -elsif flash[:info]
   .ui.info.message
     i.close.icon
     .header
-      = flash[:info][:header] if flash[:info][:header]
+      = flash[:info][:header] if flash[:info].include?(:header)
     p
-      = flash[:info][:content] if flash[:info][:content]
+      = flash[:info][:content] if flash[:info].include?(:content)

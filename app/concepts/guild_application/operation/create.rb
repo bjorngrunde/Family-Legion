@@ -2,7 +2,7 @@ class GuildApplication::Create < Trailblazer::Operation
 
   step Model( GuildApplication, :new )
   step Contract::Build( constant: GuildApplication::Contract::Create )
-  step Contract::Validate()
+  step Contract::Validate(key: :guild_application)
   step :set_status_to_pending!
   step :upload_screenshot!
   step Contract::Persist()
