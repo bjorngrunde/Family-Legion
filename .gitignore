@@ -11,7 +11,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-dragonfly.log
+/dragonfly.log
 
 # Ignore Byebug command history file.
 .byebug_history

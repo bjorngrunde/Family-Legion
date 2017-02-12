@@ -7,6 +7,6 @@ module ApplicationHelper
     when :warning  then "warning"
     when :info     then "info"
     end
-
   end
+  
 end

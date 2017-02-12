@@ -8,7 +8,7 @@ class GuildApplicationsController < ApplicationController
 
   def create
     run GuildApplication::Create do
-      return redirect_to register_path, flash: { positive: { header: t(:oh_yeah), content: t(:successfull_register) }}
+      return redirect_to register_path, :positive => { :header => t(:oh_yeah), :content => t(:successfull_register) }
     end
     render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"] })
   end

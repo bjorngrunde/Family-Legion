@@ -1,5 +1,5 @@
 - flash.each do |key, value|
-  .ui[class="ui #{flash_class(key)} message"]
+  div[class="ui #{flash_class(key)} message"]
     i.close.icon
     .header
       = value["header"] if value.include?("header")
