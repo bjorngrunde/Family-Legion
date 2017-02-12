@@ -2,10 +2,13 @@
   Colors
 ----------------*/
 
-$textColor : rgba(255, 255, 255, 0.87);
-
+$textColor:  rgba(255, 255, 255, 0.87);
+$orange:    #F89406;
+$green:     #3FC380;
+$red:       #EC644B;
 /*--------------
   Imports
 ---------------*/
 @import 'semantic-ui';
+@import 'mixins';
 @import 'general';
