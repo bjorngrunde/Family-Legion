@@ -18,7 +18,7 @@ class Admin::GuildApplicationsController < AdminController
   def update
     result = run GuildApplication::Update
     if result.success?
-      return redirect_to admin_guild_application_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:successfull_save)}
+      return redirect_to admin_guild_application_path(result["model"]), :positive => { :header => "", :content => t(:successfull_save)}
     end
     render cell(GuildApplication::Cell::Edit, result["model"], context: { form: result["contract.default"] })
   end
@@ -26,7 +26,7 @@ class Admin::GuildApplicationsController < AdminController
   def destroy
     result = run GuildApplication::Destroy
     if  result.success?
-      return redirect_to admin_guild_applications_path, :positive => { :positive => { :header => t(:oh_yeah), :content => t(:successfull_delete) }}
+      return redirect_to admin_guild_applications_path, :positive => { :header => "", :content => t(:successfull_delete) }
     end
     flash = { :negative => { :header => t(:oh_dear), :content => t(:unsuccessfull_delete)}}
     render cell(GuildApplication::Cell::Show, result["model"])

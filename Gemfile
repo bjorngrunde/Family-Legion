@@ -31,7 +31,8 @@ gem 'file_validators'
 gem 'figaro'
 
 group :development, :test do
-
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'rspec-rails', '~> 3.5'
   gem 'byebug', platform: :mri
 end
 
