@@ -14,7 +14,7 @@ class GuildApplication::Create < Trailblazer::Operation
   end
 
   def upload_screenshot!(options, **)
-    return if options["contract.default"].screenshot.nil?
+    return true if options["contract.default"].screenshot.nil?
     options["contract.default"].image!(options["contract.default"].screenshot) do |v|
       v.process!(:original)
       v.process!(:thumb) { |job| job.thumb!("120x120#") }

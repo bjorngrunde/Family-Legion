@@ -7,7 +7,8 @@ class GuildApplicationsController < ApplicationController
   end
 
   def create
-    run GuildApplication::Create do
+    result = run GuildApplication::Create
+    if result.success?
       return redirect_to register_path, :positive => { :header => t(:oh_yeah), :content => t(:successfull_register) }
     end
     render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"] })

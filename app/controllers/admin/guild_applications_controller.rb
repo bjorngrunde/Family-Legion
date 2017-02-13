@@ -18,8 +18,7 @@ class Admin::GuildApplicationsController < AdminController
   def update
     result = run GuildApplication::Update
     if result.success?
-      flash = { :positive => { :header => t(:oh_yeah), :content => t(:successfull_save)}}
-      return render cell(GuildApplication::Cell::Edit, result["model"],  context: { form: result["contract.default"] })
+      return redirect_to admin_guild_application_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:successfull_save)}
     end
     render cell(GuildApplication::Cell::Edit, result["model"], context: { form: result["contract.default"] })
   end

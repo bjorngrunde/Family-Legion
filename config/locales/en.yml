@@ -3,7 +3,7 @@ en:
   # General
   # Flash, Alert & Message
   # GuildApplication
-  #User
+  # User
 
 
   #General
@@ -15,6 +15,7 @@ en:
   login:                    "Login"
   continue:                 "Continue"
   cancel:                   "Cancel"
+  submit:                   "Submit"
 
   #Flash, Alert & Message
   oh_dear:                  "Oh dear!"
@@ -24,6 +25,7 @@ en:
   successfull_delete:       "The object has been permamently deleted"
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
+  Something_went_wrong:     "Something went wrong"
 
   #GuildApplication
   first_name:               "First Name"
@@ -43,7 +45,6 @@ en:
   progress_raid:            "What is your thoughts about progress raiding, achivements and raiding old content?"
   attendance:               "We are using a rotation system based on attendance, what is your thoughts about that?"
   screenshot:               "Please provide a screenshot on you interface."
-  submit:                   "Submit"
   guild_application_title:  "Apply for Family Legion"
   guild_application_text:   "It might take several days to process your application, be patient and check your email from time to time."
   guild_application_from:   "Guild Application from %{name}"
