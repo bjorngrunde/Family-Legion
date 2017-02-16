@@ -1,7 +1,6 @@
 class GuildApplication::Create < Trailblazer::Operation
 
-  step Model( GuildApplication, :new )
-  step Contract::Build( constant: GuildApplication::Contract::Create )
+  step Nested(:build!)
   step Contract::Validate(key: :guild_application)
   step :set_status_to_pending!
   step :upload_screenshot!
@@ -19,5 +18,9 @@ class GuildApplication::Create < Trailblazer::Operation
       v.process!(:original)
       v.process!(:thumb) { |job| job.thumb!("120x120#") }
     end
+  end
+
+  def build!(options, **)
+    GuildApplication::New
   end
 end
