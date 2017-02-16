@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe GuildApplication, type: :model do
 
-  it "should create a guild application and update status" do
+  it "should create a guild application" do
 
     attrs = attributes_for(:guild_application)
 
@@ -38,6 +38,6 @@ RSpec.describe GuildApplication, type: :model do
     result = GuildApplication::Destroy.({id: application.id})
 
     expect(result).to be_success
-    expect {GuildApplication.find(application.id)}.to raise_exception(ActiveRecord::RecordNotFound)
+    expect { GuildApplication.find(application.id) }.to raise_exception(ActiveRecord::RecordNotFound)
   end
 end

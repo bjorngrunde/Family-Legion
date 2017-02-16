@@ -2,6 +2,7 @@ en:
   # In order:
   # General
   # Flash, Alert & Message
+  # BreadCrumbs
   # GuildApplication
   # User
 
@@ -26,6 +27,13 @@ en:
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
   Something_went_wrong:     "Something went wrong"
+
+  # BreadCrumbs
+  breadcrumbs:
+    control_panel:          "Control Panel"
+    guild_applications:     "Guild Applications"
+    show:                   "Show"
+    edit:                   "Edit"
 
   #GuildApplication
   first_name:               "First Name"

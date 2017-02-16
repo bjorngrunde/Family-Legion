@@ -8,6 +8,9 @@ html
         .sixteen.wide.column
           = render "layouts/partials/flash_message"
 
+          .ui.large.breadcrumb
+            = render_breadcrumbs :separator => ' / '
+
       .ui.grid.container
         .four.wide.column
           = render "layouts/partials/admin_nav"
