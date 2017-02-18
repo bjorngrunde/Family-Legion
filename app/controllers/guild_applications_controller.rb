@@ -3,7 +3,7 @@ class GuildApplicationsController < ApplicationController
 
   def new
     result = run GuildApplication::New
-    render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"] })
+    render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"], flash: flash})
   end
 
   def create

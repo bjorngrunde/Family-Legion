@@ -1,0 +1,7 @@
+- context[:flash].each do |key, value|
+  div[class="ui #{flash_class(key)} message"]
+    i.close.icon
+    .header
+      = value["header"] if value.include?("header")
+    p
+      = value["content"] if value.include?("content")

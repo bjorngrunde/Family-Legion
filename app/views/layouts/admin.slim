@@ -6,7 +6,7 @@ html
     .ui.one.column.grid.container.inverted.segment
       .ui.grid.container
         .sixteen.wide.column
-          = render "layouts/partials/flash_message"
+          = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
 
           .ui.large.breadcrumb
             = render_breadcrumbs :separator => ' / '
