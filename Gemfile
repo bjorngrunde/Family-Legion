@@ -30,6 +30,7 @@ gem 'paperdragon'
 gem 'file_validators'
 gem 'figaro'
 gem "breadcrumbs_on_rails"
+gem 'tyrant'
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.0"

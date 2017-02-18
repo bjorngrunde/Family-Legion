@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209124152) do
+ActiveRecord::Schema.define(version: 20170218184341) do
 
   create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "first_name"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 20161209124152) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["email", "username"], name: "index_guild_applications_on_email_and_username", unique: true, using: :btree
+  end
+
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "username"
+    t.string   "email"
+    t.text     "auth_meta_data", limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true, using: :btree
   end
 
 end

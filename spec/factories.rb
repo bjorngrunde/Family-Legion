@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :profile do
+    
+  end
+  factory :user do
+    
+  end
 
   factory :guild_application do
     first_name  "John"
