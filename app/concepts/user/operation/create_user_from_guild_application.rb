@@ -31,7 +31,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	end
 
 	def generate_thumbnail!(options, **)
-		character = RBattlenet::Wow::Character.find(name: "bubbleoncd", realm: "grim batol")
+		character = RBattlenet::Wow::Character.find(name: options["contract.user"].username, realm: options["contract.user"].profile.server)
 		options["contract.user"].profile.thumbnail = "http://eu.battle.net/static-render/eu/#{character['thumbnail']}"
 	end
 
