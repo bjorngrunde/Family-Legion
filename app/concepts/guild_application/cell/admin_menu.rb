@@ -20,7 +20,7 @@ module GuildApplication::Cell
     end
 
     def create_user_button
-      link_to("<i class='create user icon'></i> #{t(:create_user)}",  "#", class: "tiny ui icon inverted button", data: { :tooltip => t(:create_user_from), :position =>"bottom right"}).html_safe if model.status == "accepted"
+      link_to("<i class='create user icon'></i> #{t(:create_user)}",  admin_create_user_from_guild_application_path(username: model.username, email: model.email, profile: { klass: model.klass, server: model.server, first_name: model.first_name, last_name: model.last_name}), class: "tiny ui icon inverted button", method: :post,  data: { :tooltip => t(:create_user_from), :position =>"bottom right"}).html_safe if model.status == "accepted"
     end
 
   end

@@ -3,4 +3,5 @@ class User < ApplicationRecord
 
 	#Associations
 	has_one :profile
+	
 end
