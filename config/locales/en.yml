@@ -32,6 +32,7 @@ en:
   breadcrumbs:
     control_panel:          "Control Panel"
     guild_applications:     "Guild Applications"
+    users:                  "Users"
     show:                   "Show"
     edit:                   "Edit"
 

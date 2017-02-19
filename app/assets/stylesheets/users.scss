@@ -1,3 +1,58 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.death-knight {
+	color: $death-knight;
+}
+.druid {
+	color: $druid;
+}
+.hunter {
+	color: $hunter;
+}				
+.warlock {
+	color: $warlock;
+}
+.mage {
+	color: $mage;
+}
+.paladin {
+	color: $paladin;
+}
+.shaman {
+	color: $shaman;
+}
+.warrior {
+	color: $warrior;
+}
+.priest {
+	color: $priest;
+}
+.monk {
+	color: $monk;
+}
+.rogue {
+	color: $rogue;
+}
+.demon-hunter {
+	color: $demon-hunter;
+}
+.epic {
+	color: $epic;
+}
+.rare {
+	color: $rare;
+}
+
+.ui.inverted.card {
+	background: #333333;
+	box-shadow: 0 0 2px #151515;
+	color: #fff;
+
+	.header {
+		color: #fff;
+	}
+	.meta {
+		color: #fff;
+	}
+}

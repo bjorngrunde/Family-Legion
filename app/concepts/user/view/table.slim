@@ -1,0 +1,9 @@
+table.ui.selectable.inverted.table
+  thead
+    tr
+      th= t(:username)
+      th= t(:email)
+      th= t(:show)
+      th.right.aligned.collapsing= t(:created_at)
+  tbody
+    = cell(User::Cell::Row, collection: model)

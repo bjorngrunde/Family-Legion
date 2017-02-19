@@ -16,6 +16,7 @@ module User::Contract
 			property	:first_name
 			property	:last_name
 			property	:thumbnail
+			property	:avatar
 
 			validates :klass, :server, :first_name, :last_name, presence: true
 		end

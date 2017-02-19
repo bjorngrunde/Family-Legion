@@ -6,7 +6,7 @@
         = t(:guild_application_text)
   .row
     .column
-      = cell(Familylegion::Cell::Flash, nil, context: { flash: context[:flash] })
+      = cell(Familylegion::Cell::Flash, nil, context: { flash: context[:flash] }) if context[:flash]
   .row
     .column
       = form_for(model, html: { class: "ui equal width inverted form guild-application"}, multipart: true) do |f|

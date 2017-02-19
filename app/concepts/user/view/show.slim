@@ -1,0 +1,12 @@
+.ui.grid.inverted.segment
+	.eight.wide.column
+		.ui.inverted.card
+			.image
+				= image_tag(model.profile.avatar)
+			.content
+				.header
+					span.[class="#{model.profile.klass}"]
+						= model.username.humanize
+				.meta
+					span.date
+						= t(:joined, date: model.created_at)

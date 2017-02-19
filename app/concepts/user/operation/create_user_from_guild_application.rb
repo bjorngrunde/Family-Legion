@@ -1,14 +1,5 @@
 class User::CreateUserFromGuildApplication < Trailblazer::Operation
 
-	# Operations used:
-	# User::New
-	# Wowapi::Thumbnail
-	# Mail::Welcome
-
-	# Twins used:
-	# Tyrant::Authenticatable
-
-
 	step 	Nested(:build!)
 	step 	:generate_password!
 	step	Contract::Validate(name: "user")
@@ -23,7 +14,8 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	end
 
 	def generate_password!(options, **)
-		options["contract.user"].password = SecureRandom.hex 12
+		options["generated_password"] = SecureRandom.hex(6)
+		options["contract.user"].password = options["generated_password"]
 	end
 
 	def initialize_wowapi!(options, **)
@@ -33,6 +25,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	def generate_thumbnail!(options, **)
 		character = RBattlenet::Wow::Character.find(name: options["contract.user"].username, realm: options["contract.user"].profile.server)
 		options["contract.user"].profile.thumbnail = "http://eu.battle.net/static-render/eu/#{character['thumbnail']}"
+		options["contract.user"].profile.avatar = "http://eu.battle.net/static-render/eu/#{character['thumbnail'].sub('avatar', 'profilemain')}"
 	end
 
 	def create!(options, **)
