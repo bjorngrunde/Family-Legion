@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170218184341) do
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "user_id",               null: false
+    t.integer  "user_id",                           null: false
     t.string   "first_name", limit: 45
     t.string   "last_name",  limit: 45
     t.integer  "klass"
@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 20170218184341) do
     t.string   "avatar"
     t.string   "thumbnail"
     t.string   "phone"
-    t.integer  "rank"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "rank",                  default: 1
+    t.integer  "rate",                  default: 1
+    t.string   "spec"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

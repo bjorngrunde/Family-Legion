@@ -1,6 +1,8 @@
 tr
   td
-    = full_username
+    = image_tag(model.profile.thumbnail, class: "ui avatar image")
+    span
+      = full_username
   td
     = email
   td

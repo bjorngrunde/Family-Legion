@@ -35,13 +35,14 @@ en:
     users:                  "Users"
     show:                   "Show"
     edit:                   "Edit"
+    new:                    "New"
 
   #GuildApplication
   first_name:               "First Name"
   last_name:                "Last Name"
   email:                    "Email"
   username:                 "Character Name"
-  klass:                    "Your Class"
+  klass:                    "Class"
   armory:                   "Armory Link"
   server:                   "Server"
   spec:                     "Specialization"
@@ -73,4 +74,9 @@ en:
   could_not_change_status:  "Could not change status"
 
   #User
-  create_user:                "Create User"
+  create_user:               "Create User"
+  joined:                    "Joined: %{date}"
+  edit_user:                 "Edit User"
+
+  #Profile
+  rank:                       "Rank"

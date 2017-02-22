@@ -2,7 +2,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 
 	step 	Nested(:build!)
 	step 	:generate_password!
-	step	Contract::Validate(name: "user")
+	step	Contract::Validate(name: "user", key: :user)
 	step 	Nested(:initialize_wowapi!)
 	step	:generate_thumbnail!
 	step	:create!
@@ -24,8 +24,8 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 
 	def generate_thumbnail!(options, **)
 		character = RBattlenet::Wow::Character.find(name: options["contract.user"].username, realm: options["contract.user"].profile.server)
-		options["contract.user"].profile.thumbnail = "http://eu.battle.net/static-render/eu/#{character['thumbnail']}"
-		options["contract.user"].profile.avatar = "http://eu.battle.net/static-render/eu/#{character['thumbnail'].sub('avatar', 'profilemain')}"
+		options["contract.user"].profile.thumbnail = "http://render-eu.worldofwarcraft.com/character/#{character['thumbnail']}"
+		options["contract.user"].profile.avatar = "http://render-eu.worldofwarcraft.com/character/#{character['thumbnail'].sub('avatar', 'profilemain')}"
 	end
 
 	def create!(options, **)

@@ -9,7 +9,9 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
     	t.string		:avatar
     	t.string		:thumbnail
     	t.string		:phone
-    	t.integer		:rank
+    	t.integer		:rank, :default => 1
+      t.integer   :rate, :default => 1
+      t.string    :spec
       t.timestamps
     end
   end

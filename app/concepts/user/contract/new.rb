@@ -17,8 +17,16 @@ module User::Contract
 			property	:last_name
 			property	:thumbnail
 			property	:avatar
+			property	:spec
+			property	:rank
 
 			validates :klass, :server, :first_name, :last_name, presence: true
+			validate :guild_master_exists?
+
+			def guild_master_exists?
+				return if rank != "guild_master"
+				errors.add(:rank, "A user with rank Guild Master already exists") if Profile.find_by(rank: rank)
+			end
 		end
 	end
 end

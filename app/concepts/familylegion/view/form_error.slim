@@ -6,4 +6,4 @@
     - context[:errors].each do |error, message|
       li
         p
-          = "#{error.to_s.titleize}: #{message[0]}."
+          = "#{field(error)}: #{message[0]}."
