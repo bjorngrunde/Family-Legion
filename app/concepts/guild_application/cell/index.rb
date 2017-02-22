@@ -25,5 +25,9 @@ module GuildApplication::Cell
       def edit_link
         link_to t(:show), admin_guild_application_path(model)
       end
+
+      def color_class
+        "#{model.status}"
+      end
   end
 end

@@ -77,6 +77,12 @@ en:
   create_user:               "Create User"
   joined:                    "Joined: %{date}"
   edit_user:                 "Edit User"
+  user_updated:              "The user %{name} has been updated"
+  user_created:              "The user %{name} was created. Email with login information has been sent."
+  ban:                       "Ban"
+  ban_user:                  "Ban the user. They will no longer be able to login"
+
 
   #Profile
-  rank:                       "Rank"
+  rank:                      "Rank"
+  phone:                     "Phone/Mobile"

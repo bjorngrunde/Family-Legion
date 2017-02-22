@@ -8,14 +8,15 @@ html
         .sixteen.wide.column
           = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
 
-          .ui.large.breadcrumb
-            = render_breadcrumbs :separator => ' / '
-
       .ui.grid.container
         .four.wide.column
           = render "layouts/partials/admin_nav"
 
         .twelve.wide.column
-          == yield
+          .ui.inverted.segment
+            .ui.large.breadcrumb
+              = render_breadcrumbs :separator => ' / '
+          .ui.inverted.segment
+            == yield
 
     = render "layouts/partials/footer"

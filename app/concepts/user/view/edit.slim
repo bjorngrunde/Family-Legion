@@ -39,6 +39,15 @@
         = ff.label :rank
           = t(:rank)
         = ff.select :rank, Profile.ranks.map { |rank| [rank.first.titleize, rank.first]}, {}, {class: "ui dropdown"}
+    .fields
+      .field
+        = ff.label :phone
+          = t(:phone)
+        = ff.text_field :phone
+      .field
+        = ff.label :spec
+          = t(:spec)
+        = ff.text_field :spec
   .field
     = f.submit :submit, class: "tiny ui inverted button", value: t(:save)
-    = link_to t(:cancel), admin_users_path, class: "tiny ui inverted orange button"
+    = link_to t(:cancel), admin_user_path(model), class: "tiny ui inverted orange button"
