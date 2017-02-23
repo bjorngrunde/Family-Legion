@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def index
-    result = run Session::SignIn
   end
 
   def dashboard
