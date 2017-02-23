@@ -41,6 +41,6 @@ class Admin::UsersController < AdminController
 		if result.success?
 			return redirect_to admin_user_path(result["model"]), :positive => { :header => "", :content => t(:user_updated, name: result["model"].username.humanize)}
 		end
-		redirect_to edit_admin_user_path(result["model"])
+		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
 	end
 end
