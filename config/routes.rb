@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'register' => 'guild_applications#new', as: :register
   get 'dashboard' => 'pages#dashboard', as: :dashboard
-
+  post 'sign_in' => 'sessions#sign_in', as: :sign_in
   resources :guild_applications, only: :create
 
   namespace :admin do

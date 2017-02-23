@@ -31,6 +31,7 @@ gem 'file_validators'
 gem 'figaro'
 gem "breadcrumbs_on_rails"
 gem 'tyrant'
+gem 'warden'
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.0"

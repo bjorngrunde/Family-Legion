@@ -4,6 +4,6 @@ html
   = render "layouts/partials/navbar"
   body
     .ui.one.column.grid.container.inverted.segment
-    = render "layouts/partials/flash_message"
+      = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
       == yield
     = render "layouts/partials/footer"

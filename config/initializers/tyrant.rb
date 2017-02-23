@@ -1,1 +1,1 @@
-#require "tyrant/railtie"
+require "tyrant/railtie"
