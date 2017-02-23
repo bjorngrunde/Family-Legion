@@ -7,7 +7,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	step	:generate_thumbnail!
 	step	:create!
 	step 	Contract::Persist(name: "user")
-	#success	:send_email!
+  success	:send_email!
 
 	def build!(options, **)
 		User::New
@@ -35,7 +35,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 		auth.sync
 	end
 
-	#def send_email!(options, **)
-		#Mail::Welcome
-	#end
+	def send_email!(options, **)
+		UserMailer.welcome(options).deliver_now
+	end
 end

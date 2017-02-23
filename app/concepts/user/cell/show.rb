@@ -27,6 +27,10 @@ module User::Cell
 			model.profile.phone
 		end
 
+		def css_class
+			"#{model.profile.klass.sub("_", "-")}"
+		end
+
 		def klass
 			"#{model.profile.klass.humanize}"
 		end

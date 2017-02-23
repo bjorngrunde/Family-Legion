@@ -4,12 +4,12 @@
       = cell(User::Cell::AdminMenu, model)
   .row
     .eight.wide.column
-      ui.two.column.grid
+      .ui.two.column.grid
         .column
           = image_tag(model.profile.thumbnail, class: "ui circular image")
         .column
           span.ui.medium.header
-            span[class="#{model.profile.klass}"]
+            span class="#{css_class}"
               = username
           p.white
             = t(:joined, date: created_at)

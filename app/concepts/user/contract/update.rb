@@ -26,7 +26,7 @@ module User::Contract
         profile = Profile.find(id)
         return if rank != "guild_master"
         return if profile.rank == "guild_master"
-        errors.add(:rank, "A user with rank Guild Master already exists")
+        errors.add(:rank, "A user with rank Guild Master already exists") if Profile.find_by(rank: "guild_master")
       end
     end
   end

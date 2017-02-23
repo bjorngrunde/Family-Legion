@@ -86,3 +86,9 @@ en:
   #Profile
   rank:                      "Rank"
   phone:                     "Phone/Mobile"
+
+  #Session
+  welcome_title:              "Welcome to Family Legion, %{name}!"
+  welcome_text:               "Your application has been accepted and an account has been created for you! You can login with the email you used in your appplication and the details below."
+  login_with:                 "Your password will last for 12 hours after your first login. We recommend you to change it immediately."
+  password:                   "Password"
