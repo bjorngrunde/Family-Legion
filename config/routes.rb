@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
   root :to => "pages#index"
-
-  get 'register' => 'guild_applications#new', as: :register
   get 'dashboard' => 'pages#dashboard', as: :dashboard
+  
+  #session
+  get 'register' => 'guild_applications#new', as: :register
   post 'sign_in' => 'sessions#sign_in', as: :sign_in
+  get  'sign_out' => 'sessions#sign_out', as: :sign_out
+  get  'forgot_password' => "sessions#forgot_password", as: :forgot_password
+  post 'send_password_link' => "sessions#send_password_link", as: :send_password_link
+  
   resources :guild_applications, only: :create
 
   namespace :admin do

@@ -1,11 +1,11 @@
 class Admin::UsersController < AdminController
-
+	
+	before_filter :require_login
+	
 	add_breadcrumb I18n.t("breadcrumbs.control_panel"), :admin_control_panel_path
   add_breadcrumb I18n.t("breadcrumbs.users"), :admin_users_path, :only => %w(index show edit new)
-  add_breadcrumb I18n.t("breadcrumbs.show"), :admin_user_path, :only => %w(show edit)
   add_breadcrumb I18n.t("breadcrumbs.new"), :new_admin_user_path, :only => %w(new)
-  add_breadcrumb I18n.t("breadcrumbs.edit"), :edit_admin_user_path, :only => %w(edit)
-	
+  
 	def create_user_from_guild_application
 		result = run User::CreateUserFromGuildApplication
 		if result.success?
@@ -27,12 +27,15 @@ class Admin::UsersController < AdminController
 	def show
 		result = run User::Show
 		if result.success?
+			add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path, :only => %w(show edit)
 			return render cell(User::Cell::Show, result["model"])
 		end
 	end
 
 	def edit
 		result = run User::Edit
+		add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path
+		add_breadcrumb I18n.t("breadcrumbs.edit"), :edit_admin_user_path
 		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
 	end
 	

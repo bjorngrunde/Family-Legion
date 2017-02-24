@@ -21,7 +21,7 @@ GuildApplication.create(
   first_name: "Björn",
   last_name: "Grunde",
   email: "bjorngrunde@live.se",
-  username: "Bombka",
+  username: "Sprayandpray",
   armory: "",
   klass: :hunter,
   server: "Grim-Batol",

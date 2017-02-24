@@ -1,5 +1,6 @@
 class Admin::GuildApplicationsController < AdminController
-
+  before_filter :require_login
+  
   add_breadcrumb I18n.t("breadcrumbs.control_panel"), :admin_control_panel_path
   add_breadcrumb I18n.t("breadcrumbs.guild_applications"), :admin_guild_applications_path, :only => %w(index show edit)
   add_breadcrumb I18n.t("breadcrumbs.show"), :admin_guild_application_path, :only => %w(show edit)
