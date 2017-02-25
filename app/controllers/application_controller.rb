@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to root_path unless tyrant.signed_in?
   end
+
+  private
+  def _run_options(options)
+    options.merge( "current_user" => tyrant.current_user )
+  end
 end

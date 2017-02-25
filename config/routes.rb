@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   
   resources :guild_applications, only: :create
 
+  namespace :user do
+    namespace :setting do
+      get 'control_panel' => "settings#control_panel", as: :control_panel
+      get 'change_password' => "settings#change_password", as: :change_password
+      patch 'new_password' => "settings#new_password", as: :new_password
+    end
+  end
+
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
     post 	'toggle_status' => 'guild_applications#toggle_status', as: :guild_application_toggle_status

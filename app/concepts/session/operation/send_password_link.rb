@@ -5,6 +5,7 @@ class Session::SendPasswordLink < Trailblazer::Operation
   step Contract::Build(constant: Session::Contract::SendPasswordLink)
   step Contract::Validate()
   step :create_token!
+  step Contract::Persist()
   
   def find_user!(options, params:, **)
     options["model"] = User.find_by(email: params[:email])
@@ -15,12 +16,12 @@ class Session::SendPasswordLink < Trailblazer::Operation
   end
   
   def create_token!(options, **)
-    auth = Tyrant::Authenticatable.new(options["model"])
+    auth = Tyrant::Authenticatable.new(options["contract.default"])
     auth.confirmable!
     auth.sync
     #raise options["model"].auth_meta_data.inspect
-    auth.confirmed!
-    auth.sync
+    #auth.confirmed!
+    #auth.sync
   end
   
   def save_model!(options, **)

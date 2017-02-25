@@ -27,6 +27,7 @@ en:
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
   Something_went_wrong:     "Something went wrong"
+  not_authorized:           "Oi! You can access that!"
 
   # BreadCrumbs
   breadcrumbs:
@@ -97,3 +98,6 @@ en:
   forgot_password_text:       "Enter your email and if you are a member we will send you a mail with a reset passord link"
   email_not_found:            "The email could not be found"
   password_email_is_sent:     "A email with an activation link has been sent to the address you added!"
+  new_password:               "New password"
+  confirm_new_password:       "Confirm new password"
+  password_changed:           "You have changed your password! Good Boy!"
