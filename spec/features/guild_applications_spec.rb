@@ -115,4 +115,26 @@ RSpec.feature "GuildApplications", type: :feature do
     expect(page).to have_text("Oh Yeah!")
     expect(page).to have_text("The user Bombka was created. Email with login information has been sent.")
   end
+
+  scenario "should edit a guild application" do
+    result = create_user
+    login(result["model"].email, result["generated_password"])
+
+    guild_application = create(:guild_application)
+
+    visit(admin_guild_application_path(id: guild_application.id))
+
+    expect(page).to have_text("Edit")
+
+    click_link("Edit")
+
+    fill_in "guild_application_first_name", :with => "Kalle"
+    fill_in "guild_application_last_name", :with => "Jansson"
+    fill_in "guild_application_server", :with => "Ragnaros"
+    click_button("Save")
+
+    expect(page).to have_text("Your changes has been saved")
+    expect(page).to have_text("Kalle Jansson")
+    expect(page).to have_text("Ragnaros")
+  end
 end
