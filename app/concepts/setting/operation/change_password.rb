@@ -5,6 +5,7 @@ class Setting::ChangePassword < Trailblazer::Operation
   step Contract::Validate(key: :user)
   step :not_authorized!
   step :check_old_password!
+  failure :wrong_password!
   step :change_password!
   step Contract::Persist()
 
@@ -13,14 +14,18 @@ class Setting::ChangePassword < Trailblazer::Operation
   end
 
   def check_old_password!(options, **)
-    options["auth"] = Tyrant::Authenticatable.new(options["contract.default"])
-    options["auth"].digest?(options["contract.default"].old_password)
+    Tyrant::Authenticatable.new(options["model"]).digest?(options["contract.default"].old_password)
+  end
+
+  def wrong_password!(options, **)
+    options["contract.default"].errors.add(:old_password, :wrong_password)
   end
 
   def change_password!(options, **)
-    options["auth"].digest!(options["contract.default"].new_password)
-    options["auth"].confirmed!
-    options["auth"].sync
+    auth = Tyrant::Authenticatable.new(options["contract.default"])
+    auth.digest!(options["contract.default"].new_password)
+    auth.confirmed!
+    auth.sync
   end
 
 end

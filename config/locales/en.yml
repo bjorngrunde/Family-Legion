@@ -27,7 +27,7 @@ en:
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
   Something_went_wrong:     "Something went wrong"
-  not_authorized:           "Oi! You can access that!"
+  not_authorized:           "Oi! You can't access that!"
 
   # BreadCrumbs
   breadcrumbs:
@@ -101,3 +101,5 @@ en:
   new_password:               "New password"
   confirm_new_password:       "Confirm new password"
   password_changed:           "You have changed your password! Good Boy!"
+  wrong_password:             "Wrong password"
+  passwords_dont_match:       "Passwords dont match"

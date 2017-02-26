@@ -6,7 +6,8 @@ module Familylegion::Cell
     end
 
     def error_message message
-      return message[0].humanize
+      return t(message) if message.class == Symbol
+      t(message.split(".").last.to_sym)
     end
   end
 end

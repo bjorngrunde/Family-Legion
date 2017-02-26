@@ -7,10 +7,11 @@ module Setting::Contract
     property :auth_meta_data
 
     validates :old_password, :new_password, :confirm_new_password, presence: true
+    validates :new_password, length: { minimum: 6 }
     validate :new_password_match!
 
     def new_password_match!
-      errors.add(:new_password, "Passwords dont match!") if new_password != confirm_new_password
+      errors.add(:new_password, :passwords_dont_match) if new_password != confirm_new_password
     end
   end
 end

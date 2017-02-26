@@ -6,4 +6,4 @@
     - context[:errors].each do |error, message|
       li
         p
-          = "#{field(error)}: #{error_message(message)}."
+          = "#{field(error)}: #{error_message(message[0])}."
