@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
 	
-	before_filter :require_login
+	before_action :require_login
 	
 	add_breadcrumb I18n.t("breadcrumbs.control_panel"), :admin_control_panel_path
   add_breadcrumb I18n.t("breadcrumbs.users"), :admin_users_path, :only => %w(index show edit new)

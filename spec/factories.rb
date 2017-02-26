@@ -6,7 +6,8 @@ FactoryGirl.define do
     server      "Grim-Batol"
     username    "Bombka"
     klass       "warrior"
-    email       "bjorngrunde@live.se"
+    email       "test@test.se"
+    status      1
   end
 
   factory :user do
