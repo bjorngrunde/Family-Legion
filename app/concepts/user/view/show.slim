@@ -1,0 +1,58 @@
+.ui.grid.inverted.segment
+  .row
+    .sixteen.wide.column.right.aligned
+      = cell(User::Cell::AdminMenu, model)
+  .row
+    .eight.wide.column
+      .ui.two.column.grid
+        .column
+          = image_tag(model.profile.thumbnail, class: "ui circular image")
+        .column
+          span.ui.medium.header
+            span class="#{css_class}"
+              = username
+          p.white
+            = t(:joined, date: created_at)
+    .eight.wide.column
+      .ui.two.column.grid
+        .column
+          h4.ui.header
+            span.white
+              = t(:name)
+          p
+            = full_name
+        .column
+          h4.ui.header
+            span.white
+              = t(:klass)
+          p
+            = klass
+        .column
+          h4.ui.header
+            span.white
+              = t(:email)
+          p
+            = email
+        .column
+          h4.ui.header
+            span.white
+              = t(:phone)
+          p
+            = phone
+        .column
+          h4.ui.header
+            span.white
+              = t(:rating)
+          div[class="ui star rating disabled" data-rating="3" data-max-rating="5"]
+        .column
+          h4.ui.header
+            span.white
+              = t(:rank)
+          p
+            = rank
+  .row
+    .sixteen.wide.column
+      .ui.blue.three.item.inverted.menu
+        = link_to t(:activity), "#", class: "active item"
+        = link_to t(:logs), "#", class: "item"
+        = link_to t(:Something), "#", class: "item"

@@ -1,7 +1,13 @@
 module Familylegion::Cell
-  class FormError < Trailblazer::Cell
-    include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
+  class FormError < Familylegion::Cell::Master
+    
+    def field error
+      error.to_s.split(".").last.humanize
+    end
 
+    def error_message message
+      return t(message) if message.class == Symbol
+      t(message.split(".").last.to_sym)
+    end
   end
 end

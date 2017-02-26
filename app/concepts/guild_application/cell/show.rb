@@ -23,7 +23,11 @@ module GuildApplication::Cell
     property  :other
     processable_reader :image
     property  :image_meta_data
+    property  :status
 
+    def readable_status
+      "#{t(:status)}: #{status}".titleize
+    end
 
     def screenshot
       image_tag(image[:original].url, class: "ui image") if image.exists?

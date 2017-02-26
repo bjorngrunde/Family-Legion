@@ -1,0 +1,7 @@
+.ui.grid.container
+  .four.wide.column
+    = cell(Familylegion::Cell::SettingMenu, model, context: { current_user: current_user})
+
+  .twelve.wide.column
+    .ui.inverted.segment
+      = cell(rendered_cell, model, context: { current_user: current_user})

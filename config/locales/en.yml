@@ -1,9 +1,12 @@
 en:
   # In order:
   # General
-  #Flash, Alert & Message
+  # Flash, Alert & Message
+  # BreadCrumbs
   # GuildApplication
-  #User
+  # User
+  # Profile
+  # Session
 
 
   #General
@@ -15,6 +18,7 @@ en:
   login:                    "Login"
   continue:                 "Continue"
   cancel:                   "Cancel"
+  submit:                   "Submit"
 
   #Flash, Alert & Message
   oh_dear:                  "Oh dear!"
@@ -24,14 +28,25 @@ en:
   successfull_delete:       "The object has been permamently deleted"
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
+  Something_went_wrong:     "Something went wrong"
+  not_authorized:           "Oi! You can't access that!"
+
+  # BreadCrumbs
+  breadcrumbs:
+    control_panel:          "Control Panel"
+    guild_applications:     "Guild Applications"
+    users:                  "Users"
+    show:                   "%{user}"
+    edit:                   "Edit"
+    new:                    "New"
 
   #GuildApplication
   first_name:               "First Name"
   last_name:                "Last Name"
   email:                    "Email"
   username:                 "Character Name"
-  klass:                    "Your Class"
-  amory:                    "Armory Link"
+  klass:                    "Class"
+  armory:                   "Armory Link"
   server:                   "Server"
   spec:                     "Specialization"
   played:                   "What is the game time on your main character and/or meaningful alts?"
@@ -43,7 +58,6 @@ en:
   progress_raid:            "What is your thoughts about progress raiding, achivements and raiding old content?"
   attendance:               "We are using a rotation system based on attendance, what is your thoughts about that?"
   screenshot:               "Please provide a screenshot on you interface."
-  submit:                   "Submit"
   guild_application_title:  "Apply for Family Legion"
   guild_application_text:   "It might take several days to process your application, be patient and check your email from time to time."
   guild_application_from:   "Guild Application from %{name}"
@@ -55,6 +69,39 @@ en:
   create_user_from:         "Create User From Application"
   successfull_register:     "Thank you for your application! We will email you within a few days "
   unsuccessfull_register:   "Something wen wrong and our hamsters could not handle your application. Please try again"
+  accept_application:       "Approve the application"
+  reject_application:       "Reject the application"
+  reject:                   "Reject"
+  approve:                  "Approve"
+  you_changed_status:       "You changed the status to: %{status}"
+  could_not_change_status:  "Could not change status"
 
   #User
-  create_user:                "Create User"
+  create_user:               "Create User"
+  joined:                    "Joined: %{date}"
+  edit_user:                 "Edit User"
+  user_updated:              "The user %{name} has been updated"
+  user_created:              "The user %{name} was created. Email with login information has been sent."
+  ban:                       "Ban"
+  ban_user:                  "Ban the user. They will no longer be able to login"
+
+
+  #Profile
+  rank:                      "Rank"
+  phone:                     "Phone/Mobile"
+
+  #Session
+  welcome_title:              "Welcome to Family Legion, %{name}!"
+  welcome_text:               "Your application has been accepted and an account has been created for you! You can login with the email you used in your appplication and the details below."
+  login_with:                 "Your password will last for 12 hours after your first login. We recommend you to change it immediately."
+  password:                   "Password"
+  remember_me:                "Remember me!"
+  forgot_password:            "Forgot password?"
+  forgot_password_text:       "Enter your email and if you are a member we will send you a mail with a reset passord link"
+  email_not_found:            "The email could not be found"
+  password_email_is_sent:     "A email with an activation link has been sent to the address you added!"
+  new_password:               "New password"
+  confirm_new_password:       "Confirm new password"
+  password_changed:           "You have changed your password! Good Boy!"
+  wrong_password:             "Wrong password"
+  passwords_dont_match:       "Passwords dont match"

@@ -15,15 +15,19 @@ module GuildApplication::Cell
       end
 
       def full_name
-        "#{model.first_name.capitalize} #{model.last_name.capitalize}"
+        "#{model.first_name} #{model.last_name}".titleize
       end
 
       def created_at
-        "#{time_ago_in_words(model.created_at)} ago"
+        "#{time_ago_in_words(model.created_at)} ago".humanize
       end
 
       def edit_link
         link_to t(:show), admin_guild_application_path(model)
+      end
+
+      def color_class
+        "#{model.status}"
       end
   end
 end

@@ -1,0 +1,11 @@
+tr
+  td
+    = image_tag(model.profile.thumbnail, class: "ui avatar image")
+    span
+      = full_username
+  td
+    = email
+  td
+    = edit_link
+  td.right.aligned.collapsing
+    = created_at

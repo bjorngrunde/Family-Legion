@@ -11,4 +11,25 @@
   .item
     .header= t(:users)
     .menu
+      = link_to t(:show_all), admin_users_path, class: "item"
+      = link_to t(:create), new_admin_user_path, class: "item"
+
+  .item
+    .header= t(:authorization)
+    .menu
+      = link_to t(:show_all), "#", class: "item"
+
+  .item
+    .header= t(:users)
+    .menu
+      = link_to t(:show_all), "#", class: "item"
+
+  .item
+    .header= t(:users)
+    .menu
+      = link_to t(:show_all), "#", class: "item"
+
+  .item
+    .header= t(:users)
+    .menu
       = link_to t(:show_all), "#", class: "item"

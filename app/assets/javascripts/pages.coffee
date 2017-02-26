@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $('.ui.dropdown').dropdown()
+$('.ui.checkbox').checkbox()
 $('.message .close').on 'click', ->
   $(this).closest('.message').transition 'fade'
   return

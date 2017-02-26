@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209124152) do
+ActiveRecord::Schema.define(version: 20170218184341) do
 
-  create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -35,6 +35,31 @@ ActiveRecord::Schema.define(version: 20161209124152) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["email", "username"], name: "index_guild_applications_on_email_and_username", unique: true, using: :btree
+  end
+
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",                           null: false
+    t.string   "first_name", limit: 45
+    t.string   "last_name",  limit: 45
+    t.integer  "klass"
+    t.string   "server"
+    t.string   "avatar"
+    t.string   "thumbnail"
+    t.string   "phone"
+    t.integer  "rank",                  default: 1
+    t.integer  "rate",                  default: 1
+    t.string   "spec"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "username"
+    t.string   "email"
+    t.text     "auth_meta_data", limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true, using: :btree
   end
 
 end

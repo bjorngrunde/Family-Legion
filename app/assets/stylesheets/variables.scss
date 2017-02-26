@@ -2,10 +2,28 @@
   Colors
 ----------------*/
 
-$textColor : rgba(255, 255, 255, 0.87);
-
+$textColor:  		rgba(255, 255, 255, 0.87);
+$orange:    		#F89406;
+$green:     		#3FC380;
+$red:       		#EC644B;
+$epic: 					purple;
+$rare:					#0070de;
+$death-knight:	#C41F3B;
+$druid:					#FF7D0A;
+$hunter:				#ABD473;
+$warlock:	 			#9482C9;
+$mage:					#69CCF0;
+$paladin:				#F58CBA;
+$shaman:				#0070de;
+$warrior:				#C79C6E;
+$priest:				#fff;
+$monk:					#00FF96;
+$rogue:					#FFF569;
+$demon-hunter:	#A330C9;
 /*--------------
   Imports
 ---------------*/
 @import 'semantic-ui';
+@import 'mixins';
 @import 'general';
+@import	'users'

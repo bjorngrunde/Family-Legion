@@ -1,0 +1,110 @@
+.ui.one.column.grid.inverted.segment
+  .row
+    .column.ui.center.aligned
+      h3.ui.inverted.header= t(:guild_application_title)
+      p
+        = t(:guild_application_text)
+  .row
+    .column
+      = cell(Familylegion::Cell::Flash, nil, context: { flash: context[:flash] }) if context[:flash]
+  .row
+    .column
+      = form_for(model, html: { class: "ui equal width inverted form guild-application"}, multipart: true) do |f|
+        - if context[:form].errors.messages.any?
+          = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
+        .fields
+          .field
+            = f.label :first_name
+              = t(:first_name)
+            = f.text_field :first_name
+
+          .field
+            = label_tag :last_name
+              = t(:last_name)
+            = f.text_field :last_name
+
+        .fields
+          .field
+            = f.label :email
+              = t(:email)
+            = f.email_field :email
+
+          .field
+            =  f.label :username
+              = t(:username)
+            = f.text_field :username
+
+        .fields
+          .field
+            = f.label :server
+              = t(:server)
+            = f.text_field :server
+
+          .field
+            = f.label :spec
+              = t(:spec)
+            = f.text_field :spec
+
+        .fields
+          .field
+            = f.label :klass
+              = t(:klass)
+            = f.select :klass, GuildApplication.klasses.map { |klass| [klass.first.titleize, klass.first]}, {}, {class: "ui dropdown"}
+
+          .field
+            = f.label :armory
+              = t(:armory)
+            = f.text_field :armory
+
+        .field
+          = f.label :played
+            = t(:played)
+          = f.text_area :played
+
+        .field
+          = f.label :klass_played
+            = t(:klass_played)
+          = f.text_area :klass_played
+
+        .field
+          = f.label :bio
+            = t(:bio)
+          = f.text_area :bio
+
+        .field
+          = f.label :raid_experience
+            = t(:raid_experience)
+          = f.text_area :raid_experience
+
+        .field
+          = f.label :reason
+            = t(:reason)
+          = f.text_area :reason
+
+        .field
+          = f.label :old_guild
+            = t(:old_guild)
+          = f.text_area :old_guild
+
+        .field
+          = f.label :progress_raid
+            = t(:progress_raid)
+          = f.text_area :progress_raid
+
+        .field
+          = f.label :attendance
+            = t(:attendance)
+          = f.text_area :attendance
+
+        .field
+          = f.label :other
+            = t(:other)
+          = f.text_area :other
+
+        .field
+          = f.label :screenshot
+            = t(:screenshot)
+          = f.file_field :screenshot
+
+        .field
+          = f.submit :submit, class: "tiny ui button primary", value: t(:submit)

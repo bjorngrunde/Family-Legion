@@ -1,12 +1,20 @@
-form.ui.large.form
+= form_tag(sign_in_path, class: "ui large form")
   .ui.stacked.inverted.segment
     h3.ui.center.aligned.header= t(:login)
     .field
       .ui.left.icon.input
         i.user.icon
-        input type="text" name="email" placeholder="Email"
+        = email_field_tag :email
     .field
       .ui.left.icon.input
         i.lock.icon
-        input type="password" name="password" placeholder="Password"
-    button type="submit" class="ui fluid large primary submit button"= t(:continue)
+        = password_field_tag :password
+    .two.fields
+      .field
+        .ui.checkbox.align.right
+          = check_box_tag :sticky, "true", false, class: "hidden"
+          = label_tag t(:remember_me)
+      .field
+        h5.ui.right.aligned.header
+          = link_to t(:forgot_password), forgot_password_path
+    = submit_tag :submit, class: "ui fluid large primary submit button", value: t(:continue)

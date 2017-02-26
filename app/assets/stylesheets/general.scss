@@ -1,5 +1,3 @@
-@import 'mixins';
-
 body {
   margin-top: 60px;
   background: image-url('wow.jpg') no-repeat center center fixed;
@@ -21,4 +19,17 @@ body {
     max-width: 400px;
     width:100%;
   }
+}
+
+
+/**** Status Guild Application ****/
+
+.pending {
+  color: $orange;
+}
+.accepted {
+  color: $green;
+}
+.declined {
+  color: $red;
 }

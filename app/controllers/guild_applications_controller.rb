@@ -1,15 +1,19 @@
 class GuildApplicationsController < ApplicationController
   layout 'layouts/landing_page'
+  before_filter only: :new do
+    redirect_to dashboard_path if tyrant.signed_in?
+  end
 
   def new
+    result = run GuildApplication::New
+    render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"], flash: flash})
   end
 
   def create
-    run GuildApplication::Create do
-      flash[:positive] = t(:successfull_register)
-      return redirect_to register_path
+    result = run GuildApplication::Create
+    if result.success?
+      return redirect_to register_path, :positive => { :header => t(:oh_yeah), :content => t(:successfull_register) }
     end
-    flash[:warning] = { header: t(:oh_dear), content: t(:unsuccessfull_register)}
-    render :new
+    render cell(GuildApplication::Cell::New, result["model"], context: { form: result["contract.default"] })
   end
 end

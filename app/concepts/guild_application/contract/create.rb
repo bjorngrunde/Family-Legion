@@ -24,9 +24,10 @@ module GuildApplication::Contract
     processable_writer :image
     property  :image_meta_data
 
-    validates :screenshot, file_size: { less_than: 2.megabytes}, file_content_type: { allow: ['image/jpeg', 'image/png'] }, allow_blank: true
+    validates :screenshot, file_size: { less_than: 2.megabytes }, file_content_type: { allow: ['image/jpeg', 'image/png'] }
     validates :email, :username, :server, :first_name, :last_name, presence: true
     validates_uniqueness_of :email
+    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
     validates_uniqueness_of :username
   end
 end
