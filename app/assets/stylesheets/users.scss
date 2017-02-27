@@ -46,15 +46,11 @@
 .white {
 	color: #ffffff;
 }
-.ui.inverted.card {
-	background: #333333;
-	box-shadow: 0 0 2px #151515;
-	color: #fff;
+.alliance {
+	background: $alliance;
+}
 
-	.header {
-		color: #fff;
-	}
-	.meta {
-		color: #fff;
-	}
+.ui.inverted.alliance.borderless.menu {
+	background: $dark-grey;
+	box-shadow: 0 0 4px #151515;
 }
