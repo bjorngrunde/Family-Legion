@@ -1,6 +1,6 @@
 class GuildApplicationsController < ApplicationController
   layout 'layouts/landing_page'
-  before_filter only: :new do
+  before_action only: :new do
     redirect_to dashboard_path if tyrant.signed_in?
   end
 

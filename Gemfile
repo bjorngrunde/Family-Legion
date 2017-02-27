@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug', platform: :mri
   gem "letter_opener"
+  gem 'capybara'
 end
 
 group :development do
