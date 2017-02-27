@@ -9,7 +9,7 @@
           = image_tag(model.profile.thumbnail, class: "ui circular image")
         .column
           span.ui.medium.header
-            span class="#{css_class}"
+            span class="#{model_css_class}"
               = username
           p.white
             = t(:joined, date: created_at)

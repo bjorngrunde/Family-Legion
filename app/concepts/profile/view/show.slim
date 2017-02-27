@@ -1,0 +1,10 @@
+.profile.cover style="background: url('#{background_image}') no-repeat center center; background-size: cover;"
+  = avatar_image
+  h1 class="#{model_css_class} profile-name"
+    = model.username
+
+.ui.massive.inverted.dark-grey.three.item.borderless.menu
+  = link_to t(:profile), "#", class: "active item"
+  = link_to t(:activity), "#", class: "item"
+  = link_to t(:message), "#", class: "item"
+

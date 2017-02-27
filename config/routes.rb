@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get  'forgot_password' => "sessions#forgot_password", as: :forgot_password
   post 'send_password_link' => "sessions#send_password_link", as: :send_password_link
   
+  #Profile
+  get 'profile/:username' => "profiles#show", as: :show_profile
+
   resources :guild_applications, only: :create
 
   namespace :user do

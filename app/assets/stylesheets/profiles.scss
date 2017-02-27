@@ -1,3 +1,29 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile.cover {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #000000;
+}
+.profile-thumbnail {
+  border: 1px solid #000000;
+  box-shadow: 0 0 4px #000000;
+}
+
+.profile-name {
+  font-size: 3rem;
+  text-border: 2px solid #000000;
+  text-shadow: 
+  -1px -1px 2px #000,
+  1px -1px 2px #000,
+  -1px 1px 2px #000,
+  1px 1px 2px #000; 
+}
