@@ -13,7 +13,7 @@ class Profile::Show < Trailblazer::Operation
       data = RBattlenet::Wow::Character.find(name: options["model"].username, realm: options["model"].profile.server, fields: ["items"])
       raise data.inspect
       profile_meta_data = { created_at: DateTime.now, updated_at: DateTime.now}
-      profile_meta_data.store(:wow, data[0])
+      profile_meta_data.store(:wow, data)
       
       options["model"].profile.profile_meta_data = profile_meta_data
     end
