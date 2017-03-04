@@ -2,7 +2,9 @@ class Profile::Show < Trailblazer::Operation
 
   step :model!
   step Nested(:init_wow_api!)
-  step :check_items_meta_data!
+  step Nested(:check_items_meta_data!, input: ->(options, mutable_data:,**) do 
+    { "user" => mutable_data["model"] } 
+    end)
   step :save!
 
   def model!(options, **)
@@ -14,18 +16,12 @@ class Profile::Show < Trailblazer::Operation
   end
 
   def check_items_meta_data!(options, **)
-    if options["model"].profile.profile_meta_data.nil?
-      data = RBattlenet::Wow::Character.find(name: options["model"].username, realm: options["model"].profile.server, fields: ["items"])
-      
-      profile_meta_data = { created_at: DateTime.now, updated_at: DateTime.now}
-      profile_meta_data.store(:items, data["items"])
-      
-      options["model"].profile.profile_meta_data = profile_meta_data
-    end
+    Wowapi::ProfileMetaData
   end
 
   def save!(options, **)
-    options["model"].profile.save
+    options["model"].profile.update_attributes(profile_meta_data: options["meta_data"]) unless options["meta_data"].empty?
+    options["flash"] = t(:profile_has_been_updated) if options["model"].id == current_user.id && options["model"].profile.profile_meta_data_changed?
   end
 
 end

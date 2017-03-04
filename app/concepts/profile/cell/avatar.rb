@@ -1,5 +1,5 @@
 module Profile::Cell
-  class Avatar < Familylegion::Cell::Master
+  class Avatar < Profile::Cell::Show
     
     def item_link(item, type)
       if item.nil?
@@ -16,14 +16,10 @@ module Profile::Cell
       #Lets split everything up for readabiltiy..ish
       set = "pcs=#{item["tooltipParams"]["set"].join(":")};" unless item["tooltipParams"]["set"].nil?
       enchants = "ench=#{item["tooltipParams"]["enchant"]};"
-      bonus = "bonus=#{item["bonusLists"].join(";")};"
+      bonus = "bonus=#{item["bonusLists"].join(":")};"
       gems = "gems=#{item["tooltipParams"]["gem0"]}:#{item["tooltipParams"]["gem1"]}:#{item["tooltipParams"]["gem2"]};"
       id = "item=#{item["id"]};"
       "#{id}#{gems}#{enchants}#{bonus}#{set}"
-    end
-
-    def icon_image(image, quality)
-      image_tag("http://eu.media.blizzard.com/wow/icons/36/#{image}.jpg", class: "ui image item-border-#{quality}")
     end
   end
 end

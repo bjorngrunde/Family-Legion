@@ -4,7 +4,23 @@
       = avatar_image
       h1 class="#{model_css_class} profile-name"
         = model.username
-  .eigth.wide.column
+  .sixteen.wide.column
+    .dark-box
+      .five.boxes
+        .profile-stats-box
+          h3
+            = t(:profile)
+        .profile-stats-box
+          h3
+            = t(:activity)
+        .profile-stats-box
+          h3
+            = t(:message)
+  .eight.wide.column
+    = cell(Profile::Cell::Talent, model, context: { talents: context[:talents]})
+    .dark-box.alts
+      h3 Alts
+
+  .eight.wide.column
     = cell(Profile::Cell::Avatar, model, context: { items: context[:items]})
-  .eigth.wide.column
 

@@ -91,6 +91,23 @@ body {
     }
   }
 }
+
+.five.boxes {
+  display: flex;
+  flex-direction: flex-start;
+  justify-content: center;
+}
+
+.profile-stats-box {
+  background: $dark-grey;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}
 /*** Breadcrumbs ****/
 
 .ui.large.breadcrumb {
@@ -111,6 +128,10 @@ body {
 
 .dark-box > .ui.inverted.menu {
   background: none;
+}
+
+.dark-box.alts {
+  margin-top: 10px;
 }
 
 /*** BUTTONS ****/
@@ -166,5 +187,10 @@ body {
 
 .item-border-2 {
   border: 1px solid $uncommon;
-  @include box-shadow(0, 0, 2, $uncommon)
+  @include box-shadow(0, 0, 2px, $uncommon)
+}
+
+.item-border-1 {
+  border: 1px solid #151515;
+  @include box-shadow(0 , 0 , 2px, #151515)
 }

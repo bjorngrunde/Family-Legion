@@ -1,0 +1,9 @@
+.dark-box
+  h3
+    | Talents
+  .ui.horizontal.list
+    - unless context[:talents].nil?
+      - talents = talent_links
+      - talents.each do |talent|
+        .item
+          = talent
