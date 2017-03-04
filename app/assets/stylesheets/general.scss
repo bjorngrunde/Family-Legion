@@ -33,3 +33,93 @@ body {
 .declined {
   color: $red;
 }
+
+
+/**** TABLES ****/
+
+.ui.inverted.table {
+  background: darken($dark-grey, 5%);
+  
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+.ui.inverted.table th {
+  background-color: darken($dark-grey, 5%) !important;
+  border-color:  darken($dark-grey, 10%) !important;
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.table tr td {
+  border-color: darken($dark-grey, 5%)!important;
+}
+
+/**** BOX ****/
+
+.dark-box {
+  background: darken($dark-grey, 5%);
+  padding: 10px;
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+
+.avatar-box {
+  height: 450px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+
+.gear-items.left { 
+  width: 40px;
+  float: left;
+}
+.gear-items.right {
+  width: 40px;
+  float: right;
+}
+
+/*** Breadcrumbs ****/
+
+.ui.large.breadcrumb {
+  background: darken($dark-grey, 5%);
+  padding:10px;
+  width: 100%;
+  @include box-shadow(0, 0 , 2px, #151515);
+  margin-bottom: 10px;
+
+  a {
+    color: lighten($link-color, 5%);
+
+    &:hover {
+     color: lighten($link-color, 15%);
+    }
+  }
+}
+
+.dark-box > .ui.inverted.menu {
+  background: none;
+}
+
+/*** BUTTONS ****/
+
+.ui.alliance.button {
+  background: $alliance;
+  color: rgba(255,255,255,0.8);
+
+  &:hover {
+    background: lighten($alliance, 10%);
+  }
+}
+.ui.red.button {
+  background: $chestnut-red;
+
+  &:hover {
+    background: darken($chestnut-red, 5%);
+  }
+}
+
+.ui.green.button {
+  background: $tan-green;
+
+  &:hover {
+    background: darken($tan-green, 5%);
+  }
+}

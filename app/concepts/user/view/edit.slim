@@ -1,53 +1,54 @@
-= form_for([:admin, model], html: { class: "ui equal width inverted form user"}) do |f|
-  -if context[:form].errors.messages.any?
-    = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
-  .fields
-    .field
-      = f.label :username
-        = t(:username)
-      = f.text_field :username
-    .field
-      = f.label :email
-        = t(:email)
-      = f.text_field :email
-  = f.fields_for model.profile do |ff|
+.dark-box
+  = form_for([:admin, model], html: { class: "ui equal width inverted form user"}) do |f|
+    -if context[:form].errors.messages.any?
+      = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
     .fields
       .field
-        = ff.label :first_name
-          = t(:first_name)
-        = ff.text_field :first_name
+        = f.label :username
+          = t(:username)
+        = f.text_field :username
+      .field
+        = f.label :email
+          = t(:email)
+        = f.text_field :email
+    = f.fields_for model.profile do |ff|
+      .fields
+        .field
+          = ff.label :first_name
+            = t(:first_name)
+          = ff.text_field :first_name
 
-      .field
-        = ff.label :last_name
-          = t(:last_name)
-        = ff.text_field :last_name
-    .fields
-      .field
-        = ff.label :klass
-          = t(:klass)
-        = ff.select :klass, Profile.klasses.map { |klass| [klass.first.titleize, klass.first]}, {}, {class: "ui dropdown"}
-      .field
-        = ff.label :spec
-          = t(:spec)
-        = ff.text_field :spec
-    .fields
-      .field
-        = ff.label :server
-          = t(:server)
-        = ff.text_field :server
-      .field
-        = ff.label :rank
-          = t(:rank)
-        = ff.select :rank, Profile.ranks.map { |rank| [rank.first.titleize, rank.first]}, {}, {class: "ui dropdown"}
-    .fields
-      .field
-        = ff.label :phone
-          = t(:phone)
-        = ff.text_field :phone
-      .field
-        = ff.label :spec
-          = t(:spec)
-        = ff.text_field :spec
-  .field
-    = f.submit :submit, class: "tiny ui inverted button", value: t(:save)
-    = link_to t(:cancel), admin_user_path(model), class: "tiny ui inverted orange button"
+        .field
+          = ff.label :last_name
+            = t(:last_name)
+          = ff.text_field :last_name
+      .fields
+        .field
+          = ff.label :klass
+            = t(:klass)
+          = ff.select :klass, Profile.klasses.map { |klass| [klass.first.titleize, klass.first]}, {}, {class: "ui dropdown"}
+        .field
+          = ff.label :spec
+            = t(:spec)
+          = ff.text_field :spec
+      .fields
+        .field
+          = ff.label :server
+            = t(:server)
+          = ff.text_field :server
+        .field
+          = ff.label :rank
+            = t(:rank)
+          = ff.select :rank, Profile.ranks.map { |rank| [rank.first.titleize, rank.first]}, {}, {class: "ui dropdown"}
+      .fields
+        .field
+          = ff.label :phone
+            = t(:phone)
+          = ff.text_field :phone
+        .field
+          = ff.label :spec
+            = t(:spec)
+          = ff.text_field :spec
+    .field
+      = f.submit :submit, class: "tiny ui green button", value: t(:save)
+      = link_to t(:cancel), admin_user_path(model), class: "tiny ui red button"

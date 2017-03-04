@@ -11,9 +11,9 @@
 
 #Create 12 users, one of each proffession(World of Warcraft class, not to be confused with a Class)
 User::CreateUserFromGuildApplication.(user: { username: "Sprayandpray", email: "bjorngrunde@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "hunter", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
-User::CreateUserFromGuildApplication.(user: { username: "Dubbelmums", email: "dubbelmums@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "warlock", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
+User::CreateUserFromGuildApplication.(user: { username: "Dubbelmums", email: "dubbelmums@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "warlock", rank: 1, server: "Chromaggus", spec: "Beast Mastery"} })
 User::CreateUserFromGuildApplication.(user: { username: "Bombka", email: "bombka@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "warrior", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
-User::CreateUserFromGuildApplication.(user: { username: "Nightshade", email: "nightshade@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "druid", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
+User::CreateUserFromGuildApplication.(user: { username: "Nigthshade", email: "nightshade@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "druid", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
 User::CreateUserFromGuildApplication.(user: { username: "Stickado", email: "stickado@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "rogue", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
 User::CreateUserFromGuildApplication.(user: { username: "burnmtfkrs", email: "burnmtfkrs@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "mage", rank: 1, server: "grim batol", spec: "Beast Mastery"} })
 User::CreateUserFromGuildApplication.(user: { username: "Rigormoris", email: "rigor@live.se", profile: { first_name: "Björn", last_name: "Grunde", klass: "priest", rank: 3, server: "grim batol", spec: "Beast Mastery"} })
