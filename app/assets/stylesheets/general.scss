@@ -20,7 +20,19 @@ body {
     width:100%;
   }
 }
+/*** MENUS ****/
 
+.ui.vertical.inverted.menu {
+  background: darken($dark-grey, 5%);
+
+  .item {
+
+    &:hover {
+      color: lighten($alliance, 10%);
+      background: none;
+    }
+  }
+}
 
 /**** Status Guild Application ****/
 
@@ -192,5 +204,11 @@ body {
 
 .item-border-1 {
   border: 1px solid #151515;
-  @include box-shadow(0 , 0 , 2px, #151515)
+  @include box-shadow(0 , 0 , 3px, #151515)
+}
+
+
+/**** Hide Wowhead Logo ****/
+.wowhead-tooltip-powered {
+  background: none !important;
 }

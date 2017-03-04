@@ -1,0 +1,19 @@
+= form_for([:user, :setting, model], html: { class: "ui equal width inverted form user"}) do |f|
+  - if form.errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
+  .fields
+    .field
+      = f.label :name
+        = t(:name)
+      = f.text_field :name
+    .field
+      = f.label :server
+        = t(:server)
+      = f.text_field :server
+    .field
+      = f.label :klass
+        = t(:klass)
+      = f.select :klass, Alt.klasses.map { |klass| [klass.first.titleize, klass.first]}, {}, {class: "ui dropdown"}
+  .field
+    = f.submit :submit, class: "tiny ui green button", value: t(:save)
+    = link_to t(:cancel), user_setting_control_panel_path(), class: "tiny ui red button"

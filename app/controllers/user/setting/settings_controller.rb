@@ -4,7 +4,7 @@ class User::Setting::SettingsController < ApplicationController
   def control_panel
     result = run Setting::New
     if result.success?
-      return render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "ControlPanel", current_user: tyrant.current_user })
+      return render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "Setting::Cell::ControlPanel", current_user: tyrant.current_user })
     end
     not_authorized!
   end
@@ -12,7 +12,7 @@ class User::Setting::SettingsController < ApplicationController
   def change_password
     result = run Setting::New
     if result.success?
-      return render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "ChangePassword", current_user: tyrant.current_user, form: result["contract.default"] })
+      return render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "Setting::Cell::ChangePassword", current_user: tyrant.current_user, form: result["contract.default"] })
     end
     not_authorized!
   end
@@ -22,7 +22,7 @@ class User::Setting::SettingsController < ApplicationController
     if result.success?
       return redirect_to user_setting_control_panel_path(id: tyrant.current_user), :positive => { header: t(:oh_yeah), content: t(:password_changed)}
     end
-    render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "ChangePassword", current_user: tyrant.current_user, form: result["contract.default"] })
+    render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "Setting::Cell::ChangePassword", current_user: tyrant.current_user, form: result["contract.default"] })
   end
 
   private

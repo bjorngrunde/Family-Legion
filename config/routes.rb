@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       get 'control_panel' => "settings#control_panel", as: :control_panel
       get 'change_password' => "settings#change_password", as: :change_password
       patch 'new_password' => "settings#new_password", as: :new_password
+
+      resources :alts, except: :show
     end
   end
 

@@ -105,3 +105,6 @@ en:
   password_changed:           "You have changed your password! Good Boy!"
   wrong_password:             "Wrong password"
   passwords_dont_match:       "Passwords dont match"
+
+  #Alts
+  cannot_add_existing_user_as_alt: "You can't add an existing user as an alt. Nice try douchebag!"

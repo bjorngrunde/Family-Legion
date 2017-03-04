@@ -1,8 +1,40 @@
-.ui.inverted.alliance.borderless.vertical.menu
-  = link_to t(:password), user_setting_change_password_path(id: current_user), class: "item"
-  = link_to t(:profile), "#", class: "item"
-  = link_to t(:alts), "#", class: "item"
-  = link_to t(:forum), "#", class: "item"
-  = link_to t(:twitch), "#", class: "item"
-  = link_to t(:discord), "#", class: "item"
-  = link_to t(:events), "#", class: "item"
+.dark-box
+  .ui.inverted.accordion
+    .title
+      i.dropdown.icon
+      = t(:password)
+    .content
+      .ui.vertical.inverted.menu
+        = link_to t(:change_password), user_setting_change_password_path(id: current_user), class: "item"
+    .title
+      i.dropdown.icon
+      = t(:profile)
+    .content
+      .ui.vertical.inverted.menu
+    .title
+      i.dropdown.icon
+      = t(:alts)
+    .content
+      .ui.vertical.inverted.borderless.menu
+        = link_to t(:create), new_user_setting_alt_path, class: "item"
+        = link_to t(:show_all), "#", class: "item"
+    .title
+      i.dropdown.icon
+      = t(:forum)
+    .content
+      .ui.vertical.inverted.menu
+    .title
+      i.dropdown.icon
+      = t(:twitch)
+    .content
+      .ui.vertical.inverted.menu
+    .title
+      i.dropdown.icon
+      = t(:discord)
+    .content
+      .ui.vertical.inverted.menu
+    .title
+      i.dropdown.icon
+      = t(:FLRS)
+    .content
+      .ui.vertical.inverted.menu

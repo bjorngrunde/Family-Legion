@@ -3,5 +3,6 @@ class User < ApplicationRecord
 
 	#Associations
 	has_one :profile, dependent: :destroy
+  has_many :alts, dependent: :destroy
 	
 end

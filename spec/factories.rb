@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :alt do
+    
+  end
 
   factory :guild_application do
     first_name  "John"
