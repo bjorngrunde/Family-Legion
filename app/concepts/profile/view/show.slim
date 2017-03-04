@@ -5,52 +5,6 @@
       h1 class="#{model_css_class} profile-name"
         = model.username
   .eigth.wide.column
-    .avatar-box style="background: url('#{model.profile.avatar}') no-repeat center center; background-size: cover;"
-      - items = character_items
-      .ui.grid
-        .eight.wide.column
-          .gear-items.left
-            .ui.list
-              .item
-                = item_link(items["head"], :head)
-              .item
-                = item_link(items["neck"], :neck)
-              .item
-                = item_link(items["shoulder"], :shoulder)
-              .item
-                = item_link(items["back"], :back)
-              .item
-                = item_link(items["chest"], :chest)
-              .item
-                = item_link(items["shirt"], :shirt)
-              .item
-                = item_link(items["tabard"], :tabard)
-              .item
-                = item_link(items["wrist"], :wrist)
-        .eight.wide.column     
-          .gear-items.right
-            .ui.list
-              .item
-                = item_link(items["hands"], :hands)
-              .item
-                = item_link(items["waist"], :waist)
-              .item
-                = item_link(items["legs"], :legs)
-              .item
-                = item_link(items["feet"], :feet)
-              .item
-                = item_link(items["finger1"], :finger)
-              .item
-                = item_link(items["finger2"], :finger)
-              .item
-                = item_link(items["trinket1"], :trinket)
-              .item
-                = item_link(items["trinket2"], :trinket)
-        .sixteen.wide.column
-          .ui.horizontal.center.aligned.list
-            .item
-              = item_link(items["mainHand"], :mainhand)
-            .item
-              = item_link(items["offHand"], :secondaryhand)
+    = cell(Profile::Cell::Avatar, model, context: { items: context[:items]})
   .eigth.wide.column
 

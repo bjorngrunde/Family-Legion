@@ -8,9 +8,6 @@ module Profile::Cell
     def avatar_image
       image_tag(model.profile.thumbnail, class: "ui circular image profile-thumbnail")
     end
-
-    def character_items
-      context[:items]
-    end  
+     
   end
 end
