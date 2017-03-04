@@ -7,6 +7,7 @@ en:
   # User
   # Profile
   # Session
+  # Alt
 
 
   #General
@@ -28,7 +29,7 @@ en:
   successfull_delete:       "The object has been permamently deleted"
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
-  Something_went_wrong:     "Something went wrong"
+  Something_went_wrong:     "Ohh my.. This does not look right."
   not_authorized:           "Oi! You can't access that!"
 
   # BreadCrumbs
@@ -108,3 +109,4 @@ en:
 
   #Alts
   cannot_add_existing_user_as_alt: "You can't add an existing user as an alt. Nice try douchebag!"
+  alt_created:                "You have created an alt. Good job!"

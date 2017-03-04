@@ -20,6 +20,7 @@
     = cell(Profile::Cell::Talent, model, context: { talents: context[:talents]})
     .dark-box.alts
       h3 Alts
+      = cell(Profile::Cell::Alt, model)
 
   .eight.wide.column
     = cell(Profile::Cell::Avatar, model, context: { items: context[:items]})

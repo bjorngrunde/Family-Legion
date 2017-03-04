@@ -21,7 +21,7 @@ class Profile::Show < Trailblazer::Operation
 
   def save!(options, **)
     options["model"].profile.update_attributes(profile_meta_data: options["meta_data"]) unless options["meta_data"].empty?
-    options["flash"] = t(:profile_has_been_updated) if options["model"].id == current_user.id && options["model"].profile.profile_meta_data_changed?
+    options["flash"] = t(:profile_has_been_updated) if options["model"].id == options["current_user"].id && options["model"].profile.profile_meta_data_changed?
   end
 
 end
