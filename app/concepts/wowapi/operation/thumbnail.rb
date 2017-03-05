@@ -16,6 +16,6 @@ class Wowapi::Thumbnail < Trailblazer::Operation
 
   def rollback!(exception, options,  **)
     options["contract.default"] = options["contract"]
-    options["contract.default"].errors.add(:name, exception.class.name.to_sym)
+    options["contract.default"].errors.add(:name, exception.class.name.to_s)
   end
 end
