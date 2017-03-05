@@ -3,6 +3,12 @@ class Alt::Create < Trailblazer::Operation
   step Nested(:build!)
   step Contract::Validate(key: :alt)
   step Nested(:init_wow_api!)
+  step Nested(:get_thumbnail!, input: ->(options, mutable_data:, runtime_data:, **)do
+    { "name" => mutable_data["contract.default"].name,
+      "realm" => mutable_data["contract.default"].server,
+      "contract" => mutable_data["contract.default"]}
+  end
+  )
   step :add_thumbnail!
   step :add_user!
   step Contract::Persist()
@@ -15,9 +21,12 @@ class Alt::Create < Trailblazer::Operation
     Wowapi::Initialize
   end
 
+  def get_thumbnail!(options, **)
+    Wowapi::Thumbnail
+  end
+
   def add_thumbnail!(options, **)
-    character = RBattlenet::Wow::Character.find(name: options["contract.default"].name, realm: options["contract.default"].server)
-    options["model"].thumbnail = "http://render-eu.worldofwarcraft.com/character/#{character['thumbnail']}"
+    options["model"].thumbnail = options["thumbnail"]
   end
 
   def add_user!(options, **)

@@ -1,5 +1,6 @@
 en:
   # In order:
+  # Errors from exceptions
   # General
   # Flash, Alert & Message
   # BreadCrumbs
@@ -9,7 +10,12 @@ en:
   # Session
   # Alt
 
+  #Errors from exceptions
+  CharacterNotFoundError:   "The character you tried to add does not exist! Make sure the name and realm is correct."
 
+  # ActiveRecord errors
+  has_already_been_taken:   "The resource you tried to save already exists!"
+  
   #General
   save:                     "Save"
   edit:                     "Edit"
@@ -29,7 +35,7 @@ en:
   successfull_delete:       "The object has been permamently deleted"
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
-  Something_went_wrong:     "Ohh my.. This does not look right."
+  Something_went_wrong:     "Ohh my! This does not look right."
   not_authorized:           "Oi! You can't access that!"
 
   # BreadCrumbs

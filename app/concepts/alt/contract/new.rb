@@ -1,11 +1,11 @@
 module Alt::Contract
   class New < Reform::Form
-    extend Paperdragon::Model::Writer
     property  :name
     property  :klass
     property  :server
 
     validates :name, :klass, :server, presence: true
+    validates_uniqueness_of :name
     validate :cannot_be_user!
 
     def cannot_be_user!
