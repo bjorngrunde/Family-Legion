@@ -1,6 +1,7 @@
 class Setting::ChangePassword < Trailblazer::Operation
 
   step Model(User, :find_by)
+  step Policy::Pundit(UserPolicy, :settings?)
   step Contract::Build(constant: Setting::Contract::ChangePassword)
   step Contract::Validate(key: :user)
   step :not_authorized!

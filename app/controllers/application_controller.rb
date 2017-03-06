@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless tyrant.signed_in?
   end
 
+  def not_authorized!
+    redirect_to dashboard_path, :warning => { :header => t(:oh_dear), content: t(:not_authorized)}
+  end
+  
   private
   def _run_options(options)
     options.merge( "current_user" => tyrant.current_user )

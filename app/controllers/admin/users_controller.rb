@@ -11,7 +11,7 @@ class Admin::UsersController < AdminController
 		if result.success?
 			return redirect_to admin_user_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:user_created, name: result["model"].username) }
 		end
-		render cell(User::Cell::New, result["model"], context: { form: result["contract.user"]})
+		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
 	end
 
 	def index
@@ -21,7 +21,7 @@ class Admin::UsersController < AdminController
 
 	def new
 		result = run User::New
-		render cell(User::Cell::New, result["model"], context: { form: result["contract.user"]})
+		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
 	end
 
 	def show

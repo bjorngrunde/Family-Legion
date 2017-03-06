@@ -14,7 +14,8 @@ module Familylegion::Cell
     end
 
     def model_css_class
-      "#{model.profile.klass.sub("_", "-")}"
+      return "#{model.profile.klass.sub("_", "-")}" if model.is_a?(User)
+      "#{model.klass.sub("_","-")}" 
     end
 
     def current_user_css_class
