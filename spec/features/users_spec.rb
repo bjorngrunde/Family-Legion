@@ -10,7 +10,7 @@ RSpec.feature "Users", type: :feature do
 
     login(result["model"].email, result["generated_password"])
 
-    visit(user_setting_change_password_path(id: result["model"].id))
+    visit(user_setting_change_password_path(username: result["model"].username))
 
     fill_in "user_old_password", :with => result["generated_password"]
     fill_in "user_new_password", :with => new_password
@@ -30,7 +30,7 @@ RSpec.feature "Users", type: :feature do
 
     login(result["model"].email, result["generated_password"])
 
-    visit(user_setting_change_password_path(id: result["model"].id))
+    visit(user_setting_change_password_path(username: result["model"].username))
 
     fill_in "user_old_password", :with => "crappy string"
     fill_in "user_new_password", :with => ""

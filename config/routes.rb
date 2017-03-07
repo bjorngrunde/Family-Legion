@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   #Profile
   get 'profile/:username' => "profiles#show", as: :show_profile
 
+  #Registration
   resources :guild_applications, only: :create
 
+  #Settings
   scope "/user/:username/", as: :user do 
     namespace :setting do
       get 'control_panel' => "settings#control_panel", as: :control_panel
@@ -25,7 +27,8 @@ Rails.application.routes.draw do
       resources :alts, except: :show
     end
   end
-
+  
+  #Admin
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
     post 	'toggle_status' => 'guild_applications#toggle_status', as: :guild_application_toggle_status
