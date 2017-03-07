@@ -1,7 +1,6 @@
 class Alt::Create < Trailblazer::Operation
 
   step Nested(:build!)
-  step Policy::Pundit(UserPolicy, :settings?)
   step Contract::Validate(key: :alt)
   step Nested(:init_wow_api!)
   step Nested(:get_thumbnail!, input: ->(options, mutable_data:, runtime_data:, **)do

@@ -117,3 +117,7 @@ en:
   #Alts
   cannot_add_existing_user_as_alt: "You can't add an existing user as an alt. Nice try douchebag!"
   alt_created:                "You have created an alt. Good job!"
+  change_main_tooltip:        "Change this alt to your main character"
+  change_main_header:         "Change main"
+  sure_to_change_main:        "Are you sure you wanna change your main character?"
+  you_changed_character:      "You changed from %{alt} to %{main}" 

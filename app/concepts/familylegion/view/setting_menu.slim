@@ -5,7 +5,7 @@
       = t(:password)
     .content
       .ui.vertical.inverted.menu
-        = link_to t(:change_password), user_setting_change_password_path(id: current_user), class: "item"
+        = link_to t(:change_password), user_setting_change_password_path(username: current_user.username), class: "item"
     .title
       i.dropdown.icon
       = t(:profile)
@@ -16,8 +16,8 @@
       = t(:alts)
     .content
       .ui.vertical.inverted.borderless.menu
-        = link_to t(:create), new_user_setting_alt_path, class: "item"
-        = link_to t(:show_all), user_setting_alts_path, class: "item"
+        = link_to t(:create), new_user_setting_alt_path(username: current_user.username), class: "item"
+        = link_to t(:show_all), user_setting_alts_path(username: current_user.username), class: "item"
     .title
       i.dropdown.icon
       = t(:forum)

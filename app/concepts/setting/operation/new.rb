@@ -1,7 +1,9 @@
 class Setting::New < Trailblazer::Operation
 
-  step Model(User, :find_by)
+  step Nested(:find_user!)
   step Contract::Build(constant: User::Contract::New)
-  step Policy::Pundit(UserPolicy, :settings?)
   
+  def find_user!(options, **)
+    User::FindUser
+  end
 end
