@@ -6,7 +6,6 @@ class Wowapi::ProfileMetaData < Trailblazer::Operation
     if user.profile.profile_meta_data.nil? || user.profile.profile_meta_data[:updated_at] < 24.hours.ago
       
       data = RBattlenet::Wow::Character.find(name: user.username, realm: user.profile.server, fields: ["items","talents"])
-      
       created_at = user.profile.profile_meta_data.nil? ? DateTime.now : user.profile.profile_meta_data[:created_at]
 
       profile_meta_data = { created_at: created_at, updated_at: DateTime.now}
