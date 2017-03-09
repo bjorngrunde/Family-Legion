@@ -11,7 +11,7 @@ en:
   # Alt
 
   #Errors from exceptions
-  CharacterNotFoundError:   "The character you tried to add does not exist! Make sure the name and realm is correct."
+  characternotfounderror:   "The character you tried to add does not exist! Make sure the name and realm is correct."
 
   # ActiveRecord errors
   has_already_been_taken:   "The resource you tried to save already exists!"

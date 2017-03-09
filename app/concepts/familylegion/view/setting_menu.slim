@@ -1,40 +1,35 @@
 .dark-box
-  .ui.inverted.accordion
-    .title
-      i.dropdown.icon
-      = t(:password)
-    .content
-      .ui.vertical.inverted.menu
+  .ui.inverted.vertical.menu
+    .item
+      .header
+        = t(:password)
+      .menu
         = link_to t(:change_password), user_setting_change_password_path(username: current_user.username), class: "item"
-    .title
-      i.dropdown.icon
-      = t(:profile)
-    .content
-      .ui.vertical.inverted.menu
-    .title
-      i.dropdown.icon
-      = t(:alts)
-    .content
-      .ui.vertical.inverted.borderless.menu
+    .item
+      .header
+        = t(:profile)
+      .menu
+        = link_to t(:change_profile), "#", class: "item"
+    .item
+      .header
+        = t(:alts)
+      .menu
         = link_to t(:create), new_user_setting_alt_path(username: current_user.username), class: "item"
         = link_to t(:show_all), user_setting_alts_path(username: current_user.username), class: "item"
-    .title
-      i.dropdown.icon
-      = t(:forum)
-    .content
-      .ui.vertical.inverted.menu
-    .title
-      i.dropdown.icon
-      = t(:twitch)
-    .content
-      .ui.vertical.inverted.menu
-    .title
-      i.dropdown.icon
-      = t(:discord)
-    .content
-      .ui.vertical.inverted.menu
-    .title
-      i.dropdown.icon
-      = t(:FLRS)
-    .content
-      .ui.vertical.inverted.menu
+    .item
+      .header
+        = t(:forum)
+      .menu
+        = link_to t(:subscriptions), "#", class: "item"
+    .item
+      .header
+        = t(:twitch)
+      .menu
+    .item
+      .header
+        = t(:discord)
+      .menu
+    .item
+      .header
+        = t(:FLRS)
+      .menu

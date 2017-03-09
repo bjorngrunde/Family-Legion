@@ -1,6 +1,6 @@
 module Alt::Cell
   class Row < Familylegion::Cell::Master
-    property  :name
+    property  :username
     property  :server
     property  :klass
     property  :thumbnail
@@ -10,11 +10,11 @@ module Alt::Cell
     end
 
     def destroy_link
-      link_to "<i class='trash large icon'></i>", user_setting_alt_path(id: model.id), method: :delete, data: { confirm: t(:alert_delete)}
+      link_to "<i class='trash large icon'></i>", user_setting_alt_path(id: model.id), method: :delete, data: { confirm: t(:alert_delete)}, id: "destroy-alt"
     end
 
     def change_main_link
-      link_to "<i class='exchange large icon'></i>", user_setting_change_main_path(id: model.id), method: :post, data: { confirm: t(:sure_to_change_main), tooltip: "#{t(:change_main_tooltip)}"}
+      link_to "<i class='exchange large icon'></i>", user_setting_change_main_path(id: model.id), method: :post, data: { confirm: t(:sure_to_change_main), tooltip: "#{t(:change_main_tooltip)}"}, id: "change-main"
     end
 
     def created_at

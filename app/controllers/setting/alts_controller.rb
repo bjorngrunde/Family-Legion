@@ -27,7 +27,7 @@ class Setting::AltsController < ApplicationController
 
   def update
     result = run Alt::Update
-    return redirect_to edit_user_setting_alt_path(result["model"]), flashy(:positive, t(:oh_yeah), t(:successfull_save) ) if result.success?
+    return redirect_to edit_user_setting_alt_path(username: tyrant.current_user.username), flashy(:positive, t(:oh_yeah), t(:successfull_save) ) if result.success?
     render cell(Familylegion::Cell::Setting, result["model"], context: { cell_view: "Alt::Cell::Form", current_user: tyrant.current_user, form: result["contract.default"]})
   end
 
@@ -40,6 +40,6 @@ class Setting::AltsController < ApplicationController
     #TODO: Needs error checking later
     result = run Alt::ChangeMainCharacter
     tyrant.current_user.reload #Kinda needed here :(
-    redirect_to user_setting_alts_path(username: tyrant.current_user.username), flashy(:positive, t(:oh_yeah), t(:you_changed_character, alt: result["model"].name.humanize, main: tyrant.current_user.username.humanize))
+    redirect_to user_setting_alts_path(username: tyrant.current_user.username), flashy(:positive, t(:oh_yeah), t(:you_changed_character, alt: result["model"].username.humanize, main: tyrant.current_user.username.humanize))
   end
 end

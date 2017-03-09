@@ -6,7 +6,7 @@ module Profile::Cell
     end
 
     def name alt
-      alt.name.humanize
+      alt.username.humanize
     end
   end
 end

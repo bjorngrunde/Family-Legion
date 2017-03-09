@@ -17,16 +17,16 @@ class Alt::ChangeMainCharacter < Trailblazer::Operation
   end
 
   def set_user!(options, **)
-    options["user"].username = options["model"].name
+    options["user"].username = options["model"].username
     options["user"].profile.klass = options["model"].klass
     options["user"].profile.server = options["model"].server
     options["user"].profile.thumbnail = options["model"].thumbnail
     options["user"].profile.avatar = options["model"].thumbnail.sub('avatar', 'profilemain')
-    options["user"].profile.profile_meta_data[:updated_at] = 30.hour.ago
+    options["user"].profile.profile_meta_data[:updated_at] = 30.hours.ago
   end
 
   def set_alt!(options, **)
-    options["model"].name = options["current_user"].username
+    options["model"].username = options["current_user"].username
     options["model"].server = options["current_user"].profile.server
     options["model"].klass = options["current_user"].profile.klass
     options["model"].thumbnail = options["current_user"].profile.thumbnail

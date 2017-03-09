@@ -11,9 +11,14 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	end 
 	)
 	step 	:add_thumbnail!
+	step Nested(:update_meta_data!, input: ->(options, mutable_data: , runtime_data:, **)do
+    {"user" => mutable_data["contract.default"]}
+  end)
+  step  :add_meta_data!
 	step	:create!
 	step 	Contract::Persist()
   success	:send_email!
+
 
 	def build!(options, **)
 		User::New
@@ -35,6 +40,14 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	def add_thumbnail!(options, **)
 		options["contract.default"].profile.thumbnail = options["thumbnail"]
 		options["contract.default"].profile.avatar = options["avatar"]
+	end
+
+	def update_meta_data!(options, **)
+		Wowapi::ProfileMetaData
+	end
+
+	def add_meta_data!(options, **)
+		options["contract.default"].profile.profile_meta_data = options["meta_data"]
 	end
 
 	def create!(options, **)

@@ -4,7 +4,7 @@ module Profile::Cell
     def item_link(item, type)
       if item.nil?
         image = image_tag("#{type.to_s}.png", class: "ui image", width: "36", height: "36")
-        return link_to("#{image}","#", data: { tooltip: "Not equiped. True n00b!", position: "left center"}).html_safe
+        return link_to("#{image}","#").html_safe
       end
       image = icon_image(item["icon"], item["quality"])
 

@@ -1,12 +1,12 @@
 .dark-box
-  = form_for([:user, :setting, model], html: { class: "ui equal width inverted form user"}) do |f|
+  = form_for(model, url: polymorphic_path([:user, :setting, model], username: current_user.username), html: { class: "ui equal width inverted form user"}) do |f|
     - if form.errors.messages.any?
       = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
     .fields
       .field
-        = f.label :name
+        = f.label :username
           = t(:name)
-        = f.text_field :name
+        = f.text_field :username
       .field
         = f.label :server
           = t(:server)

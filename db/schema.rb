@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(version: 20170305212713) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name"
+    t.string   "username"
     t.integer  "user_id"
     t.string   "thumbnail"
     t.integer  "klass"
     t.string   "server"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_alts_on_name", unique: true, using: :btree
+    t.index ["username"], name: "index_alts_on_username", unique: true, using: :btree
   end
 
   create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

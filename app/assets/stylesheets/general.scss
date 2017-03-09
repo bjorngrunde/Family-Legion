@@ -24,14 +24,6 @@ body {
 
 .ui.vertical.inverted.menu {
   background: darken($dark-grey, 5%);
-
-  .item {
-
-    &:hover {
-      color: lighten($alliance, 10%);
-      background: none;
-    }
-  }
 }
 
 /**** Status Guild Application ****/

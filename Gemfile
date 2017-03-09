@@ -35,11 +35,13 @@ gem 'warden'
 gem 'jquery-turbolinks'
 
 group :development, :test do
+  gem "database_cleaner"
   gem "factory_girl_rails", "~> 4.0"
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug', platform: :mri
   gem "letter_opener"
   gem 'capybara'
+  gem "selenium-webdriver"
 end
 
 group :development do
