@@ -2,7 +2,7 @@
   .fields
     .nine.wide.field
     .four.wide.field
-      = text_field_tag :term
+      = text_field_tag :term, params[:term]
     .three.wide.field
-      = submit_tag t(:search), class:"ui tiny green button"
+      = submit_tag t(:search), name: nil,  class:"ui tiny green button"
       = link_to t(:clear), admin_users_path(page: 1), class: "ui tiny red button"

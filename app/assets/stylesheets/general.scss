@@ -120,14 +120,6 @@ body {
   width: 100%;
   @include box-shadow(0, 0 , 2px, #151515);
   margin-bottom: 10px;
-
-  a {
-    color: lighten($link-color, 5%);
-
-    &:hover {
-     color: lighten($link-color, 15%);
-    }
-  }
 }
 
 .dark-box > .ui.inverted.menu {
