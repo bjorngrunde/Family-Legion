@@ -33,6 +33,8 @@ gem "breadcrumbs_on_rails"
 gem 'tyrant'
 gem 'warden'
 gem 'jquery-turbolinks'
+gem 'kaminari'
+gem 'kaminari-cells'
 
 group :development, :test do
   gem "database_cleaner"

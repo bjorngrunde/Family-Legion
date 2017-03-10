@@ -4,6 +4,7 @@ module Familylegion::Cell
     include Cell::Translation
     include ActionView::Helpers::DateHelper
     include ActionView::Helpers::FormOptionsHelper
+    include Kaminari::Cells
     
     def current_user
       context[:current_user]
