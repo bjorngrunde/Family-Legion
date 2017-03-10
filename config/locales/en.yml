@@ -28,6 +28,7 @@ en:
   cancel:                   "Cancel"
   submit:                   "Submit"
   search:                   "Search"
+  clear:                    "Clear"
 
   #Flash, Alert & Message
   oh_dear:                  "Oh dear!"
