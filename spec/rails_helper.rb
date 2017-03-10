@@ -9,6 +9,7 @@ require 'support/factory_girl'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'support/features/session_helpers'
+require 'support/features/form_helpers'
 require 'support/features'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -16,7 +17,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false #Never to be true!
 
   config.infer_spec_type_from_file_location!
 
@@ -37,8 +38,14 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
   end
-  
+
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  Capybara.register_driver :selenium_chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+  
+  Capybara.javascript_driver = :selenium_chrome
 end

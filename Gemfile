@@ -42,6 +42,7 @@ group :development, :test do
   gem "letter_opener"
   gem 'capybara'
   gem "selenium-webdriver"
+  gem "chromedriver-helper"
 end
 
 group :development do

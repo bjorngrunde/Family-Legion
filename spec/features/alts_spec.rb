@@ -96,16 +96,24 @@ RSpec.feature "Alts", type: :feature do
   end
 
   scenario "can delete alt", js: true do
+
     result = create_user
+    alt = create :alt, user_id: result["model"].id
+    
     login(result["model"].email, result["generated_password"])
 
-    alt = create :alt, user_id: result["model"].id
-
+    
     visit(user_setting_alts_path(username: result["model"].username))
 
     click_link("destroy-alt")
-
+    
     page.driver.browser.switch_to.alert.accept
-    expect(alt).to eq(nil)
+
+    expect(page).to have_content("Oh Yeah!")
+    expect(page).to have_content("The object has been permamently deleted")
+
+    expect(page).to_not have_content("Nublol")
+
+    expect { Alt.find(alt.id) }.to raise_exception(ActiveRecord::RecordNotFound)
   end
 end

@@ -5,7 +5,7 @@ module Features
       visit("/")
       fill_in "email", :with => email
       fill_in "password", :with => password
-      click_button("Continue")
+      submit_form
     end
 
     def create_user
