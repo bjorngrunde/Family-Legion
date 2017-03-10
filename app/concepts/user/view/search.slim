@@ -1,8 +1,2 @@
 = form_tag(admin_users_path, method: :get, class: "ui tiny form") do
-  .fields
-    .nine.wide.field
-    .four.wide.field
-      = text_field_tag :term, params[:term]
-    .three.wide.field
-      = submit_tag t(:search), name: nil,  class:"ui tiny green button"
-      = link_to t(:clear), admin_users_path(page: 1), class: "ui tiny red button"
+  = cell(Familylegion::Cell::SearchFormFields)
