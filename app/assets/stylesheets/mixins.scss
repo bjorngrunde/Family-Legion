@@ -3,3 +3,9 @@
   -moz-background-size: $size;
   background-size:$size;
 }
+
+@mixin box-shadow($y, $x, $blur,  $color) {
+  -webkit-box-shadow: $y $x $blur $color;
+  -moz-box-shadow: $y $x $blur $color;
+  box-shadow: $y $x $blur $color;
+}

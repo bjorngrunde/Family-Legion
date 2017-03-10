@@ -52,12 +52,12 @@ RSpec.feature "GuildApplications", type: :feature do
     fill_in "guild_application_spec", :with => ""
     click_button("Submit")
 
-    expect(page).to have_text("Something went wrong")
-    expect(page).to have_text("Email: Can't Be Blank.")
-    expect(page).to have_text("Username: Can't Be Blank.")
-    expect(page).to have_text("Server: Can't Be Blank.")
-    expect(page).to have_text("First name: Can't Be Blank.")
-    expect(page).to have_text("Last name: Can't Be Blank.")
+    expect(page).to have_text("Ohh my! This does not look right.")
+    expect(page).to have_text("Email: Can't Be Blank")
+    expect(page).to have_text("Username: Can't Be Blank")
+    expect(page).to have_text("Server: Can't Be Blank")
+    expect(page).to have_text("First name: Can't Be Blank")
+    expect(page).to have_text("Last name: Can't Be Blank")
   end
 
   scenario "should be able to approve guild application" do

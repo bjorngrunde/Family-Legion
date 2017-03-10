@@ -3,20 +3,19 @@ html
   = render "layouts/partials/head"
   body
     = render html: cell(Familylegion::Cell::Navigation, nil, context: { current_user: tyrant.current_user})
-    .ui.one.column.grid.container.inverted.segment
+    .ui.grid.container.inverted.segment
       .ui.grid.container
-        .sixteen.wide.column
-          = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
-
-      .ui.grid.container
+        - unless flash.empty?
+          .sixteen.wide.column 
+            = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
         .four.wide.column
-          = render "layouts/partials/admin_nav"
+          .dark-box
+            = render "layouts/partials/admin_nav"
 
         .twelve.wide.column
-          .ui.inverted.segment
-            .ui.large.breadcrumb
-              = render_breadcrumbs :separator => ' / '
-          .ui.inverted.segment
-            == yield
+          .ui.large.breadcrumb
+            = render_breadcrumbs :separator => ' / '
+ 
+          == yield
 
     = render "layouts/partials/footer"

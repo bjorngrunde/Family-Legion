@@ -10,16 +10,25 @@ Rails.application.routes.draw do
   get  'forgot_password' => "sessions#forgot_password", as: :forgot_password
   post 'send_password_link' => "sessions#send_password_link", as: :send_password_link
   
+  #Profile
+  get 'profile/:username' => "profiles#show", as: :show_profile
+
+  #Registration
   resources :guild_applications, only: :create
 
-  namespace :user do
+  #Settings
+  scope "/user/:username/", as: :user do 
     namespace :setting do
       get 'control_panel' => "settings#control_panel", as: :control_panel
       get 'change_password' => "settings#change_password", as: :change_password
       patch 'new_password' => "settings#new_password", as: :new_password
+
+      post 'change_main_character/:id' => "alts#change_main_character", as: :change_main
+      resources :alts, except: :show
     end
   end
-
+  
+  #Admin
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
     post 	'toggle_status' => 'guild_applications#toggle_status', as: :guild_application_toggle_status

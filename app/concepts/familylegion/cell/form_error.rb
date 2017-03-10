@@ -6,7 +6,9 @@ module Familylegion::Cell
     end
 
     def error_message message
-      return t(message) if message.class == Symbol
+      return t(message) if message.instance_of? Symbol
+      message.gsub!(" ", "_") if message.is_a?(String)
+      message.downcase! if message.is_a?(String)
       t(message.split(".").last.to_sym)
     end
   end

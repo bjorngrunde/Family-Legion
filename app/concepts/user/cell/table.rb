@@ -1,6 +1,5 @@
 module User::Cell
-	class Table < Trailblazer::Cell
-		include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
+	class Table < Familylegion::Cell::Master
+
 	end
 end

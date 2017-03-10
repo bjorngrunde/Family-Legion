@@ -1,52 +1,53 @@
-.ui.grid.container
-  .sixteen.wide.column.right.aligned
-    = cell(GuildApplication::Cell::AdminMenu, model)
-  .sixteen.wide.column
-    h3
-      = t(:guild_application_from, name: full_name)
-    h4[ class="#{status}"]
-      = readable_status
-  .eight.wide.column
-    h4 Character
-    p= username
-  .eight.wide.column
-    h4= t(:server)
-    p= server
-  .eight.wide.column
-    h4= t(:klass)
-    p= klass
-  .eight.wide.column
-    h4= t(:spec)
-    p= spec
-  .sixteen.wide.column
-    h4= t(:screenshot)
-    = screenshot
-  .sixteen.wide.column
-    h4= t(:played)
-    = played
+.dark-box
+  .ui.grid.container
+    .sixteen.wide.column.right.aligned
+      = cell(GuildApplication::Cell::AdminMenu, model)
+    .sixteen.wide.column
+      h3
+        = t(:guild_application_from, name: full_name)
+      h4[ class="#{status}"]
+        = readable_status
+    .eight.wide.column
+      h4 Character
+      p= username
+    .eight.wide.column
+      h4= t(:server)
+      p= server
+    .eight.wide.column
+      h4= t(:klass)
+      p= klass
+    .eight.wide.column
+      h4= t(:spec)
+      p= spec
+    .sixteen.wide.column
+      h4= t(:screenshot)
+      = screenshot
+    .sixteen.wide.column
+      h4= t(:played)
+      = played
 
-  .sixteen.wide.column
-    h4= t(:klass_played)
-    = klass_played
+    .sixteen.wide.column
+      h4= t(:klass_played)
+      = klass_played
 
-  .sixteen.wide.column
-    h4= t(:bio)
-    = bio
-  .sixteen.wide.column
-    h4= t(:raid_experience)
-    = raid_experience
-  .sixteen.wide.column
-    h4= t(:reason)
-    = reason
-  .sixteen.wide.column
-    h4= t(:old_guild)
-    = old_guild
-  .sixteen.wide.column
-    h4= t(:progress_raid)
-    = progress_raid
-  .sixteen.wide.column
-    h4= t(:attendance)
-    = attendance
-  .sixteen.wide.column
-    h4= t(:other)
-    = other
+    .sixteen.wide.column
+      h4= t(:bio)
+      = bio
+    .sixteen.wide.column
+      h4= t(:raid_experience)
+      = raid_experience
+    .sixteen.wide.column
+      h4= t(:reason)
+      = reason
+    .sixteen.wide.column
+      h4= t(:old_guild)
+      = old_guild
+    .sixteen.wide.column
+      h4= t(:progress_raid)
+      = progress_raid
+    .sixteen.wide.column
+      h4= t(:attendance)
+      = attendance
+    .sixteen.wide.column
+      h4= t(:other)
+      = other

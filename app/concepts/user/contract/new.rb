@@ -19,6 +19,7 @@ module User::Contract
 			property	:avatar
 			property	:spec
 			property	:rank
+			property	:profile_meta_data
 
 			validates :klass, :server, :first_name, :last_name, presence: true
 			validate :guild_master_exists?

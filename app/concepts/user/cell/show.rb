@@ -1,9 +1,6 @@
 module User::Cell
-	class Show < Trailblazer::Cell
-		include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
-    include ActionView::Helpers::DateHelper
-		
+	class Show < Familylegion::Cell::Master
+    
 		property	:username
 		property	:email
 		property 	:rank
@@ -25,10 +22,6 @@ module User::Cell
 
 		def phone
 			model.profile.phone
-		end
-
-		def css_class
-			"#{model.profile.klass.sub("_", "-")}"
 		end
 
 		def klass

@@ -8,6 +8,10 @@ $green:     		#3FC380;
 $red:       		#EC644B;
 $epic: 					purple;
 $rare:					#0070de;
+$uncommon:      #1eff00;
+$heirloom:      #00CCFF;
+$legendary:     #ff8000;
+$artifact:      #e6cc80;
 $death-knight:	#C41F3B;
 $druid:					#FF7D0A;
 $hunter:				#ABD473;
@@ -16,17 +20,25 @@ $mage:					#69CCF0;
 $paladin:				#F58CBA;
 $shaman:				#0070de;
 $warrior:				#C79C6E;
-$priest:				#fff;
+$priest:				#ffffff;
 $monk:					#00FF96;
 $rogue:					#FFF569;
 $demon-hunter:	#A330C9;
 $alliance:      #144587;
-$dark-grey:     #2D2D2D;
+$dark-grey:     darken(rgba(108, 122, 137, 0.8), 30%);
 $link-color: $alliance;
+$teal-dark:     darken(rgba(1, 152, 117, 0.5), 25%);
+$orange-dark:   darken(rgba(243, 156, 18, 0.3), 25%);
+$link-color:    $alliance;
+$chestnut-red:  rgba(210, 77, 87, 0.9);
+$tan-green:     rgba(135, 211, 124, 0.9);
+
+
 /*--------------
   Imports
 ---------------*/
 @import 'semantic-ui';
 @import 'mixins';
 @import 'general';
-@import	'users'
+@import	'users';
+@import 'profiles';

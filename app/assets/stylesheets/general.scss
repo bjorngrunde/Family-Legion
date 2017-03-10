@@ -20,7 +20,11 @@ body {
     width:100%;
   }
 }
+/*** MENUS ****/
 
+.ui.vertical.inverted.menu {
+  background: darken($dark-grey, 5%);
+}
 
 /**** Status Guild Application ****/
 
@@ -32,4 +36,177 @@ body {
 }
 .declined {
   color: $red;
+}
+
+
+/**** TABLES ****/
+
+.ui.inverted.table {
+  background: darken($dark-grey, 5%);
+  
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+.ui.inverted.table th {
+  background-color: darken($dark-grey, 5%) !important;
+  border-color:  darken($dark-grey, 10%) !important;
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.table tr td {
+  border-color: darken($dark-grey, 5%)!important;
+}
+
+/**** BOX ****/
+
+.dark-box {
+  background: darken($dark-grey, 5%);
+  padding: 10px;
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+
+.avatar-box {
+  height: 450px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  @include box-shadow(0, 0 , 4px, #151515);
+}
+
+.gear-items.left { 
+  width: 40px;
+  float: left;
+}
+.gear-items.right {
+  width: 40px;
+  float: right;
+}
+
+.gear-items.bottom {
+  display: flex;
+  flex-direction: flex-start;
+  justify-content: center;
+  align-content: center;
+
+  .item {
+    width: 40px;
+    margin-right: 5px;
+    
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.five.boxes {
+  display: flex;
+  flex-direction: flex-start;
+  justify-content: center;
+}
+
+.profile-stats-box {
+  background: $dark-grey;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}
+/*** Breadcrumbs ****/
+
+.ui.large.breadcrumb {
+  background: darken($dark-grey, 5%);
+  padding:10px;
+  width: 100%;
+  @include box-shadow(0, 0 , 2px, #151515);
+  margin-bottom: 10px;
+
+  a {
+    color: lighten($link-color, 5%);
+
+    &:hover {
+     color: lighten($link-color, 15%);
+    }
+  }
+}
+
+.dark-box > .ui.inverted.menu {
+  background: none;
+}
+
+.dark-box.alts {
+  margin-top: 10px;
+}
+
+/*** BUTTONS ****/
+
+.ui.alliance.button {
+  background: $alliance;
+  color: rgba(255,255,255,0.8);
+
+  &:hover {
+    background: lighten($alliance, 10%);
+  }
+}
+.ui.red.button {
+  background: $chestnut-red;
+
+  &:hover {
+    background: darken($chestnut-red, 5%);
+  }
+}
+
+.ui.green.button {
+  background: $tan-green;
+
+  &:hover {
+    background: darken($tan-green, 5%);
+  }
+}
+
+/**** ITEM LINKS ****/
+
+.item-border-7 {
+  border: 1px solid $heirloom;
+  @include box-shadow(0, 0, 2px, $heirloom)
+}
+.item-border-6 {
+  border: 1px solid $artifact;
+  @include box-shadow(0, 0, 2px, $artifact)
+}
+
+.item-border-5 {
+  border: 1px solid $legendary;
+  @include box-shadow(0, 0, 2px, $legendary)
+}
+.item-border-4 {
+  border: 1px solid $epic;
+  @include box-shadow(0, 0, 2px, $epic)
+}
+
+.item-border-3 {
+  border: 1px solid $rare;
+  @include box-shadow(0, 0, 2px, $rare)
+}
+
+.item-border-2 {
+  border: 1px solid $uncommon;
+  @include box-shadow(0, 0, 2px, $uncommon)
+}
+
+.item-border-1 {
+  border: 1px solid #151515;
+  @include box-shadow(0 , 0 , 3px, #151515)
+}
+
+
+/**** Hide Wowhead Logo ****/
+.wowhead-tooltip-powered {
+  background: none !important;
+}
+
+/**** HELPERS ****/
+
+.center.aligned {
+  text-align: center
 }

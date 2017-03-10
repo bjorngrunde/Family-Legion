@@ -46,3 +46,8 @@ D, [2017-02-11T22:47:53.294385 #3025] DEBUG -- : DRAGONFLY: shell command: 'iden
 D, [2017-02-12T20:52:02.379236 #2252] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/RackMultipart20170212-2252-1t0xqdg.jpg'
 D, [2017-02-12T20:52:02.390430 #2252] DEBUG -- : DRAGONFLY: shell command: 'convert' '/tmp/RackMultipart20170212-2252-1t0xqdg.jpg' '-resize' '120x120^^' '-gravity' 'Center' '-crop' '120x120+0+0' '+repage' '/tmp/dragonfly20170212-2252-89euo9.jpg'
 D, [2017-02-12T20:52:02.507153 #2252] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170212-2252-89euo9.jpg'
+D, [2017-03-04T21:13:44.400466 #4899] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170304-4899-v8wrfn'
+D, [2017-03-04T21:15:21.787713 #4899] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170304-4899-13xm0dj'
+D, [2017-03-04T21:29:11.418996 #4899] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170304-4899-ffdkrs'
+D, [2017-03-04T21:32:08.862054 #4899] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170304-4899-124u2z1'
+D, [2017-03-04T21:42:42.636712 #4899] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/tmp/dragonfly20170304-4899-tcetfq'

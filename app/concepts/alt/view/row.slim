@@ -1,0 +1,15 @@
+tr
+  td
+    = image_tag(thumbnail, class: "ui avatar image")
+    span class="#{model_css_class}"
+      = username.humanize
+  td
+    = server.titleize
+  td
+    = edit_link
+  td
+    = destroy_link
+  td
+    = change_main_link
+  td.right.aligned.collapsing
+    = created_at

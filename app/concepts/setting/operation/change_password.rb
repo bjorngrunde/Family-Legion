@@ -1,16 +1,15 @@
 class Setting::ChangePassword < Trailblazer::Operation
 
-  step Model(User, :find_by)
+  step Nested(:find_user!)
   step Contract::Build(constant: Setting::Contract::ChangePassword)
   step Contract::Validate(key: :user)
-  step :not_authorized!
   step :check_old_password!
   failure :wrong_password!
   step :change_password!
   step Contract::Persist()
 
-  def not_authorized!(options, **)
-    options["model"].id == options["current_user"].id
+  def find_user!(options, **)
+    User::FindUser
   end
 
   def check_old_password!(options, **)

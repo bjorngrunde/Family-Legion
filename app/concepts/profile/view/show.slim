@@ -1,0 +1,31 @@
+.ui.grid
+  .sixteen.wide.column
+    .profile.cover style="background: url('#{background_image}') no-repeat center center; background-size: cover;"
+      = avatar_image
+      h1 class="#{model_css_class} profile-name"
+        = model.username
+  .sixteen.wide.column
+    .dark-box
+      .five.boxes
+        .profile-stats-box
+          h3
+            = t(:profile)
+        .profile-stats-box
+          h3
+            = t(:activity)
+        .profile-stats-box
+          h3
+            = t(:message)
+  .eight.wide.column
+    = cell(Profile::Cell::Talent, model, context: { talents: context[:talents]})
+    .dark-box.alts
+      h3 Alts
+      = cell(Profile::Cell::Alt, model)
+
+  .eight.wide.column
+    = cell(Profile::Cell::Avatar, model, context: { items: context[:items]})
+
+= javascript_include_tag "//wow.zamimg.com/widgets/power.js"
+javascript:
+  var wowhead_tooltips = { "colorlinks": true, "iconizelinks": false, "renamelinks": false, "hide": { "droppedby": true, "dropchance": true, "maxstack": true, "sellprice": true } }
+

@@ -15,7 +15,7 @@
               = current_user.username
           i.dropdown.icon
           .inverted.menu
-            = link_to "Profile", "#", class: "item"
-            = link_to "Settings", user_setting_control_panel_path(id: current_user.id), class: "item"
+            = link_to "Profile", show_profile_path(username: current_user.username), class: "item"
+            = link_to "Settings", user_setting_control_panel_path(username: current_user.username), class: "item"
             = link_to "Admin", admin_control_panel_path, class: "item"
             = link_to "Logout", sign_out_path, class: "item"

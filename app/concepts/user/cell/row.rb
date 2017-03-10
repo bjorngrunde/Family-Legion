@@ -1,8 +1,5 @@
 module User::Cell
-  class Row < Trailblazer::Cell
-    include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
-    include ActionView::Helpers::DateHelper
+  class Row < Familylegion::Cell::Master
 
     property  :username
     property  :email
@@ -11,7 +8,7 @@ module User::Cell
     private
       def full_username
         username = model.username.humanize
-        "<span class='#{model.profile.klass}'>#{username}</span>".html_safe
+        "<span class='#{model_css_class}'>#{username}</span>".html_safe
       end
 
       def created_at
