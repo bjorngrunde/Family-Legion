@@ -1,3 +1,4 @@
+= cell(GuildApplication::Cell::Search)
 table.ui.selectable.inverted.table
   thead
     tr
@@ -7,3 +8,5 @@ table.ui.selectable.inverted.table
       th.right.aligned.collapsing= t(:created_at)
   tbody
     = cell(GuildApplication::Cell::Index, collection: model)
+.dark-box.center.aligned
+  = paginate model , :views_prefix => "familylegion/view"
