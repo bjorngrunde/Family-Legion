@@ -176,6 +176,12 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.6)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-cells (0.0.4)
+      cells (>= 4.0.0, <= 5.0.0)
+      kaminari (>= 0.16.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -370,6 +376,8 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (>= 4.2.1)
   jquery-turbolinks
+  kaminari
+  kaminari-cells
   letter_opener
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)

@@ -5,8 +5,11 @@ class Alt::ChangeMainCharacter < Trailblazer::Operation
   step :set_user!
   step :set_alt!
   step Nested(:init_wowapi!)
-  step Nested(:update_meta_data!, input: ->(options, mutable_data: , runtime_data:, **)do
-    {"user" => mutable_data["user"]}
+  step Nested(:update_meta_data!, input: ->(options, mutable_data:, **)do
+    { "username" => mutable_data["user"].username,
+      "realm" => mutable_data["user"].profile.server,
+      "meta_data" => mutable_data["user"].profile.profile_meta_data
+    }
   end)
   step :set_meta_data!
   step :save_user!

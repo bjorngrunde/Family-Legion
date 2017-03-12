@@ -12,7 +12,10 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 	)
 	step 	:add_thumbnail!
 	step Nested(:update_meta_data!, input: ->(options, mutable_data: , runtime_data:, **)do
-    {"user" => mutable_data["contract.default"]}
+    { "username" => mutable_data["contract.default"].username,
+    	"realm" => mutable_data["contract.default"].profile.server,
+    	"meta_data" => mutable_data["contract.default"].profile.profile_meta_data,
+    	"contract" => mutable_data["contract.default"]}
   end)
   step  :add_meta_data!
 	step	:create!

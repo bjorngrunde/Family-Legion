@@ -4,7 +4,6 @@ class GuildApplication::ToggleStatus < Trailblazer::Operation
   step :change_status!
 
   def change_status!(options, params:, **)
-    options["model"].status = params[:status]
-    options["model"].save
+    options["model"].update_attribute(:status, params[:status])
   end
 end

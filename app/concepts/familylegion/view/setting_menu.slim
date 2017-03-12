@@ -9,7 +9,7 @@
       .header
         = t(:profile)
       .menu
-        = link_to t(:change_profile), "#", class: "item"
+        = link_to t(:change_profile), edit_user_setting_profile_path(username: current_user.username, id: current_user.profile.id), class: "item"
     .item
       .header
         = t(:alts)

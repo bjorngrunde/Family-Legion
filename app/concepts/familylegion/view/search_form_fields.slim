@@ -1,0 +1,7 @@
+.fields
+  .nine.wide.field
+  .four.wide.field
+    = text_field_tag :term, params[:term]
+  .three.wide.field
+    = submit_tag t(:search), name: nil,  class:"ui tiny green button"
+    = link_to t(:clear), context[:clear_path], class: "ui tiny red button"

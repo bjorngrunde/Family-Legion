@@ -1,0 +1,2 @@
+= form_tag(admin_guild_applications_path, method: :get, class: "ui tiny form") do
+  = cell(Familylegion::Cell::SearchFormFields, nil, context: { clear_path: admin_guild_applications_path(page: 1)})

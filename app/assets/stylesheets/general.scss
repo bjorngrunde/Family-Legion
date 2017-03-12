@@ -112,6 +112,12 @@ body {
     margin-right: 0px;
   }
 }
+
+.ui.icon.notice.message {
+  background-color: #fff8db;
+  color: #b58105;
+  box-shadow: 0 0 0 1px #b58105 inset, 0 0 0 0 transparent;
+}
 /*** Breadcrumbs ****/
 
 .ui.large.breadcrumb {
@@ -120,14 +126,6 @@ body {
   width: 100%;
   @include box-shadow(0, 0 , 2px, #151515);
   margin-bottom: 10px;
-
-  a {
-    color: lighten($link-color, 5%);
-
-    &:hover {
-     color: lighten($link-color, 15%);
-    }
-  }
 }
 
 .dark-box > .ui.inverted.menu {

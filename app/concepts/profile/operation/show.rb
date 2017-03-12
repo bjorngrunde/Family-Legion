@@ -3,12 +3,15 @@ class Profile::Show < Trailblazer::Operation
   step :model!
   step Nested(:init_wow_api!)
   step Nested(:check_items_meta_data!, input: ->(options, mutable_data:,**) do 
-    { "user" => mutable_data["model"] } 
+    { "username" => mutable_data["model"].username,
+      "realm" => mutable_data["model"].profile.server,
+      "meta_data" => mutable_data["model"].profile.profile_meta_data,
+    } 
     end)
   step :save!
 
-  def model!(options, **)
-    options["model"] = User.find_by(username: options["params"]["username"])
+  def model!(options, params:,  **)
+    options["model"] = User.find_by(username: params[:username])
   end
 
   def init_wow_api!(options, **)
@@ -20,8 +23,7 @@ class Profile::Show < Trailblazer::Operation
   end
 
   def save!(options, **)
-    options["model"].profile.update_attributes(profile_meta_data: options["meta_data"]) unless options["meta_data"].empty?
-    options["flash"] = t(:profile_has_been_updated) if options["model"].id == options["current_user"].id && options["model"].profile.profile_meta_data_changed?
+    return true unless options["meta_data"]
+    options["model"].profile.update_attribute(:profile_meta_data, options["meta_data"])
   end
-
 end

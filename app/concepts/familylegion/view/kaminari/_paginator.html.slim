@@ -1,0 +1,10 @@
+div.ui.inverted.borderless.pagination.menu
+  = paginator.first_page_tag unless current_page.first?
+  = paginator.prev_page_tag unless current_page.first?
+  - paginator.each_page do |page|
+    - if page.left_outer? || page.right_outer? || page.inside_window?
+      = paginator.page_tag page
+    - elsif !page.was_truncated?
+      = pagainator.gap_tag
+  = paginator.next_page_tag unless current_page.last?
+  = paginator.last_page_tag unless current_page.last?

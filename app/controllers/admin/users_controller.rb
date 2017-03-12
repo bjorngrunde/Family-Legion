@@ -8,9 +8,7 @@ class Admin::UsersController < AdminController
   
 	def create_user_from_guild_application
 		result = run User::CreateUserFromGuildApplication
-		if result.success?
-			return redirect_to admin_user_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:user_created, name: result["model"].username) }
-		end
+		return redirect_to admin_user_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:user_created, name: result["model"].username) } if result.success?
 		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
 	end
 
@@ -26,10 +24,8 @@ class Admin::UsersController < AdminController
 
 	def show
 		result = run User::Show
-		if result.success?
-			add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path, :only => %w(show edit)
-			return render cell(User::Cell::Show, result["model"])
-		end
+		add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path, :only => %w(show edit)
+		render cell(User::Cell::Show, result["model"])
 	end
 
 	def edit
@@ -41,9 +37,7 @@ class Admin::UsersController < AdminController
 	
 	def update
 		result = run User::Update
-		if result.success?
-			return redirect_to admin_user_path(result["model"]), :positive => { :header => "", :content => t(:user_updated, name: result["model"].username.humanize)}
-		end
+		return redirect_to admin_user_path(result["model"]), :positive => { :header => "", :content => t(:user_updated, name: result["model"].username.humanize)} if result.success?
 		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
 	end
 end
