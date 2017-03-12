@@ -46,7 +46,7 @@ RSpec.feature "Alts", type: :feature do
 
     click_button("Save")
 
-    expect(page).to have_text("Username: The character you tried to add does not exist! Make sure the name and realm is correct.")
+    expect(page).to have_text("Base: The character you tried to add does not exist! Make sure the name and realm is correct.")
 
     fill_in "alt[username]" , :with => "Bertius"
     fill_in "alt[server]", :with => "Grim Batol"

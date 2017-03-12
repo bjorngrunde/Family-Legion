@@ -94,11 +94,14 @@ en:
   user_created:              "The user %{name} was created. Email with login information has been sent."
   ban:                       "Ban"
   ban_user:                  "Ban the user. They will no longer be able to login"
+  base_user_does_not_exist:  "The user you tried to show does not seem to exist anymore."
 
 
   #Profile
   rank:                      "Rank"
   phone:                     "Phone/Mobile"
+  warning_change_username:   "Warning! Do not change character name."
+  do_not_change_user:        "Do not change your characters name unless you changed your characters name in-game. If you want to change main character, create an alt and swap them in the alt view!"
 
   #Session
   welcome_title:              "Welcome to Family Legion, %{name}!"

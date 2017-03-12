@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       post 'change_main_character/:id' => "alts#change_main_character", as: :change_main
       
       resources :alts, except: :show, concerns: :paginatable
+      resources :profiles, only: [:edit, :update]
     end
   end
   

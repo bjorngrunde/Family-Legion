@@ -1,0 +1,49 @@
+= form_for(model, url: user_setting_profile_path(username: current_user.username), html: { class: "ui equal width inverted form"}) do |f|
+  - if form.errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
+  .fields
+    .field
+      = f.label :first_name
+        = t(:first_name)
+      = f.text_field :first_name
+    .field
+      = f.label :last_name
+        = t(:last_name)
+      = f.text_field :last_name
+  .fields
+    .field
+      = f.label :server
+        = t(:server)
+      = f.text_field :server
+    .field
+      = f.label :spec
+        = t(:spec)
+      = f.text_field :spec
+  .fields
+    .field
+      = f.label :phone
+        = t(:phone)
+      = f.text_field :phone
+    .field
+
+  = f.fields_for model.user do |u|
+    .field
+      .ui.icon.notice.message
+        i.warning.icon
+        .content
+          .header
+            = t(:warning_change_username)
+          p
+            = t(:do_not_change_user)
+    .fields
+      .field
+        = u.label :username
+          = t(:username)
+        = u.text_field :username
+      .field
+        = u.label :email
+          = t(:email)
+        = u.text_field :email
+  .field
+    = f.submit t(:save), class: "ui tiny green button"
+    = link_to t(:cancel), user_setting_control_panel_path(username: current_user.username), class: "ui tiny red button"
