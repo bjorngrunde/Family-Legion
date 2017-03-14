@@ -28,7 +28,7 @@ class Wowapi::ProfileMetaData < Trailblazer::Operation
   def rollback!(exception, options,  **)
     if options["contract"]
       options["contract.default"] = options["contract"]
-      options["contract.default"].errors.add(:username, exception.class.name.to_sym)
+      options["contract.default"].errors.add(:base, exception.class.name.to_sym)
     else
       options["flash"] = t(:base_user_does_not_exist)
     end
