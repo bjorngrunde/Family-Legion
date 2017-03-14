@@ -19,7 +19,8 @@ class Admin::UsersController < AdminController
 
 	def new
 		result = run User::New
-		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
+		return render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]}) if result.success?
+		redirect_to dashboard_path
 	end
 
 	def show
@@ -32,7 +33,8 @@ class Admin::UsersController < AdminController
 		result = run User::Edit
 		add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path
 		add_breadcrumb I18n.t("breadcrumbs.edit"), :edit_admin_user_path
-		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
+		return render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]}) if result.success?
+		redirect_to dashboard_path
 	end
 	
 	def update
