@@ -4,8 +4,7 @@ class UserPolicy
     @user, @model = user, model
   end
 
-  def settings?
-    return @user.id == @model.user_id unless @model.is_a?(User)
-    @user.id == @model.id
+  def create?
+    @model.id.nil? && @model.creatable_by?(@user)
   end
 end
