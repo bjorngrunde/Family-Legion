@@ -8,6 +8,7 @@ class Setting::ProfilesController < ApplicationController
   end
 
   def update
+    #raise params.inspect
     result = run Profile::Update
     return redirect_to edit_user_setting_profile_path(username: current_user.username, id: result["model"].id), flashy(:positive, t(:oh_yeah), t(:successfull_save)) if result.success?
     render cell( Familylegion::Cell::Setting, result["model"], context: { cell_view: "Profile::Cell::Edit", form: result["contract.default"], current_user: current_user})
