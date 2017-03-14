@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :tyrant
   
+  def current_user
+    tyrant.current_user
+  end
+  
   def require_login
     redirect_to root_path unless tyrant.signed_in?
   end
