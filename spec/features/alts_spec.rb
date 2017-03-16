@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "Alts", type: :feature do
   
   scenario "should create an alt" do
-    result = create_user
 
+    result = create_user
     login(result["model"].email, result["generated_password"])
 
     visit(user_setting_control_panel_path(username: result["model"].username))
@@ -26,6 +26,7 @@ RSpec.feature "Alts", type: :feature do
   scenario "should raise errors when creating alt" do
 
     result = create_user
+
     login(result["model"].email, result["generated_password"])
 
     visit(user_setting_control_panel_path(username: result["model"].username))
@@ -66,7 +67,9 @@ RSpec.feature "Alts", type: :feature do
   end
 
   scenario "should update alt" do
+
     result = create_user
+
     login(result["model"].email, result["generated_password"])
 
     alt = create(:alt, user_id: result["model"].id)
@@ -83,6 +86,7 @@ RSpec.feature "Alts", type: :feature do
 
   scenario "should change alt to main character" do
     result = create_user
+
     login(result["model"].email, result["generated_password"])
 
     alt = create :alt, user_id: result["model"].id
@@ -92,12 +96,13 @@ RSpec.feature "Alts", type: :feature do
     click_link("change-main")
 
     expect(page).to have_text("Oh Yeah!")
-    expect(page).to have_text("You changed main character from Sprayandpray to Nublol")
+    expect(page).to have_text("You changed main character from Bubbleoncd to Nublol")
   end
 
   scenario "can delete alt", js: true do
 
     result = create_user
+
     alt = create :alt, user_id: result["model"].id
     
     login(result["model"].email, result["generated_password"])

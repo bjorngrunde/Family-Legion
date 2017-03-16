@@ -12,9 +12,9 @@ RSpec.describe User, type: :model do
 
     expect(result).to be_success
     expect(result["model"]).to be_persisted
-    expect(result["model"].username).to eq("Sprayandpray")
+    expect(result["model"].username).to eq("Bubbleoncd")
     expect(result["model"].profile).to be_persisted
-    expect(result["model"].profile.klass).to eq("hunter") 
+    expect(result["model"].profile.klass).to eq("paladin") 
   end
 
   it "it prohibits empty user params" do
@@ -27,11 +27,11 @@ RSpec.describe User, type: :model do
 
   it "can update a user" do
     attrs = attributes_for(:user) do |user|
-        user.store(:profile, attributes_for(:profile))
-      end
+      user.store(:profile, attributes_for(:profile))
+    end
 
     result = User::CreateUserFromGuildApplication.({ user: attrs})
-    
+
     user = result["model"]
     user.profile.rank = 5
     user.email = "test@test.se"

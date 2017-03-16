@@ -1,7 +1,4 @@
 FactoryGirl.define do
-  factory :role do
-    
-  end
 
   factory :guild_application do
     first_name  "John"
@@ -14,8 +11,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username    "Sprayandpray"
-    email       "bjorngrunde@live.se"
+    username    "Bubbleoncd"
+    email       "kalle@live.se"
     profile
   end
 
@@ -23,11 +20,11 @@ FactoryGirl.define do
     first_name  "Björn"
     last_name   "Grunde"
     server      "grim batol"
-    klass       "hunter"
+    klass       "paladin"
     rank        1
     phone       "0728943923"
     rate        1
-    spec        "Beast Mastery"
+    spec        "Holy"
   end
 
   factory :alt do
@@ -35,5 +32,9 @@ FactoryGirl.define do
     server    "Grim Batol"
     klass     "demon_hunter"
     thumbnail "http://render-eu.worldofwarcraft.com/character/grim-batol/202/113106634-avatar.jpg"
+  end
+
+  factory :role do
+    name "admin"
   end
 end

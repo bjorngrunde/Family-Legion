@@ -8,13 +8,18 @@ module Features
       submit_form
     end
 
-    def create_user
+    def create_user(role = nil)
       attrs = attributes_for(:user) do |user|
         user.store(:profile, attributes_for(:profile))
       end
 
-      User::CreateUserFromGuildApplication.({ user: attrs})
+      user = User::CreateUserFromGuildApplication.({ user: attrs})
+      if role.nil?
+        user["model"].add_role :admin
+      else
+        user["model"].add_role role
+      end
+      user
     end
-
   end
 end

@@ -5,7 +5,7 @@ class UserPolicy
   end
 
   def create?
-    @model.id.nil? && @model.creatable_by?(@user)
+    @model.id.nil?
   end
 
   def update?

@@ -1,6 +1,7 @@
 class GuildApplication::Index < Trailblazer::Operation
 
   step :get_all_or_pending!
+  step Policy::Pundit(GuildApplicationPolicy, :list?)
 
 
   private
