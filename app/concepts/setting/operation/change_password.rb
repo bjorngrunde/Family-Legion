@@ -1,6 +1,7 @@
 class Setting::ChangePassword < Trailblazer::Operation
 
   step Nested(:find_user!)
+  step Policy::Pundit(UserPolicy, :update?)
   step Contract::Build(constant: Setting::Contract::ChangePassword)
   step Contract::Validate(key: :user)
   step :check_old_password!

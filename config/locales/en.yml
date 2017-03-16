@@ -40,6 +40,7 @@ en:
   alert_delete:             "Are you sure you want to delete the object?"
   Something_went_wrong:     "Ohh my! This does not look right."
   not_authorized:           "Oi! You can't access that!"
+  policy_breach_text:       "Something went wrong. You might not have the right authority to access that resource."
 
   # BreadCrumbs
   breadcrumbs:

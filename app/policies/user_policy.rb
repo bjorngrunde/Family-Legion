@@ -11,4 +11,8 @@ class UserPolicy
   def update?
     @model.id && @model.updatable_by?(@user)
   end
+
+  def delete?
+    @model.id && @model.deletable_by?(@user)
+  end
 end

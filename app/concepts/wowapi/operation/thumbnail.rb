@@ -1,6 +1,6 @@
 class Wowapi::Thumbnail < Trailblazer::Operation
   #Required input is a valid character name (name:) and server (realm:) 
-  #and a reform object with property :username(contract) so we can add errors in case of exception
+  #and a reform object (contract) so we can add errors in case of exception
   
   step Rescue( CharacterNotFoundError, handler: :rollback!){
     step :download_thumbnail!

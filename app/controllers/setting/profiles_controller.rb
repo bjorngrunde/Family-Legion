@@ -4,7 +4,8 @@ class Setting::ProfilesController < ApplicationController
 
   def edit
     result = run Profile::Edit
-    render cell( Familylegion::Cell::Setting, result["model"], context: { cell_view: "Profile::Cell::Edit", form: result["contract.default"], current_user: current_user})
+    return policy_breach! if result["result.policy.default"].failure?
+    render cell( Familylegion::Cell::Setting, result["model"], context: { cell_view: "Profile::Cell::Edit", form: result["contract.default"], current_user: current_user}) if result.success?
   end
 
   def update
