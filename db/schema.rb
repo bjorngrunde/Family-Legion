@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170314200701) do
 
-  create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
     t.integer  "user_id"
     t.string   "thumbnail"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.index ["username"], name: "index_alts_on_username", unique: true, using: :btree
   end
 
-  create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.index ["email", "username"], name: "index_guild_applications_on_email_and_username", unique: true, using: :btree
   end
 
-  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                                     null: false
     t.string   "first_name",        limit: 45
     t.string   "last_name",         limit: 45
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.text     "profile_meta_data", limit: 65535
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "resource_type"
     t.integer  "resource_id"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
     t.string   "email"
     t.text     "auth_meta_data", limit: 65535
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true, using: :btree
   end
 
-  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
