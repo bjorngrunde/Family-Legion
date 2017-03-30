@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "GuildApplications", type: :feature do
-  
+
   scenario "will register a new guild application" do
 
     visit(register_path)
@@ -20,8 +20,8 @@ RSpec.feature "GuildApplications", type: :feature do
     expect(page).to have_text("Oh Yeah!")
     expect(page).to have_text("Thank you for your application! We will email you within a few days")
 
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
     visit(admin_guild_applications_path())
     click_link("Show")
@@ -62,8 +62,8 @@ RSpec.feature "GuildApplications", type: :feature do
 
   scenario "should be able to approve guild application" do
 
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
     guild_application = create(:guild_application)
 
@@ -81,8 +81,8 @@ RSpec.feature "GuildApplications", type: :feature do
 
   scenario "should be able to decline guild application" do
 
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
     guild_application = create(:guild_application)
 
@@ -99,8 +99,8 @@ RSpec.feature "GuildApplications", type: :feature do
   end
 
   scenario "should create a user" do
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
     guild_application = create(:guild_application)
 
@@ -117,8 +117,8 @@ RSpec.feature "GuildApplications", type: :feature do
   end
 
   scenario "should edit a guild application" do
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
     guild_application = create(:guild_application)
 

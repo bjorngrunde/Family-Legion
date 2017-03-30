@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Alts", type: :feature do
-  
+
   scenario "should create an alt" do
 
     user = create_user
@@ -40,7 +40,7 @@ RSpec.feature "Alts", type: :feature do
     expect(page).to have_text("Server: Can't Be Blank")
 
     visit(new_user_setting_alt_path(username: user.username)) #TODO: Fix a reload() method later
-    
+
     fill_in "alt[username]" , :with => "Bertius"
     fill_in "alt[server]", :with => "grom botol"
     select "Warrior", :from => "alt[klass]"
@@ -89,10 +89,11 @@ RSpec.feature "Alts", type: :feature do
 
     login(user.email)
 
-    alt = create :alt, user_id: user.id
-    
+    alt = create(:alt, user_id: user.id)
+
+    visit(show_profile_path(username: user.username))
     visit(user_setting_alts_path(username: user.username))
-    
+
     click_link("change-main")
 
     expect(page).to have_text("Oh Yeah!")
@@ -104,14 +105,14 @@ RSpec.feature "Alts", type: :feature do
     user = create_user
 
     alt = create :alt, user_id: user.id
-    
+
     login(user.email)
 
-    
+
     visit(user_setting_alts_path(username: user.username))
 
     click_link("destroy-alt")
-    
+
     page.driver.browser.switch_to.alert.accept
 
     expect(page).to have_content("Oh Yeah!")

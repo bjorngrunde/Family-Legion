@@ -1,47 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
+
   it "should create a user" do
 
-    attrs = attributes_for(:user) do |user|
-        user.store(:profile, attributes_for(:profile))
-      end
+    attrs = attributes_for(:user)
+    attrrs2 = attributes_for(:profile)
 
-    result = User::CreateUserFromGuildApplication.({ user: attrs})
 
-    expect(result).to be_success
-    expect(result["model"]).to be_persisted
-    expect(result["model"].username).to eq("Bubbleoncd")
-    expect(result["model"].profile).to be_persisted
-    expect(result["model"].profile.klass).to eq("paladin") 
-  end
+    user = User.create(attrs)
+    profile = Profile.new(attrrs2)
+    profile.user = user
+    profile.save
 
-  it "it prohibits empty user params" do
-    result = User::CreateUserFromGuildApplication.({ })
-
-    expect(result).to be_failure
-    expect(result["model"]).to_not be_persisted
-
+    expect(user).to be_persisted
+    expect(user.username).to eq("Bubbleoncd")
+    expect(user.profile).to be_persisted
+    expect(user.profile.klass).to eq("paladin")
   end
 
   it "can update a user" do
-    attrs = attributes_for(:user) do |user|
-      user.store(:profile, attributes_for(:profile))
-    end
+    attrs = attributes_for(:user)
+    attrrs2 = attributes_for(:profile)
 
-    result = User::CreateUserFromGuildApplication.({ user: attrs})
 
-    user = result["model"]
+    user = User.create(attrs)
+    profile = Profile.new(attrrs2)
+    profile.user = user
+    profile.save
+
     user.profile.rank = 5
     user.email = "test@test.se"
 
-    result2 = User::Update.({ id: user.id,  user: { email: user.email, profile: { rank: user.profile.rank } } })
+    user.save
 
-    expect(result2).to be_success
-    expect(result2["model"]).to be_persisted
-    expect(result2["model"].email).to eq("test@test.se")
-    expect(result2["model"].profile).to be_persisted
-    expect(result2["model"].profile.rank).to eq("guild_master")
+    expect(user).to be_persisted
+    expect(user.email).to eq("test@test.se")
+    expect(user.profile).to be_persisted
+    expect(user.profile.rank).to eq("guild_master")
   end
 end
