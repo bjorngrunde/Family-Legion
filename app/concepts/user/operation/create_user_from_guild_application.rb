@@ -1,6 +1,7 @@
 class User::CreateUserFromGuildApplication < Trailblazer::Operation
 
 	step 	Nested(:build!)
+	step	Policy::Pundit(UserPolicy, :create?)
 	step 	:generate_password!
 	step	Contract::Validate(key: :user)
 	step 	Nested(:initialize_wowapi!)
