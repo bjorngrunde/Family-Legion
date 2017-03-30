@@ -40,6 +40,9 @@ Rails.application.routes.draw do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
     post 	'toggle_status' => 'guild_applications#toggle_status', as: :guild_application_toggle_status
     post 	'create_user_from_guild_application' => 'users#create_user_from_guild_application', as: :create_user_from_guild_application
+    get   'roles/:username' => 'roles#show_roles', as: :user_roles
+    patch  'roles/:username' => 'roles#add_role', as: :add_user_role
+    delete 'roles/:username' => 'roles#remove_role', as: :remove_user_role
     resources :guild_applications, except: [:new, :create], concerns: :paginatable
     resources :users, concerns: :paginatable
   end

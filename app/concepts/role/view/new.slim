@@ -1,0 +1,22 @@
+.dark-box
+  .ui.grid
+    .sixteen.wide.column
+      .ui.icon.notice.message
+        i.question.icon
+        .content
+          .header
+            = t(:how_roles_works)
+          p
+            = t(:user_roles_explained)
+    .eight.wide.column
+      = cell(Role::Cell::Form, model, context:{ form: form, roles: context[:roles]})
+    
+    .eight.wide.column.center.aligned
+      h4 class="#{model_css_class}"
+        = model.username.humanize
+      p
+        = t(:user_has_roles)
+      .ui.list
+        - model.roles.each do |role|
+          .item
+            = role_link role.name

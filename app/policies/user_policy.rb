@@ -15,4 +15,11 @@ class UserPolicy
   def delete?
     @model.id && @model.deletable_by?(@user)
   end
+  
+  def editable?
+    return false unless @model.id
+    return false if @model.has_role?(:developer) && !@user.has_role?(:developer)
+    return false unless @model.updatable_by?(@user)
+    true
+  end
 end
