@@ -44,6 +44,6 @@ class Setting::AltsController < ApplicationController
   def change_main_character
     result = run Alt::ChangeMainCharacter
     current_user.reload #Kinda needed here :(
-    redirect_to user_setting_alts_path(username: current_user.username), flashy(:positive, t(:oh_yeah), t(:you_changed_character, alt: result["model"].username.humanize, main: tyrant.current_user.username.humanize))
+    redirect_to user_setting_alts_path(username: current_user.username), flashy(:positive, t(:oh_yeah), t(:you_changed_character, alt: result["model"].username.humanize, main: current_user.username.humanize))
   end
 end

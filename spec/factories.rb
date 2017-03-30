@@ -25,12 +25,14 @@ FactoryGirl.define do
     phone       "0728943923"
     rate        1
     spec        "Holy"
+    thumbnail   "http://render-eu.worldofwarcraft.com/character/grim-batol/249/146873337-avatar.jpg"
+    avatar      "http://render-eu.worldofwarcraft.com/character/grim-batol/249/146873337-profilemain.jpg"
   end
 
   factory :alt do
     username  "Nublol"
     server    "Grim Batol"
-    klass     "demon_hunter"
+    klass     "druid"
     thumbnail "http://render-eu.worldofwarcraft.com/character/grim-batol/202/113106634-avatar.jpg"
   end
 

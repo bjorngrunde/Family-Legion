@@ -44,11 +44,10 @@ class Alt::ChangeMainCharacter < Trailblazer::Operation
   end
 
   def set_meta_data!(options, **)
-    options["user"].profile.profile_meta_data = options["meta_data"]
+    options["user"].profile.update_attribute(:profile_meta_data, options["meta_data"])
   end
 
   def save_user!(options, **)
-    options["user"].profile.save
     options["user"].save
   end
 
