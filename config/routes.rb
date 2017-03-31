@@ -35,6 +35,12 @@ Rails.application.routes.draw do
     end
   end
 
+  #Forum
+  namespace :forum do
+    get "/" => "forum_groups#index", as: :index
+    post "create_group" => "forum_groups#create", as: :create_group
+  end
+
   #Admin
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel

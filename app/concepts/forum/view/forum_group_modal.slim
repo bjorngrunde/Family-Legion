@@ -1,0 +1,12 @@
+.ui.small.basic.group.modal
+  i.close.icon
+  .header
+    = t(:new_forum_group)
+  .description
+    = form_tag(forum_create_group_path, class: "ui equal width inverted form") do
+      field
+        = label_tag :title
+        = text_field_tag :title
+  .actions
+      = submit_tag t(:save), class: "ui tiny green button"
+

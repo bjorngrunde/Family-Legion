@@ -2,7 +2,7 @@
   .ui.container
     = link_to "Overview", dashboard_path, class: "item"
     = link_to "FLRS", "#", class: "item"
-    = link_to "Forum", "#", class: "item"
+    = link_to "Forum", forum_index_path, class: "item"
     = link_to "Discord", "#", class: "item"
     = link_to "Guild", "#", class: "item"
 
@@ -10,7 +10,7 @@
       .item
         .ui.inline.dropdown
           .text
-            == avatar_image 
+            == avatar_image
             span class="#{current_user.profile.klass}"
               = current_user.username
           i.dropdown.icon
