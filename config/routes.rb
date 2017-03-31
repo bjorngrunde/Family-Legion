@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => "pages#index"
   get 'dashboard' => 'pages#dashboard', as: :dashboard
-  
+
   #pagination
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  'sign_out' => 'sessions#sign_out', as: :sign_out
   get  'forgot_password' => "sessions#forgot_password", as: :forgot_password
   post 'send_password_link' => "sessions#send_password_link", as: :send_password_link
-  
+
   #Profile
   get 'profile/:username' => "profiles#show", as: :show_profile
 
@@ -22,19 +22,19 @@ Rails.application.routes.draw do
   resources :guild_applications, only: :create
 
   #Settings
-  scope "/user/:username/", as: :user do 
+  scope "/user/:username/", as: :user do
     namespace :setting do
       get 'control_panel' => "settings#control_panel", as: :control_panel
       get 'change_password' => "settings#change_password", as: :change_password
       patch 'new_password' => "settings#new_password", as: :new_password
 
       post 'change_main_character/:id' => "alts#change_main_character", as: :change_main
-      
+
       resources :alts, except: :show, concerns: :paginatable
       resources :profiles, only: [:edit, :update]
     end
   end
-  
+
   #Admin
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
