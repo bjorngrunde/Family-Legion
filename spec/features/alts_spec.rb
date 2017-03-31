@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "Alts", type: :feature do
-  
+
   scenario "should create an alt" do
-    result = create_user
 
-    login(result["model"].email, result["generated_password"])
+    user = create_user
+    login(user.email)
 
-    visit(user_setting_control_panel_path(username: result["model"].username))
+    visit(user_setting_control_panel_path(username: user.username))
     expect(page).to have_text("Create")
     click_link("Create")
 
@@ -25,10 +25,11 @@ RSpec.feature "Alts", type: :feature do
 
   scenario "should raise errors when creating alt" do
 
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
 
-    visit(user_setting_control_panel_path(username: result["model"].username))
+    login(user.email)
+
+    visit(user_setting_control_panel_path(username: user.username))
     expect(page).to have_text("Create")
     click_link("Create")
 
@@ -38,8 +39,8 @@ RSpec.feature "Alts", type: :feature do
     expect(page).to have_text("Username: Can't Be Blank")
     expect(page).to have_text("Server: Can't Be Blank")
 
-    visit(new_user_setting_alt_path(username: result["model"].username)) #TODO: Fix a reload() method later
-    
+    visit(new_user_setting_alt_path(username: user.username)) #TODO: Fix a reload() method later
+
     fill_in "alt[username]" , :with => "Bertius"
     fill_in "alt[server]", :with => "grom botol"
     select "Warrior", :from => "alt[klass]"
@@ -54,7 +55,7 @@ RSpec.feature "Alts", type: :feature do
 
     click_button("Save")
 
-    visit(new_user_setting_alt_path(username: result["model"].username))
+    visit(new_user_setting_alt_path(username: user.username))
 
     fill_in "alt[username]" , :with => "Bertius"
     fill_in "alt[server]", :with => "Grim Batol"
@@ -66,12 +67,14 @@ RSpec.feature "Alts", type: :feature do
   end
 
   scenario "should update alt" do
-    result = create_user
-    login(result["model"].email, result["generated_password"])
 
-    alt = create(:alt, user_id: result["model"].id)
+    user = create_user
 
-    visit(edit_user_setting_alt_path(username: result["model"].username, id: alt.id))
+    login(user.email)
+
+    alt = create(:alt, user_id: user.id)
+
+    visit(edit_user_setting_alt_path(username: user.username, id: alt.id))
 
     select "Druid", :from => "alt[klass]"
 
@@ -82,31 +85,34 @@ RSpec.feature "Alts", type: :feature do
   end
 
   scenario "should change alt to main character" do
-    result = create_user
-    login(result["model"].email, result["generated_password"])
+    user = create_user
 
-    alt = create :alt, user_id: result["model"].id
+    login(user.email)
 
-    visit(user_setting_alts_path(username: result["model"].username))
+    alt = create(:alt, user_id: user.id)
+
+    visit(show_profile_path(username: user.username))
+    visit(user_setting_alts_path(username: user.username))
 
     click_link("change-main")
 
     expect(page).to have_text("Oh Yeah!")
-    expect(page).to have_text("You changed main character from Sprayandpray to Nublol")
+    expect(page).to have_text("You changed main character from Bubbleoncd to Nublol")
   end
 
   scenario "can delete alt", js: true do
 
-    result = create_user
-    alt = create :alt, user_id: result["model"].id
-    
-    login(result["model"].email, result["generated_password"])
+    user = create_user
 
-    
-    visit(user_setting_alts_path(username: result["model"].username))
+    alt = create :alt, user_id: user.id
+
+    login(user.email)
+
+
+    visit(user_setting_alts_path(username: user.username))
 
     click_link("destroy-alt")
-    
+
     page.driver.browser.switch_to.alert.accept
 
     expect(page).to have_content("Oh Yeah!")

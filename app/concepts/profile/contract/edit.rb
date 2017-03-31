@@ -1,6 +1,5 @@
 module Profile::Contract
   class Edit < Reform::Form
-    require "reform/form/validation/unique_validator"
     
     property  :first_name
     property  :last_name
@@ -19,8 +18,8 @@ module Profile::Contract
       property :username
 
       validates :email, :username, presence: true
-      validates :username, unique: true
-      validates :email, unique: true
+      validates_uniqueness_of :username
+      validates_uniqueness_of :email
       validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
     end
   end

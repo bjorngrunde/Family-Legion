@@ -52,6 +52,8 @@ GEM
     archive-zip (0.7.0)
       io-like (~> 0.3.0)
     arel (7.1.4)
+    authority (3.3.0)
+      activesupport (>= 3.0.0)
     bcrypt (3.1.11)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
@@ -260,6 +262,7 @@ GEM
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
     rmagick (2.16.0)
+    rolify (5.1.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -360,6 +363,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authority
   breadcrumbs_on_rails
   byebug
   capistrano-rails
@@ -389,6 +393,7 @@ DEPENDENCIES
   reform (>= 2.2.4)
   reform-rails
   rmagick
+  rolify
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver
