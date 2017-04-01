@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   namespace :forum do
     get "/" => "forum_groups#index", as: :index
     post "create_group" => "forum_groups#create", as: :create_group
+    post "create_category" => "forum_categories#create", as: :create_category
+    get  "category/:id" =>"forum_categories#show", as: :category_show
   end
 
   #Admin

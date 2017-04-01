@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331173803) do
+ActiveRecord::Schema.define(version: 20170401170638) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -23,11 +23,37 @@ ActiveRecord::Schema.define(version: 20170331173803) do
     t.index ["username"], name: "index_alts_on_username", unique: true, using: :btree
   end
 
-  create_table "forum_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
+  create_table "forum_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
+    t.string   "description"
+    t.string   "role"
+    t.integer  "forum_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["title"], name: "index_forum_categories_on_title", unique: true, using: :btree
+  end
+
+  create_table "forum_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_forum_groups_on_title", unique: true, using: :btree
+  end
+
+  create_table "forum_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "body",              limit: 65535
+    t.integer  "forum_group_id"
+    t.integer  "forum_category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
+    t.index ["forum_group_id"], name: "index_forum_threads_on_forum_group_id", using: :btree
+    t.index ["url", "title"], name: "index_forum_threads_on_url_and_title", unique: true, using: :btree
+    t.index ["user_id"], name: "index_forum_threads_on_user_id", using: :btree
   end
 
   create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

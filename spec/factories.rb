@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :forum_thread do
+    
+  end
+  factory :forum_category do
+    
+  end
   factory :forum_group do
     
   end

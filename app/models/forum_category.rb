@@ -1,8 +1,8 @@
-class ForumGroup < ApplicationRecord
+class ForumCategory < ApplicationRecord
   resourcify
   include Authority::Abilities
 
-  has_many :forum_categories
+  belongs_to :forum_group
   has_many :forum_threads
   has_many :forum_comments
 

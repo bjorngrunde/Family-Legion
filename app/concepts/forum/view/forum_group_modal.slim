@@ -1,12 +1,17 @@
-.ui.small.basic.group.modal
+.ui.small.group.modal
   i.close.icon
   .header
     = t(:new_forum_group)
-  .description
-    = form_tag(forum_create_group_path, class: "ui equal width inverted form") do
-      field
-        = label_tag :title
-        = text_field_tag :title
-  .actions
-      = submit_tag t(:save), class: "ui tiny green button"
+  .content
+    = form_tag(forum_create_group_path, method: :post, class: "ui equal width form") do
+      .two.fields
+        .field
+          = label_tag :title
+          = text_field_tag :title
+        .field
+          = label_tag :role
+            = t(:limit_access)
+          = select_tag :role, options_for_select(roles_options), class: "ui dropdown"
+      .field
+        = submit_tag t(:save), class: "ui tiny green button right aligned", value: :submit
 

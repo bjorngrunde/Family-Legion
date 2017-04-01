@@ -1,4 +1,14 @@
-= cell(Forum::Cell::ModeratorNav)
+- if current_user.has_role? :moderator
+  = cell(Forum::Cell::ModeratorNav)
+  = cell(Forum::Cell::ForumGroupModal)
+  = cell(Forum::Cell::ForumCategoryModal)
 
-
-= cell(Forum::Cell::ForumGroupModal)
+table.ui.inverted.selectable.table
+  - model.each do |group|
+    - if current_user.has_role?(group.role) || group.role == "default"
+      thead
+        tr.dark-box
+          th colspan="3"
+            = group.title
+      tbody
+        = cell(Forum::Cell::Categories, collection: group.forum_categories)

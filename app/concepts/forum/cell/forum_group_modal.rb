@@ -1,5 +1,4 @@
 module Forum::Cell
-  class ForumGroupModal < Familylegion::Cell::Master
-
+  class ForumGroupModal < Forum::Cell::Master
   end
 end

@@ -1,10 +1,12 @@
-class ForumGroup < ApplicationRecord
+class ForumThread < ApplicationRecord
   resourcify
   include Authority::Abilities
 
-  has_many :forum_categories
-  has_many :forum_threads
+  belongs_to :forum_group
+  belongs_to :forum_thread
+  belongs_to :user
   has_many :forum_comments
 
   self.authorizer_name = 'ForumAuthorizer'
+
 end

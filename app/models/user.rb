@@ -8,7 +8,7 @@ class User < ApplicationRecord
 	#Associations
 	has_one :profile, dependent: :destroy
   has_many :alts, dependent: :destroy
-  has_many :forum_groups
+  has_many :forum_threads
 
   self.authorizer_name = 'AdminAuthorizer'
 
