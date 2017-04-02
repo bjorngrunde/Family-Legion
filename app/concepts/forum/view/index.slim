@@ -8,7 +8,11 @@ table.ui.inverted.selectable.table
     - if current_user.has_role?(group.role) || group.role == "default"
       thead
         tr.dark-box
-          th colspan="3"
+          th
             = group.title
+          th
+            p= t(:threads)
+          th
+            p= t(:last_activity)
       tbody
         = cell(Forum::Cell::Categories, collection: group.forum_categories)

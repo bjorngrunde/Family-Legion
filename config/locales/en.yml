@@ -147,3 +147,6 @@ en:
   add_forum_category:         "New Category"
   title:                      "Title"
   whats_on_your_mind:         "Whats on your mind?"
+  no_activity_yet:            "No activity yet"
+  last_activity:              "Latest activity"
+  threads:                    "Threads"
