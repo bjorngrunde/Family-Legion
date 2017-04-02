@@ -11,6 +11,6 @@ class Forum::ForumCategoriesController < ApplicationController
   def show
     result = run Forum::ShowCategory
     return policy_breach! if result["result.policy.default"].failure?
-    render cell(Forum::Cell::ShowCategory, result["model"], context: { current_user: current_user})
+    render cell(Forum::Cell::ShowCategory, result["model"], context: { current_user: current_user, threads: result["threads"]})
   end
 end

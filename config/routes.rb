@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root :to => "pages#index"
   get 'dashboard' => 'pages#dashboard', as: :dashboard
 
@@ -35,12 +34,19 @@ Rails.application.routes.draw do
     end
   end
 
+  #Image managment
+  namespace :image do
+    post '/store/attachment/' => "image_manager#create"
+  end
   #Forum
   namespace :forum do
-    get "/" => "forum_groups#index", as: :index
-    post "create_group" => "forum_groups#create", as: :create_group
-    post "create_category" => "forum_categories#create", as: :create_category
-    get  "category/:id" =>"forum_categories#show", as: :category_show
+    get   "/" => "forum_groups#index", as: :index
+    post  "create_group" => "forum_groups#create", as: :create_group
+    post  "create_category" => "forum_categories#create", as: :create_category
+    get   "category/:id" => "forum_categories#show", as: :category_show, concerns: :paginatable
+    get   "category/:forum_category_id/create_thread" => "forum_threads#new", as: :new_thread
+    post  "category/:forum_category_id/create_thread" => "forum_threads#create", as: :create_thread
+    get   "category/:forum_category_id/thread/:url" => "forum_threads#show", as: :show_thread
   end
 
   #Admin
@@ -54,8 +60,6 @@ Rails.application.routes.draw do
     resources :guild_applications, except: [:new, :create], concerns: :paginatable
     resources :users, concerns: :paginatable
   end
-
-
 
 
 end

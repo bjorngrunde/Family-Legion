@@ -332,6 +332,8 @@ GEM
       reform-rails (>= 0.1.4, < 0.2.0)
       trailblazer (>= 2.0.0, < 2.1.0)
       trailblazer-loader (>= 0.1.0)
+    trix (0.10.1)
+      rails
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -405,6 +407,7 @@ DEPENDENCIES
   trailblazer
   trailblazer-cells
   trailblazer-rails
+  trix
   turbolinks (~> 5)
   tyrant
   tzinfo-data
@@ -413,4 +416,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.14.6

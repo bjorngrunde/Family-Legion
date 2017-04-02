@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :image_manager do
+    
+  end
   factory :forum_thread do
     
   end

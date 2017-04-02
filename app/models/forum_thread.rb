@@ -3,7 +3,7 @@ class ForumThread < ApplicationRecord
   include Authority::Abilities
 
   belongs_to :forum_group
-  belongs_to :forum_thread
+  belongs_to :forum_category
   belongs_to :user
   has_many :forum_comments
 

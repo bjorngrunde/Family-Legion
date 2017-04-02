@@ -5,7 +5,7 @@ module Familylegion::Cell
     include ActionView::Helpers::DateHelper
     include ActionView::Helpers::FormOptionsHelper
     include Kaminari::Cells
-    
+
     def current_user
       context[:current_user]
     end
@@ -16,7 +16,8 @@ module Familylegion::Cell
 
     def model_css_class
       return "#{model.profile.klass.sub("_", "-")}" if model.is_a?(User)
-      "#{model.klass.sub("_","-")}" 
+      return "#{model.klass.sub("_","-")}" if model.is_a?(Profile)
+      "#{model.user.profile.klass.sub("_", "-")}"
     end
 
     def current_user_css_class

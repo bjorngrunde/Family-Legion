@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require semantic-ui
+//= require trix
 //= require_tree
 //= require turbolinks
