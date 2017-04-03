@@ -1,9 +1,11 @@
-.ui.small.new.group.modal
+.ui.small.edit.group.modal
   i.close.icon
   .header
-    = t(:new_forum_group)
+    = t(:edit_forum_group)
   .content
-    = form_tag(forum_create_group_path, method: :post, class: "ui equal width form") do
+    = select :forum_groups, :groups, group_options,{ include_blank: t(:choose_group_to_edit)} , { class: "ui dropdown", id: "edit-group-select" }
+    .ui.inverted.loader Loading
+    = form_tag(forum_create_group_path, method: :post, class: "ui equal width edit group form transition hidden") do
       .two.fields
         .field
           = label_tag :title
@@ -14,4 +16,3 @@
           = select_tag :role, options_for_select(roles_options), class: "ui dropdown"
       .field
         = submit_tag t(:save), class: "ui tiny green button right aligned", value: :submit
-

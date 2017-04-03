@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   namespace :forum do
     get   "/" => "forum_groups#index", as: :index
     post  "create_group" => "forum_groups#create", as: :create_group
+    post  "edit_group/:id" => "forum_groups#edit", as: :edit_group
     post  "create_category" => "forum_categories#create", as: :create_category
     get   "category/:id" => "forum_categories#show", as: :category_show, concerns: :paginatable
     get   "category/:forum_category_id/create_thread" => "forum_threads#new", as: :new_thread

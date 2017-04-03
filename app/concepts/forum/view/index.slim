@@ -1,7 +1,8 @@
 - if current_user.has_role? :moderator
-  = cell(Forum::Cell::ModeratorNav)
   = cell(Forum::Cell::ForumGroupModal)
   = cell(Forum::Cell::ForumCategoryModal)
+  = cell(Forum::Cell::EditForumCategoryModal)
+  = cell(Forum::Cell::EditForumGroupModal)
 
 table.ui.inverted.selectable.table
   - model.each do |group|
@@ -14,5 +15,7 @@ table.ui.inverted.selectable.table
             p= t(:threads)
           th
             p= t(:last_activity)
+          th
+            = cell(Forum::Cell::ModeratorNav, group)
       tbody
         = cell(Forum::Cell::Categories, collection: group.forum_categories)

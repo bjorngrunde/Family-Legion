@@ -4,10 +4,6 @@
 
 $('.ui.dropdown').dropdown()
 $('.ui.checkbox').checkbox()
-$('.group.modal')
-  .modal('attach events', '.new.forum.group', 'show')
-$('.category.modal')
-  .modal('attach events', '.new.forum.category, show')
 $('.message .close').on 'click', ->
   $(this).closest('.message').transition 'fade'
   return

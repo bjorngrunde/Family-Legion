@@ -150,3 +150,6 @@ en:
   no_activity_yet:            "No activity yet"
   last_activity:              "Latest activity"
   threads:                    "Threads"
+  choose_group_to_edit:       "Choose group to edit"
+  edit_forum_group:           "Edit a forum group"
+  edit_forum_category:        "Edit a forum category"

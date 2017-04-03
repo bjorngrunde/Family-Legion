@@ -11,4 +11,8 @@ class ForumPolicy
   def read?
     @model.id && (@user.has_role?(@model.role) || @model.role == "default")
   end
+
+  def update?
+    @model.id && @user.has_role?(:moderator)
+  end
 end

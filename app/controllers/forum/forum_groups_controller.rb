@@ -11,4 +11,10 @@ class Forum::ForumGroupsController < ApplicationController
     return policy_breach! if result["result.policy.default"].failure?
     return redirect_to forum_index_path, flashy(:positive, t(:oh_yeah), t(:forum_group_created)) if result.success?
   end
+
+  def edit
+    result = run Forum::EditGroup
+    render status: 302, json: { title: result["model"].title, id: result["model"].id, role: result["model"].role } if result.success?
+    render status: 401, json: { errors: "Not Authorized!!"} if result["result.policy.default"].failure?
+  end
 end
