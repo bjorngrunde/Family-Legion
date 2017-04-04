@@ -3,9 +3,10 @@
   .header
     = t(:edit_forum_group)
   .content
-    = select :forum_groups, :groups, group_options,{ include_blank: t(:choose_group_to_edit)} , { class: "ui dropdown", id: "edit-group-select" }
+    .js-selector
+      = select :forum_groups, :groups, group_options,{ include_blank: t(:choose_group_to_edit)} , { class: "ui dropdown", id: "edit-group-select" }
     .ui.inverted.loader Loading
-    = form_tag(forum_create_group_path, method: :post, class: "ui equal width edit group form transition hidden") do
+    = form_tag("/forum/", method: :put, class: "ui equal width edit group form transition hidden") do
       .two.fields
         .field
           = label_tag :title
@@ -15,4 +16,6 @@
             = t(:limit_access)
           = select_tag :role, options_for_select(roles_options), class: "ui dropdown"
       .field
-        = submit_tag t(:save), class: "ui tiny green button right aligned", value: :submit
+        = submit_tag t(:save), class: "ui tiny green button right aligned"
+        = link_to t(:cancel), "#", class: "ui tiny red deny button", onclick: "resetElement('.edit.group.modal')"
+

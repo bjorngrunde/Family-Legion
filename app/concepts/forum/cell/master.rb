@@ -8,5 +8,9 @@ module Forum::Cell
     def group_options
       ForumGroup.all.map { |group| [ group.title, group.id]}
     end
+
+    def category_options
+      ForumCategory.all.map { |category| [category.title, category.id] }
+    end
   end
 end

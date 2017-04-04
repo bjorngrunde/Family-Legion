@@ -41,10 +41,13 @@ Rails.application.routes.draw do
   #Forum
   namespace :forum do
     get   "/" => "forum_groups#index", as: :index
-    post  "create_group" => "forum_groups#create", as: :create_group
-    post  "edit_group/:id" => "forum_groups#edit", as: :edit_group
-    post  "create_category" => "forum_categories#create", as: :create_category
+    post  "create/group" => "forum_groups#create", as: :create_group
+    post  "edit/group/:id" => "forum_groups#edit", as: :edit_group
+    put   "update/group/:id" => "forum_groups#update", as: :update_group
     get   "category/:id" => "forum_categories#show", as: :category_show, concerns: :paginatable
+    post  "create/category" => "forum_categories#create", as: :create_category
+    post  "edit/category/:id" => "forum_categories#edit", as: :edit_category
+    put   "update/category/:id" => "forum_categories#update", as: :update_category
     get   "category/:forum_category_id/create_thread" => "forum_threads#new", as: :new_thread
     post  "category/:forum_category_id/create_thread" => "forum_threads#create", as: :create_thread
     get   "category/:forum_category_id/thread/:url" => "forum_threads#show", as: :show_thread
