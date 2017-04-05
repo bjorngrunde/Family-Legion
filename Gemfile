@@ -35,6 +35,8 @@ gem 'warden'
 gem 'jquery-turbolinks'
 gem 'kaminari'
 gem 'kaminari-cells'
+gem 'authority'
+gem "rolify"
 
 group :development, :test do
   gem "database_cleaner"

@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
-  
+
   scenario "User can change password" do
-   
+
     new_password = "taskmört1337"
 
-    result = create_user
+    user = create_user
 
-    login(result["model"].email, result["generated_password"])
+    login(user.email)
 
-    visit(user_setting_change_password_path(username: result["model"].username))
+    visit(user_setting_change_password_path(username: user.username))
 
-    fill_in "user_old_password", :with => result["generated_password"]
+    fill_in "user_old_password", :with => ENV["USER_PW"]
     fill_in "user_new_password", :with => new_password
     fill_in "user_confirm_new_password", :with => new_password
     click_button("Save")
@@ -26,11 +26,11 @@ RSpec.feature "Users", type: :feature do
 
     new_password = "taskmört1337"
 
-    result = create_user
+    user = create_user
 
-    login(result["model"].email, result["generated_password"])
+    login(user.email)
 
-    visit(user_setting_change_password_path(username: result["model"].username))
+    visit(user_setting_change_password_path(username: user.username))
 
     fill_in "user_old_password", :with => "crappy string"
     fill_in "user_new_password", :with => ""
@@ -43,7 +43,7 @@ RSpec.feature "Users", type: :feature do
     expect(page).to have_text("New password: Can't Be Blank")
 
 
-    fill_in "user_old_password", :with => result["generated_password"]
+    fill_in "user_old_password", :with => ENV["USER_PW"]
     fill_in "user_new_password", :with => new_password
     fill_in "user_confirm_new_password", :with => "crappy string"
     click_button("Save")

@@ -1,0 +1,8 @@
+= form_for([:admin, form], url: admin_add_user_role_path(model.username), html: { class: "ui equal width inverted form role"} ) do |f|
+  -if form.errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
+  .field
+    = f.label :roles
+    = f.select :roles, Role.all.reverse.map { |role| [role.name.titleize, role.name] unless role.name == "developer" }, {}, { class: "ui dropdown" }
+  .field
+    = f.submit :submit, class: "tiny ui green button", value: t(:add_role)

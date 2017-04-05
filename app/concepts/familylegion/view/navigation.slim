@@ -17,5 +17,5 @@
           .inverted.menu
             = link_to "Profile", show_profile_path(username: current_user.username), class: "item"
             = link_to "Settings", user_setting_control_panel_path(username: current_user.username), class: "item"
-            = link_to "Admin", admin_control_panel_path, class: "item"
+            = link_to "Admin", admin_control_panel_path, class: "item" if current_user.has_role?(:admin)
             = link_to "Logout", sign_out_path, class: "item"

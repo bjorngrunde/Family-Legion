@@ -1,6 +1,7 @@
 class User::CreateUserFromGuildApplication < Trailblazer::Operation
 
 	step 	Nested(:build!)
+	step	Policy::Pundit(UserPolicy, :create?)
 	step 	:generate_password!
 	step	Contract::Validate(key: :user)
 	step 	Nested(:initialize_wowapi!)
@@ -8,7 +9,7 @@ class User::CreateUserFromGuildApplication < Trailblazer::Operation
 		{ "name" => mutable_data["contract.default"].username,
 			"realm" => mutable_data["contract.default"].profile.server,
 			"contract" => mutable_data["contract.default"] }
-	end 
+	end
 	)
 	step 	:add_thumbnail!
 	step Nested(:update_meta_data!, input: ->(options, mutable_data: , runtime_data:, **)do

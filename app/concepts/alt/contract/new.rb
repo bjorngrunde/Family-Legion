@@ -3,6 +3,7 @@ module Alt::Contract
     property  :username
     property  :klass
     property  :server
+    property  :thumbnail
 
     validates :username, :klass, :server, presence: true
     validates_uniqueness_of :username

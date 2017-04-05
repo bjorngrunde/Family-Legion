@@ -1,10 +1,11 @@
 class Alt::Update < Trailblazer::Operation
 
   step Model(Alt, :find_by)
+  step Policy::Pundit(AltPolicy, :update?)
   step Contract::Build(constant: Alt::Contract::New)
   step Contract::Validate(key: :alt)
   step Nested(:init_wow_api!)
-  step Nested(:get_thumbnail!, input: ->(options, mutable_data:, runtime_data:, **)do
+  step Nested(:get_thumbnail!, input: ->(options, mutable_data:, **)do
     { "name" => mutable_data["contract.default"].username,
       "realm" => mutable_data["contract.default"].server,
       "contract" => mutable_data["contract.default"]}
@@ -22,6 +23,6 @@ class Alt::Update < Trailblazer::Operation
   end
 
   def add_thumbnail!(options, **)
-    options["model"].thumbnail = options["thumbnail"]
+    options["contract.default"].thumbnail = options["thumbnail"]
   end
 end

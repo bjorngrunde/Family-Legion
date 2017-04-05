@@ -16,7 +16,7 @@ en:
   # ActiveRecord errors
   has_already_been_taken:   "The resource you tried to save already exists!"
   can_t_be_blank:           "Can't be blank."
-  
+
   #General
   save:                     "Save"
   edit:                     "Edit"
@@ -40,6 +40,8 @@ en:
   alert_delete:             "Are you sure you want to delete the object?"
   Something_went_wrong:     "Ohh my! This does not look right."
   not_authorized:           "Oi! You can't access that!"
+  policy_breach_text:       "Something went wrong. You might not have the right authority to access that resource."
+  cannot_edit_user:         "You can not edit this user!"
 
   # BreadCrumbs
   breadcrumbs:
@@ -49,6 +51,7 @@ en:
     show:                   "%{user}"
     edit:                   "Edit"
     new:                    "New"
+    roles:                  "Roles"
 
   #GuildApplication
   first_name:               "First Name"
@@ -125,4 +128,16 @@ en:
   change_main_tooltip:        "Change this alt to be your main character"
   change_main_header:         "Change main"
   sure_to_change_main:        "Are you sure you wanna change your main character?"
-  you_changed_character:      "You changed main character from %{alt} to %{main}" 
+  you_changed_character:      "You changed main character from %{alt} to %{main}"
+
+  #Roles
+  roles:                      "Roles"
+  user_roles:                 "Add or remove roles for user"
+  add_role:                   "Add role"
+  user_has_roles:             "This user currently has these roles:"
+  how_roles_work:             "How roles works!"
+  user_roles_explained:       "A user must have one or several roles. A role gains access to a specific part of the site or authority to perform certain actions. A user that has the role Admin and member will have basic access and also be able to access admin dashboard, but not be able to edit the forum."
+  role_added:                 "You have added the role %{role} to %{user}"
+  click_to_remove_role:       "Click to remove this role."
+  role_removed:               "You successfully removed a role"
+  user_already_has_this_role: "The user already has this role!"

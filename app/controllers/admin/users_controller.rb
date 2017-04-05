@@ -8,6 +8,7 @@ class Admin::UsersController < AdminController
   
 	def create_user_from_guild_application
 		result = run User::CreateUserFromGuildApplication
+		return policy_breach! if result["result.policy.default"].failure?
 		return redirect_to admin_user_path(result["model"]), :positive => { :header => t(:oh_yeah), :content => t(:user_created, name: result["model"].username) } if result.success?
 		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
 	end
@@ -19,7 +20,9 @@ class Admin::UsersController < AdminController
 
 	def new
 		result = run User::New
-		render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]})
+		return policy_breach! if result["result.policy.default"].failure?
+		return render cell(User::Cell::New, result["model"], context: { form: result["contract.default"]}) if result.success?
+		redirect_to dashboard_path
 	end
 
 	def show
@@ -30,13 +33,16 @@ class Admin::UsersController < AdminController
 
 	def edit
 		result = run User::Edit
+		return policy_breach! if result["result.policy.default"].failure?
 		add_breadcrumb I18n.t("breadcrumbs.show", user: result["model"].username), :admin_user_path
 		add_breadcrumb I18n.t("breadcrumbs.edit"), :edit_admin_user_path
-		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
+		return render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]}) if result.success?
+		redirect_to dashboard_path
 	end
 	
 	def update
 		result = run User::Update
+		return policy_breach! if result["result.policy.default"].failure?
 		return redirect_to admin_user_path(result["model"]), :positive => { :header => "", :content => t(:user_updated, name: result["model"].username.humanize)} if result.success?
 		render cell(User::Cell::Edit, result["model"], context: { form: result["contract.default"]})
 	end

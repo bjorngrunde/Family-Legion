@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305212713) do
+ActiveRecord::Schema.define(version: 20170314200701) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(version: 20170305212713) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true, using: :btree
+  end
+
+  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
 end

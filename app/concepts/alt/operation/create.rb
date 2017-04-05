@@ -1,6 +1,7 @@
 class Alt::Create < Trailblazer::Operation
 
   step Nested(:build!)
+  step Policy::Pundit(AltPolicy, :create?)
   step Contract::Validate(key: :alt)
   step Nested(:init_wow_api!)
   step Nested(:get_thumbnail!, input: ->(options, mutable_data:, runtime_data:, **)do
@@ -26,7 +27,7 @@ class Alt::Create < Trailblazer::Operation
   end
 
   def add_thumbnail!(options, **)
-    options["model"].thumbnail = options["thumbnail"]
+    options["contract.default"].thumbnail = options["thumbnail"]
   end
 
   def add_user!(options, **)
