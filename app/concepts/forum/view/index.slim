@@ -1,20 +1,10 @@
 - if current_user.has_role? :moderator
   = cell(Forum::Cell::ModeratorNav)
-  = cell(Forum::Cell::ForumGroupModal)
-  = cell(Forum::Cell::ForumCategoryModal)
-  = cell(Forum::Cell::EditForumCategoryModal)
-  = cell(Forum::Cell::EditForumGroupModal)
+  = cell(Forum::Group::Cell::New)
+  = cell(Forum::Group::Cell::Edit)
+  = cell(Forum::Category::Cell::New)
+  = cell(Forum::Category::Cell::Edit)
 
 table.ui.inverted.selectable.table
-  - model.each do |group|
-    - if current_user.has_role?(group.role) || group.role == "default"
-      thead
-        tr.dark-box
-          th
-            = group.title
-          th
-            p= t(:threads)
-          th
-            p= t(:last_activity)
-      tbody
-        = cell(Forum::Cell::Categories, collection: group.forum_categories)
+  = cell(Forum::Group::Cell::Collection, collection: model)
+

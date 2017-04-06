@@ -4,9 +4,8 @@ html
   body
     = render html: cell(Familylegion::Cell::Navigation, nil, context: { current_user: tyrant.current_user})
     .ui.one.column.grid.container.inverted.segment
-      - unless flash.empty?
-        .column
-          = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
       .column
+        - unless flash.empty?
+          = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
         == yield
     = render "layouts/partials/footer"
