@@ -1,0 +1,30 @@
+.ui.small.edit.category.modal
+  i.close.icon
+  .header
+    = t(:edit_forum_category)
+  .content
+    .js-selector
+      = select :forum_categories, :categories, category_options,{ include_blank: t(:choose_category_to_edit)} , { class: "ui search dropdown", id: "edit-category-select" }
+    .ui.inverted.loader Loading
+    = form_tag("/forum/", method: :put, class: "ui equal width edit category form transition hidden") do
+      .two.fields
+        .field
+          = label_tag :title
+            = t(:title)
+          = text_field_tag :title
+        .field
+          = label_tag :description
+            = t(:description)
+          = text_field_tag :description
+      .two.fields
+        .field
+          = label_tag :role
+            = t(:limit_access)
+          = select_tag :role, options_for_select(roles_options), class: "ui dropdown"
+        .field
+          = label_tag :forum_group_id
+            = t(:group)
+          = select_tag :forum_group_id, options_for_select(group_options), { class: "ui dropdown", id: "group-id" }
+      .field
+        = submit_tag t(:save), class: "ui tiny green button right aligned"
+        = link_to t(:cancel), "#", class: "ui tiny red deny button", onclick: "resetElement('.edit.group.modal')"

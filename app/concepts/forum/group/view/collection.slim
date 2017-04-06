@@ -1,0 +1,11 @@
+- if current_user.has_role?(model.role) || model.role == "default"
+  thead
+    tr.dark-box
+      th
+        = model.title
+      th
+        p= t(:threads)
+      th
+        p= t(:last_activity)
+  tbody
+    = cell(Forum::Category::Cell::Collection, collection: model.forum_categories)
