@@ -24,8 +24,8 @@ module Familylegion::Cell
       "#{current_user.profile.klass.sub("_", "-")}"
     end
 
-    def profile_link
-      link_to model.username.humanize, show_profile_path(username: model.username), class: "#{model_css_class}"
+    def profile_link user
+      link_to user.username.humanize, show_profile_path(username: user.username), class: "#{model_css_class}"
     end
   end
 end

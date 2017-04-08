@@ -9,4 +9,9 @@ class ForumThread < ApplicationRecord
 
   self.authorizer_name = 'ForumAuthorizer'
 
+  before_save :set_slug!
+
+  def set_slug!
+    self.slug = self.title.parameterize
+  end
 end

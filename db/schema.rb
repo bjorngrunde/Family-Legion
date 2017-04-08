@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402074346) do
+ActiveRecord::Schema.define(version: 20170408132817) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -23,19 +23,6 @@ ActiveRecord::Schema.define(version: 20170402074346) do
     t.index ["username"], name: "index_alts_on_username", unique: true, using: :btree
   end
 
-  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "data_uid",                  null: false
-    t.string   "data_name",                 null: false
-    t.string   "data_mime_type"
-    t.integer  "data_size"
-    t.string   "type",           limit: 30
-    t.integer  "data_width"
-    t.integer  "data_height"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
-  end
-
   create_table "forum_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "description"
@@ -43,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170402074346) do
     t.integer  "forum_group_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_forum_categories_on_slug", unique: true, using: :btree
     t.index ["title"], name: "index_forum_categories_on_title", unique: true, using: :btree
   end
 
@@ -51,12 +40,14 @@ ActiveRecord::Schema.define(version: 20170402074346) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_forum_groups_on_slug", unique: true, using: :btree
     t.index ["title"], name: "index_forum_groups_on_title", unique: true, using: :btree
   end
 
   create_table "forum_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "url"
+    t.string   "slug"
     t.text     "body",              limit: 65535
     t.integer  "forum_group_id"
     t.integer  "forum_category_id"
@@ -65,7 +56,8 @@ ActiveRecord::Schema.define(version: 20170402074346) do
     t.datetime "updated_at",                      null: false
     t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
     t.index ["forum_group_id"], name: "index_forum_threads_on_forum_group_id", using: :btree
-    t.index ["url", "title"], name: "index_forum_threads_on_url_and_title", unique: true, using: :btree
+    t.index ["slug", "title"], name: "index_forum_threads_on_slug_and_title", unique: true, using: :btree
+    t.index ["slug"], name: "index_forum_threads_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_forum_threads_on_user_id", using: :btree
   end
 

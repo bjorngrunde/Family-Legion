@@ -3,7 +3,7 @@
   .header
     = t(:new_forum_category)
   .content
-    = form_tag(forum_create_category_path, method: :post, class: "ui equal width form") do
+    = form_tag(forum_create_category_path(), method: :post, class: "ui equal width form") do
       .two.fields
         .field
           = label_tag :title

@@ -41,17 +41,33 @@ Rails.application.routes.draw do
 
   #Forum
   namespace :forum do
-    get '/' => "forum_groups#index", as: :overview
-    resources :forum_groups, except: [:show, :index], as: :group
-    scope '/:group/' do
-      scope '/:category/' do
-        get '/' => "forum_categories#show", as: :category_show
-        resources :forum_category, except: [:show, :index], as: :category
+    #Since rails is not perfect it fails to guess correct paths here using 'resources'. Use regular paths with convention action_resource
 
-        scope '/:thread/' do
-          get '/' => "forum_threads#show", as: :thread_show
-          resources :forum_threads, except: :show, concerns: :paginatable
-        end
+    #groups
+    get '/' => "forum_groups#index", as: :overview
+    post '/group/:id/edit' => "forum_groups#edit", as: :edit_group
+    put '/group/:id' => "forum_groups#update", as: :update_group
+    post '/group' => "forum_groups#create", as: :create_group
+    delete '/group/:id' => "forum_groups#delete", as: :delete_group
+
+    #categories
+    post '/category/:id/edit' => "forum_category#edit", as: :edit_category
+    put '/category/:id' => "forum_category#update", as: :update_category
+    post '/category' => "forum_category#create", as: :create_category
+    delete '/category/:id' => "forum_category#delete", as: :delete_category
+
+    #threads
+    get '/thread' => "forum_threads#new", as: :new_thread
+    get '/thread/:id/edit' => "forum_threads#edit", as: :edit_thread
+    put '/thread/:id' => "forum_threads#update", as: :update_thread
+    post '/thread' => "forum_threads#create", as: :create_thread
+    delete '/thread/:id' => "forum_threads#delete", as: :delete_thread
+
+    #Some scopes for pretty URLS
+    scope '/:group/:category' do
+      get '/' => "forum_category#show", as: :show_category
+      scope '/:thread/' do
+        get '/' => "forum_threads#show", as: :show_thread
       end
     end
   end

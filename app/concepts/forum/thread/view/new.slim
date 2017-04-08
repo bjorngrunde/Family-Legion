@@ -1,5 +1,5 @@
 .dark-box
-  = form_for([:forum, model], url: forum_create_thread_path(forum_category_id: context[:category]), html: {class: "ui equal width inverted form"}) do |f|
+  = form_for([:forum, model], url: forum_create_thread_path(category: context[:category]), html: {class: "ui equal width inverted form"}) do |f|
     -if context[:form].errors.messages.any?
       = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
     .field
@@ -12,4 +12,4 @@
       = f.trix_editor :body
     .field
       = f.submit :submit, class: "ui tiny green button", value: t(:submit)
-      = link_to t(:cancel), forum_category_show_path(id: context[:category]), class: "ui tiny red button"
+      = link_to t(:cancel), forum_show_category_path(group: context[:group], category: context[:category]), class: "ui tiny red button"

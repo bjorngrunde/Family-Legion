@@ -1,0 +1,16 @@
+.forum.profile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.forum.profile {
+  .image > img {
+    margin: 0 auto;
+  }
+}
+.forum.stats {
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 .thread.actions.right.aligned
 
-  = link_to t(:create_thread), forum_new_thread_path(forum_category_id: model.id), class: "ui tiny alliance button"
+  = link_to t(:create_thread), forum_new_thread_path(group: model.forum_group.slug, category: model.slug), class: "ui tiny alliance button"
 
 table.ui.inverted.selectable.table
   thead

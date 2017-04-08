@@ -6,6 +6,8 @@ $('.edit.group.modal')
   .modal('attach events', '.edit.forum.group', 'show')
 $('.edit.category.modal')
   .modal('attach events', '.edit.forum.category', 'show')
+$('.wrapper .menu .item')
+  .tab()
 
 
 $('#edit-group-select').change ->
@@ -14,12 +16,9 @@ $('#edit-group-select').change ->
 
   $('.js-selector').remove()
 
-  loader = $('.ui.loader')
-  loader.addClass("active")
-
   getUrl = window.location
   baseUrl = getUrl.protocol + '//' + getUrl.host
-  host = baseUrl + '/forum/edit/group/' + group
+  host = baseUrl + '/forum/group/' + group + '/edit'
 
   auth_token = $('meta[name=csrf-token]').attr('content')
 
@@ -33,13 +32,13 @@ $('#edit-group-select').change ->
   xhr.onload = ->
     response = JSON.parse(@responseText)
     if xhr.status == 302
-      loader.removeClass('active')
-      loader.addClass('hidden')
+      button = $('.delete-group')
+      button.attr('href', button.attr('href') + response.id)
       element = $('.edit.group.form')
-      element.attr('action', element.attr("action")+ "update/group/" + response.id)
+      element.attr('action', element.attr("action") + response.id)
       element.find("input#title").attr('value', response.title)
       element.find(".ui.dropdown.selection").dropdown('set selected', response.role)
-      element.transition('fade')
+      $(".wrapper").transition('fade')
     else if xhr.status == 422
       modalErrors(response.errors)
 
@@ -51,12 +50,9 @@ $('#edit-category-select').change ->
 
   $('.js-selector').remove()
 
-  loader = $('.ui.loader')
-  loader.addClass("active")
-
   getUrl = window.location
   baseUrl = getUrl.protocol + '//' + getUrl.host
-  host = baseUrl + '/forum/edit/category/' + category
+  host = baseUrl + '/forum/category/' + category + '/edit'
 
   auth_token = $('meta[name=csrf-token]').attr('content')
 
@@ -70,15 +66,15 @@ $('#edit-category-select').change ->
   xhr.onload = ->
     response = JSON.parse(@responseText)
     if xhr.status == 302
-      loader.removeClass('active')
-      loader.addClass('hidden')
+      button = $('.delete-category')
+      button.attr('href', button.attr('href') + response.id)
       element = $('.edit.category.form')
-      element.attr('action', element.attr("action")+ "update/category/" + response.id)
+      element.attr('action', element.attr("action") + response.id)
       element.find("input#title").attr('value', response.title)
       element.find("input#description").attr('value', response.description)
       element.find("select#group-id").parent().dropdown('set selected', response.forum_group_id)
       element.find("select#role").parent().dropdown('set selected', response.role)
-      element.transition('fade')
+      $(".wrapper").transition('fade')
     else if xhr.status == 422
       modalErrors(response.errors)
 

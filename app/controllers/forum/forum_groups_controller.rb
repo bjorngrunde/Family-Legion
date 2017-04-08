@@ -9,7 +9,7 @@ class Forum::ForumGroupsController < ApplicationController
   def create
     result = run Forum::Group::Create
     return policy_breach! if result["result.policy.default"].failure?
-    return redirect_to forum_index_path, flashy(:positive, t(:oh_yeah), t(:forum_group_created)) if result.success?
+    return redirect_to forum_overview_path, flashy(:positive, t(:oh_yeah), t(:forum_group_created)) if result.success?
   end
 
   def edit
@@ -21,7 +21,13 @@ class Forum::ForumGroupsController < ApplicationController
   def update
     result = run Forum::Group::Update
     return policy_breach! if result["result.policy.default"].failure?
-    return redirect_to forum_index_path, flashy(:positive, t(:oh_yeah), t(:group_updated) ) if result.success?
-    return redirect_to forum_index_path, flashy(:negative, t(:oh_dear), t(:something_went_wrong) ) if result.failure?
+    return redirect_to forum_overview_path, flashy(:positive, t(:oh_yeah), t(:group_updated) ) if result.success?
+    return redirect_to forum_overview_path, flashy(:negative, t(:oh_dear), t(:something_went_wrong) ) if result.failure?
+  end
+
+  def delete
+    result = run Forum::Group::Delete
+    return policy_breach! if result["result.policy.default"].failure?
+    redirect_to forum_overview_path, flashy(:positive, t(:oh_yeah), t(:forum_group_deleted)) if result.success?
   end
 end

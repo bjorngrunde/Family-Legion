@@ -5,6 +5,7 @@ class Forum::Thread::New < Trailblazer::Operation
   step :forum_category!
 
   def forum_category!(options, params:, **)
-    options["category_id"] = params[:forum_category_id]
+    options["category"] = params[:category]
+    options["group"] = params[:group]
   end
 end

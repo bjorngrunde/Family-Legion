@@ -1,4 +1,4 @@
-- if current_user.has_role?(model.role) || model.role == "default"
+- if user_can_access?
   tr
     td
       p.ui.sub.header= link_to_category_page

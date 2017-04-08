@@ -15,4 +15,8 @@ class ForumPolicy
   def update?
     @model.id && @user.has_role?(:moderator)
   end
+
+  def delete?
+    @model.id && @user.has_role?(:moderator)
+  end
 end

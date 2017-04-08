@@ -1,7 +1,25 @@
 .dark-box
   .ui.grid
-    .sixteen.wide.column
-      .header
-        = title
-      .content
+    .ten.wide.column
+      = link_to "<i class='reply icon'></i> #{t(:reply)}", "#", class: "ui tiny alliance button", data: { tooltip: t(:respond_with_comment), position: "top center"}
+      = link_to "<i class='bookmark icon'></i> #{t(:subscribe)}", "#", class: "ui tiny alliance button"
+    .six.wide.column
+      = cell(Forum::Thread::Cell::Action, model) if current_user.has_role?(:moderator) || is_owner?(current_user)
+.dark-box
+  .ui.grid
+    .three.wide.column
+      .forum.profile
+        .image
+          = image_tag(model.user.profile.thumbnail, class: "ui circular image")
+        = profile_link model.user
+      .forum.stats
+        .ui.list
+          .item
+            h5= model.user.profile.rank.humanize
+          .item
+            h5= "#{t(:posts)}: #{model.user.forum_threads.count}"
+          .item
+            h5= model.created_at.strftime("%d-%m-%Y %H:%M")
+    .thirteen.wide.column
+      .forum.content
         = body
