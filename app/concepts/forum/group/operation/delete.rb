@@ -12,7 +12,7 @@ class Forum::Group::Delete < Trailblazer::Operation
 
     options["model"].forum_categories.update_all(forum_group_id: options["group"].id)
     options["model"].forum_threads.update_all(forum_group_id: options["group"].id)
-    #options["model"].forum_comments.update_all(forum_group_id: options["group"].id)
+    options["model"].forum_comments.update_all(forum_group_id: options["group"].id)
   end
 
   def delete_group!(options, **)

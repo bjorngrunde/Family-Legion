@@ -23,4 +23,32 @@ class Forum::ForumThreadsController < ApplicationController
     add_breadcrumb I18n.t("breadcrumbs.forum_thread", thread: result["model"].title), forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug)
     render cell(Forum::Thread::Cell::Show, result["model"], context: { current_user: current_user, comments: result["comments"], page: params[:page] })
   end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def delete
+
+  end
+
+  def move
+
+  end
+
+  def pin
+
+  end
+
+  def lock
+
+  end
+
+  def copy
+
+  end
 end

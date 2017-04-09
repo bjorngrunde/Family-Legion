@@ -12,6 +12,7 @@ class Forum::Category::Delete < Trailblazer::Operation
     options["category"] = ForumCategory.find_by(slug: "uncategorized-threads") || ForumCategory.create(title: "Uncategorized Threads", role: "moderator", forum_group_id: options["group"].id)
 
     options["model"].forum_threads.update_all(forum_category_id: options["category"].id, forum_group_id: options["group"].id)
+    options["model"].forum_comments.update_all(forum_category_id: options["category"].id, forum_group_id: options["group"].id)
   end
 
   def delete_category!(options, **)
