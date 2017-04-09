@@ -19,4 +19,8 @@ class ForumPolicy
   def delete?
     @model.id && @user.has_role?(:moderator)
   end
+
+  def create_comment?
+    @model.id.nil?
+  end
 end

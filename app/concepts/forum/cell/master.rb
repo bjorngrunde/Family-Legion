@@ -17,5 +17,13 @@ module Forum::Cell
       return true if current_user.has_role?(model.role) || model.role == "default"
       false
     end
+
+    def portrait
+      image_tag(model.user.profile.thumbnail, class: "ui circular image")
+    end
+
+    def post_counter user
+      user.forum_threads.count + user.forum_comments.count
+    end
   end
 end

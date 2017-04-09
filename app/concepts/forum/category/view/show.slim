@@ -1,20 +1,20 @@
-.thread.actions.right.aligned
+.ui.inverted.segment
+  .thread.actions
+    = create_thread_link
 
-  = link_to t(:create_thread), forum_new_thread_path(group: model.forum_group.slug, category: model.slug), class: "ui tiny alliance button"
-
-table.ui.inverted.selectable.table
-  thead
-    tr.dark-box
-      th
-        = model.title
-      th
-        small= t(:forum_views)
-      th
-        small= t(:comments)
-      th
-        small= t(:author)
-  tbody
-    = cell(Forum::Thread::Cell::Collection, collection: context[:threads])
-.dark-box.center.aligned
-  = paginate context[:threads] , :views_prefix => "familylegion/view"
+  table.ui.inverted.selectable.table
+    thead
+      tr.dark-box
+        th
+          = model.title
+        th
+          small= t(:forum_views)
+        th
+          small= t(:comments)
+        th
+          small= t(:author)
+    tbody
+      = cell(Forum::Thread::Cell::Collection, collection: context[:threads])
+  .dark-box.center.aligned
+    = paginate context[:threads] , :views_prefix => "familylegion/view"
 

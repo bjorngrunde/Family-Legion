@@ -9,6 +9,7 @@ class User < ApplicationRecord
 	has_one :profile, dependent: :destroy
   has_many :alts, dependent: :destroy
   has_many :forum_threads
+  has_many :forum_comments
   has_many :image_managers
 
   self.authorizer_name = 'AdminAuthorizer'

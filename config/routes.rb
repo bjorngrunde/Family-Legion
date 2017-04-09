@@ -63,11 +63,18 @@ Rails.application.routes.draw do
     post '/thread' => "forum_threads#create", as: :create_thread
     delete '/thread/:id' => "forum_threads#delete", as: :delete_thread
 
+    #comments
+    get '/comment/:id/edit' => "forum_comments#edit", as: :edit_comment
+    put '/comment/:id' => "forum_comments#update", as: :update_comment
+    post '/comment' => "forum_comments#create", as: :create_comment
+    delete '/comment/:id' => "forum_comment#delete", as: :delete_comment
+
     #Some scopes for pretty URLS
     scope '/:group/:category' do
-      get '/' => "forum_category#show", as: :show_category
+      get '/' => "forum_category#show", as: :show_category, concerns: :paginatable
       scope '/:thread/' do
-        get '/' => "forum_threads#show", as: :show_thread
+        get '/' => "forum_threads#show", as: :show_thread, concerns: :paginatable
+        get '/comment' => "forum_comments#new", as: :new_comment
       end
     end
   end

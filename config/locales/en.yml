@@ -55,6 +55,11 @@ en:
     edit:                   "Edit"
     new:                    "New"
     roles:                  "Roles"
+    forum_overview:         "Forum"
+    forum_category:         "%{category}"
+    forum_create_thread:    "New Thread"
+    forum_thread:           "%{thread}"
+    forum_new_comment:      "New Reply"
 
   #GuildApplication
   first_name:               "First Name"
@@ -166,3 +171,4 @@ en:
   reply:                      "Reply"
   respond_with_comment:       "Reply with a comment to this thread"
   subscribe:                  "Subscribe"
+  create_comment_for:         "Reply to the thread: %{thread}"

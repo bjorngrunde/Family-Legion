@@ -1,0 +1,5 @@
+.ui.inverted.segment
+  .dark-box
+    h4
+      = t(:create_comment_for, thread: context[:thread].title)
+    = cell(Forum::Comment::Cell::Form, model, context: { thread: context[:thread]})

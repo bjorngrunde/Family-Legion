@@ -1,6 +1,8 @@
 class Forum::ForumCategoryController < ApplicationController
   before_action :require_login
 
+  add_breadcrumb I18n.t("breadcrumbs.forum_overview"), :forum_overview_path
+
   def create
     result = run Forum::Category::Create
     return policy_breach! if result["result.policy.default"].failure?
@@ -10,6 +12,7 @@ class Forum::ForumCategoryController < ApplicationController
 
   def show
     result = run Forum::Category::Show
+    add_breadcrumb I18n.t("breadcrumbs.forum_category", category: result["model"].title), forum_show_category_path(group: result["model"].forum_group.slug, category: result["model"].slug )
     return policy_breach! if result["result.policy.default"].failure?
     render cell(Forum::Category::Cell::Show, result["model"], context: { current_user: current_user, threads: result["threads"]})
   end

@@ -1,4 +1,4 @@
-- if current_user.has_role?(model.role) || model.role == "default"
+- if user_can_access?
   thead
     tr.dark-box
       th
@@ -7,5 +7,7 @@
         p= t(:threads)
       th
         p= t(:last_activity)
+      th
+        = cell(Forum::Cell::ModeratorNav) if first_row?
   tbody
     = cell(Forum::Category::Cell::Collection, collection: model.forum_categories)
