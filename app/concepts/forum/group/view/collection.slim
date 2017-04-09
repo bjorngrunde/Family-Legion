@@ -8,6 +8,7 @@
       th
         p= t(:last_activity)
       th
-        = cell(Forum::Cell::ModeratorNav) if first_row?
+        - if current_user.has_role?(:moderator)
+          = cell(Forum::Cell::ModeratorNav) if first_row?
   tbody
     = cell(Forum::Category::Cell::Collection, collection: model.forum_categories)

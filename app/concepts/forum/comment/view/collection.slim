@@ -1,5 +1,10 @@
 .dark-box
-  = cell(Forum::Comment::Cell::Action, model) if current_user.has_role?(:admin) || is_owner?(current_user)
+  .ui.grid
+    .ten.wide.column
+      = reply_link
+      = quote_link
+    .six.wide.column
+      = cell(Forum::Comment::Cell::Action, model) if current_user.has_role?(:admin) || is_owner?(current_user)
 .dark-box id="#{model.id}"
   .ui.grid
     .three.wide.column

@@ -172,3 +172,5 @@ en:
   respond_with_comment:       "Reply with a comment to this thread"
   subscribe:                  "Subscribe"
   create_comment_for:         "Reply to the thread: %{thread}"
+  quote:                      "Quote"
+  quote_this_comment:         "Quote this comment"
