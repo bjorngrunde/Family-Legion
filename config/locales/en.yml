@@ -174,3 +174,4 @@ en:
   create_comment_for:         "Reply to the thread: %{thread}"
   quote:                      "Quote"
   quote_this_comment:         "Quote this comment"
+  move_forum_thread:          "Choose a category to move the thread"

@@ -4,7 +4,7 @@
     .menu
       = link_to t(:edit), forum_edit_thread_path(id: model.id), class: "item"
       - if current_user.has_role?(:moderator)
-        = link_to t(:move), "#", class: "item move-thread"
+        .item.move-thread= t(:move)
         = link_to t(:copy), "#", class: "item copy-thread"
         = link_to t(:lock), "#", class: "item lock-thread"
         = link_to t(:delete), forum_delete_thread_path(id: model.id), class: "item"

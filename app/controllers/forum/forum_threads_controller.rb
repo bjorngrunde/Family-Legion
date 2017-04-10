@@ -25,11 +25,20 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def edit
+    result = run Forum::Thread::Edit
 
+    add_breadcrumb I18n.t("breadcrumbs.forum_category", category: result["model"].forum_category.title), forum_show_category_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug)
+    add_breadcrumb I18n.t("breadcrumbs.forum_thread", thread: result["model"].title), forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug)
+    add_breadcrumb I18n.t("breadcrumbs.edit")
+
+    render cell(Forum::Thread::Cell::Edit, result["model"], context: { current_user: current_user, form: result["contract.default"]})
   end
 
   def update
-
+    result = run Forum::Thread::Update
+    return policy_breach! if result["result.policy.default"].failure?
+    return redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
+    render cell(Forum::Thread::Cell::Edit, result["model"], context: { current_user: current_user, form: result["contract.default"]})
   end
 
   def delete
@@ -37,7 +46,8 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def move
-
+    result = run Forum::Thread::Move
+    return redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
   end
 
   def pin

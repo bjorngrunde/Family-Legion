@@ -1,0 +1,11 @@
+.ui.small.move.thread.modal
+  i.close.icon
+  .header
+    = t(:move_forum_thread)
+  .content
+    = form_for([:forum, model], url: forum_move_thread_path(model), html: { class: "ui inverted equal width form"}) do |f|
+      .field
+        = f.select :forum_category, category_options ,{}, { class: "ui search dropdown" }
+      .field
+        = submit_tag t(:move), class: "ui tiny green button right aligned"
+        = link_to t(:cancel), "#", class: "ui tiny red deny button"

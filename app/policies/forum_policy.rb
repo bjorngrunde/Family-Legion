@@ -23,4 +23,8 @@ class ForumPolicy
   def create_comment?
     @model.id.nil?
   end
+
+  def update_thread?
+    @model.id && (@user.has_role?(:moderator) || @model.user.id == @user.id)
+  end
 end

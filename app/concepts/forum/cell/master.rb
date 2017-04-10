@@ -6,11 +6,11 @@ module Forum::Cell
     end
 
     def group_options
-      ForumGroup.all.map { |group| [ group.title, group.id]}
+      ForumGroup.all.map { |group| [ group.title, group.id] unless group.slug == "uncategorized-categories"}
     end
 
     def category_options
-      ForumCategory.all.map { |category| [category.title, category.id] }
+      ForumCategory.all.map { |category| [category.title, category.id] unless category.slug == "uncategorized-threads"}
     end
 
     def user_can_access?

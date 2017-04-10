@@ -1,3 +1,6 @@
+- if current_user.has_role?(:moderator)
+  = cell(Forum::Thread::Cell::Move, model)
+
 .ui.inverted.segment
   - if is_page_one?(context[:page])
     .dark-box
@@ -29,6 +32,7 @@
 
   = cell(Forum::Comment::Cell::Collection, collection: context[:comments])
 
-.ui.inverted.segment
-  .dark-box.center.aligned
-    = paginate context[:comments] , :views_prefix => "familylegion/view"
+- if context[:comments].total_pages > 1
+  .ui.inverted.segment
+    .dark-box.center.aligned
+      = paginate context[:comments] , :views_prefix => "familylegion/view"

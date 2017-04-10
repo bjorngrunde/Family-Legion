@@ -1,7 +1,7 @@
 doctype html
 html
   = render "layouts/partials/head"
-  body
+  = content_tag :body, data: { action: action_name, controller: controller_name }
     = render html: cell(Familylegion::Cell::Navigation, nil, context: { current_user: tyrant.current_user})
     .ui.one.column.grid.container.inverted.segment
       .column
