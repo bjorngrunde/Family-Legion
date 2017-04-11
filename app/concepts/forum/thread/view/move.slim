@@ -4,8 +4,9 @@
     = t(:move_forum_thread)
   .content
     = form_for([:forum, model], url: forum_move_thread_path(model), html: { class: "ui inverted equal width form"}) do |f|
+      = f.hidden_field :forum_category_id, id: "forum_group_id"
       .field
-        = f.select :forum_category, category_options ,{}, { class: "ui search dropdown" }
+        = f.select :forum_category_id, category_options ,{}, { class: "ui search dropdown", id: "move-category-select" }
       .field
         = submit_tag t(:move), class: "ui tiny green button right aligned"
         = link_to t(:cancel), "#", class: "ui tiny red deny button"

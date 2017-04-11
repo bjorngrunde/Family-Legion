@@ -86,6 +86,29 @@ $(document).on 'turbolinks:load', ->
     $('.move.thread.modal')
       .modal('attach events', '.move-thread', 'show')
 
+    $('#move-category-select').change ->
+      select = document.querySelector('#move-category-select')
+      category = select.value
+      getUrl = window.location
+      baseUrl = getUrl.protocol + '//' + getUrl.host
+      host = baseUrl + '/forum/category/' + category + '/edit'
+
+      auth_token = $('meta[name=csrf-token]').attr('content')
+
+      form = new FormData
+      form.append 'authenticity_token', auth_token
+      form.append 'format', 'js'
+
+      xhr = new XMLHttpRequest
+      xhr.open 'POST', host, true
+
+      xhr.onload = ->
+        response = JSON.parse(@responseText)
+        if xhr.status == 302
+          $('#forum_group_id').attr('value', response.forum_group_id)
+        else if xhr.status == 422
+          modalErrors(response.errors)
+      xhr.send form
 
   modalErrors = (errors) ->
     $(".content").append("<div class='ui warning message'><div class='header'>

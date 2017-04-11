@@ -175,3 +175,7 @@ en:
   quote:                      "Quote"
   quote_this_comment:         "Quote this comment"
   move_forum_thread:          "Choose a category to move the thread"
+  thread_is_pinned:           "This thread is pinned"
+  forum_thread_is_pinned:     "You have pinned a thread!"
+  pin:                        "Pin"
+  unpin:                      "Unpin"

@@ -26,6 +26,7 @@
                 h5= "#{t(:posts)}: #{post_counter(model.user)}"
               .item
                 h5= model.created_at.strftime("%d-%m-%Y %H:%M")
+            = pin_icon
         .thirteen.wide.column
           .forum.content
             = body

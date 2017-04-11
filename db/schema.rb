@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409113953) do
+ActiveRecord::Schema.define(version: 20170411180142) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(version: 20170409113953) do
     t.integer  "forum_group_id"
     t.integer  "forum_category_id"
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.boolean  "pinned",                          default: false
     t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
     t.index ["forum_group_id"], name: "index_forum_threads_on_forum_group_id", using: :btree
     t.index ["slug", "title"], name: "index_forum_threads_on_slug_and_title", unique: true, using: :btree

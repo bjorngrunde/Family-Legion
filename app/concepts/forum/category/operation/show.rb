@@ -6,7 +6,7 @@ class Forum::Category::Show < Trailblazer::Operation
   step :get_threads!
 
   def get_threads!(options, params:, **)
-    options["threads"] = options["model"].forum_threads.order(:updated_at).page(params[:page]).per(12)
+    options["threads"] = options["model"].forum_threads.order(pinned: :desc, updated_at: :desc).page(params[:page]).per(12)
   end
 
   def model!(options, params:, **)

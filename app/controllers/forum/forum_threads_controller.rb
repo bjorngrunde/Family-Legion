@@ -51,7 +51,8 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def pin
-
+    result = run Forum::Thread::Pin
+    redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
   end
 
   def lock
