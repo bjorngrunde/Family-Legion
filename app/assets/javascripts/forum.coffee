@@ -83,7 +83,7 @@ $(document).on 'turbolinks:load', ->
       xhr.send form
 
   if page.controller() == "forum_threads" && page.action() == "show"
-    $('.move.thread.modal')
+    $('.react.thread.modal')
       .modal('attach events', '.move-thread', 'show')
 
     $('#move-category-select').change ->

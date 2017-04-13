@@ -1,5 +1,5 @@
 module Forum::Thread::Cell
-  class Move < Forum::Cell::Master
+  class React < Forum::Cell::Master
 
   end
 end

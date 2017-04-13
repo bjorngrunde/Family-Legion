@@ -1,5 +1,5 @@
 - if current_user.has_role?(:moderator)
-  = cell(Forum::Thread::Cell::Move, model)
+  = cell(Forum::Thread::Cell::React, model)
 
 .ui.inverted.segment
   - if is_page_one?(context[:page])

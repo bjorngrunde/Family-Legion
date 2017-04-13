@@ -60,6 +60,7 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def copy
-
+    result = run Forum::Thread::Copy
+    redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
   end
 end
