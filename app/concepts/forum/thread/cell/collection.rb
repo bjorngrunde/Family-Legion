@@ -13,5 +13,9 @@ module Forum::Thread::Cell
       return title unless model.pinned
       "<i class='pin icon'></i> #{title}"
     end
+
+    def updated_at
+      "#{time_ago_in_words(model.updated_at)}"
+    end
   end
 end

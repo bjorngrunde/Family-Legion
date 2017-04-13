@@ -16,5 +16,17 @@ module Forum::Thread::Cell
       return unless model.pinned
       "<i class='large pin icon'></i> #{t(:thread_is_pinned)}".html_safe
     end
+
+    def rank
+      model.user.profile.rank.humanize
+    end
+
+    def posts
+      "#{t(:posts)}: #{post_counter(model.user)}"
+    end
+
+    def created_at
+      model.created_at.strftime("%d-%m-%Y %H:%M")
+    end
   end
 end

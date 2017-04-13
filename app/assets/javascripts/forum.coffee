@@ -13,13 +13,9 @@ $(document).on 'turbolinks:load', ->
     .tab()
 
     $('#edit-group-select').change ->
-      select = document.querySelector('#edit-group-select')
-      group = select.value
-
+      group = document.querySelector('#edit-group-select').value
       $('.js-selector').remove()
-
-      getUrl = window.location
-      baseUrl = getUrl.protocol + '//' + getUrl.host
+      baseUrl = getBaseUrl()
       host = baseUrl + '/forum/group/' + group + '/edit'
 
       auth_token = $('meta[name=csrf-token]').attr('content')
@@ -47,13 +43,11 @@ $(document).on 'turbolinks:load', ->
       xhr.send form
 
     $('#edit-category-select').change ->
-      select = document.querySelector('#edit-category-select')
-      category = select.value
+      category = document.querySelector('#edit-category-select').value
 
       $('.js-selector').remove()
 
-      getUrl = window.location
-      baseUrl = getUrl.protocol + '//' + getUrl.host
+      baseUrl = getBaseUrl()
       host = baseUrl + '/forum/category/' + category + '/edit'
 
       auth_token = $('meta[name=csrf-token]').attr('content')
@@ -83,14 +77,22 @@ $(document).on 'turbolinks:load', ->
       xhr.send form
 
   if page.controller() == "forum_threads" && page.action() == "show"
+
+    $('.copy-thread, .move-thread').click (event) ->
+
+      form = document.getElementById("react")
+      form.setAttribute('action', event.target.getAttribute('data-path'))
+
     $('.react.thread.modal')
+      .modal('attach events', '.copy-thread', 'show')
       .modal('attach events', '.move-thread', 'show')
 
+
+
     $('#move-category-select').change ->
-      select = document.querySelector('#move-category-select')
-      category = select.value
-      getUrl = window.location
-      baseUrl = getUrl.protocol + '//' + getUrl.host
+
+      category = document.querySelector('#react-category-select').value
+      baseUrl = getBaseUrl()
       host = baseUrl + '/forum/category/' + category + '/edit'
 
       auth_token = $('meta[name=csrf-token]').attr('content')
@@ -105,7 +107,7 @@ $(document).on 'turbolinks:load', ->
       xhr.onload = ->
         response = JSON.parse(@responseText)
         if xhr.status == 302
-          $('#forum_group_id').attr('value', response.forum_group_id)
+          $('.forum-group-id').attr('value', response.forum_group_id)
         else if xhr.status == 422
           modalErrors(response.errors)
       xhr.send form
@@ -123,4 +125,7 @@ $(document).on 'turbolinks:load', ->
   resetElement = (element) ->
     document.querySelector(element).load(location.href + " " + element)
 
-
+  getBaseUrl = ->
+    getUrl = window.location
+    base = getUrl.protocol + '//' + getUrl.host
+    return base

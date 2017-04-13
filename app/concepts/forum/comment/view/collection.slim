@@ -12,6 +12,7 @@
         .image
           = image_tag(model.user.profile.thumbnail, class: "ui circular image")
         = profile_link model.user
+        = moderator_status
       .forum.stats
         .ui.list
           .item

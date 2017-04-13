@@ -5,14 +5,8 @@
   table.ui.inverted.selectable.table
     thead
       tr.dark-box
-        th
+        th colspan="3"
           = model.title
-        th
-          small= t(:forum_views)
-        th
-          small= t(:comments)
-        th
-          small= t(:author)
     tbody
       = cell(Forum::Thread::Cell::Collection, collection: context[:threads])
 

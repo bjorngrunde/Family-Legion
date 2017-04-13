@@ -1,10 +1,19 @@
 tr
   td
-    = link_to_thread
+    h4
+      = link_to_thread
   td
-    small 14
+    h4
+      i.eye.icon
+      |14
   td
-    small 9
+    h4
+      i.comments.icon
+      |9
   td
+    = image_tag(model.user.profile.thumbnail, class: "ui avatar image")
     span class="#{model_css_class}"
       = author
+  td
+    span
+      = updated_at

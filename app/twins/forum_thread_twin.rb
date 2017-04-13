@@ -3,12 +3,12 @@ class ForumThreadTwin < Disposable::Twin
 
   property  :title
   property  :body
-  property  :slug
-  property  :pinned
-  property  :user_id
 
-  def copy!
-    self.title = "#{self.title}-copied"
-    self.slug = "#{self.title.parameterize}-copied"
+  def change_title!
+    self.title = "#{self.title} COPIED"
+  end
+
+  def change_body user
+    body << "<br/> <small>Copied by <span class='#{user.profile.klass.gsub('_','-')}'>#{user.username.humanize}</span></small>"
   end
 end

@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     delete '/thread/:id' => "forum_threads#delete", as: :delete_thread
     patch '/thread/:id/move' => "forum_threads#move", as: :move_thread
     patch '/thread/:id/pin' => "forum_threads#pin", as: :pin_thread
+    patch '/thread/:id/copy' => "forum_threads#copy", as: :copy_thread
 
     #comments
     get '/comment/:id/edit' => "forum_comments#edit", as: :edit_comment

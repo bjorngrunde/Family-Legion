@@ -3,10 +3,10 @@
   .header
     = t(:move_forum_thread)
   .content
-    = form_for([:forum, model], url: forum_move_thread_path(model), html: { class: "ui inverted equal width form"}) do |f|
-      = f.hidden_field :forum_category_id, id: "forum_group_id"
+    = form_for([:forum, model], url: "", html: { class: "ui inverted equal width form", id: "react"}) do |f|
+      = f.hidden_field :forum_group_id, class: "forum-group-id"
       .field
-        = f.select :forum_category_id, category_options ,{}, { class: "ui search dropdown", id: "move-category-select" }
+        = f.select :forum_category_id, category_options ,{}, { class: "ui search dropdown", id: "react-category-select" }
       .field
-        = submit_tag t(:move), class: "ui tiny green button right aligned"
+        = submit_tag t(:submit), class: "ui tiny green button right aligned"
         = link_to t(:cancel), "#", class: "ui tiny red deny button"

@@ -45,5 +45,10 @@ module Forum::Cell
     def quote_link
       link_to "<i class='quote left icon'></i> #{t(:quote)}", "#", class: "ui tiny alliance button", data: { tooltip: t(:quote_this_comment), position: "top center"}
     end
+
+    def moderator_status
+      return unless model.user.has_role? :moderator
+      "<span class='moderator-color'>Moderator</span>".html_safe
+    end
   end
 end
