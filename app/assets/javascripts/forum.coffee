@@ -14,7 +14,9 @@ $(document).on 'turbolinks:load', ->
 
     $('#edit-group-select').change ->
       group = document.querySelector('#edit-group-select').value
+
       $('.js-selector').remove()
+
       baseUrl = getBaseUrl()
       host = baseUrl + '/forum/group/' + group + '/edit'
 
@@ -79,14 +81,11 @@ $(document).on 'turbolinks:load', ->
   if page.controller() == "forum_threads" && page.action() == "show"
 
     $('.copy-thread, .move-thread').click (event) ->
-
-      form = document.getElementById("react")
-      form.setAttribute('action', event.target.getAttribute('data-path'))
+      document.getElementById("react").setAttribute('action', event.target.getAttribute('data-path'))
 
     $('.react.thread.modal')
       .modal('attach events', '.copy-thread', 'show')
       .modal('attach events', '.move-thread', 'show')
-
 
 
     $('#move-category-select').change ->

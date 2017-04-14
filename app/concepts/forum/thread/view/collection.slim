@@ -9,7 +9,7 @@ tr
   td
     h4
       i.comments.icon
-      |9
+      = model.forum_comments_count
   td
     = image_tag(model.user.profile.thumbnail, class: "ui avatar image")
     span class="#{model_css_class}"

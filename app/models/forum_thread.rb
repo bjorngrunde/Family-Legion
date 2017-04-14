@@ -5,7 +5,7 @@ class ForumThread < ApplicationRecord
   belongs_to :forum_group
   belongs_to :forum_category
   belongs_to :user
-  has_many :forum_comments
+  has_many :forum_comments, dependent: :destroy
 
   self.authorizer_name = 'ForumAuthorizer'
 

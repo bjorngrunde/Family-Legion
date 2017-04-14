@@ -4,7 +4,7 @@ class ForumComment < ApplicationRecord
 
   belongs_to :forum_group
   belongs_to :forum_category
-  belongs_to :forum_thread
+  belongs_to :forum_thread, touch: true, counter_cache: true
   belongs_to :user
 
   self.authorizer_name = 'ForumAuthorizer'
