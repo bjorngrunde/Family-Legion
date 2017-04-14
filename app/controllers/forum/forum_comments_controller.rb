@@ -18,4 +18,10 @@ class Forum::ForumCommentsController < ApplicationController
     return redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_group.slug, thread: result["model"].forum_thread.slug, page: result["pages"], anchor:  "#{result["model"].id}") if result.success?
     render cell(Forum::Comment::Cell::New, result["model"], context: { form: result["contract.default"], current_user: current_user, thread: result["thread"]}) if result.failure?
   end
+
+  def delete
+    result = run Forum::Comment::Delete
+    return redirect_to(:back) if result.success?
+    render status: 422, json: { error: t(:something_went_wrong) } if result.failure?
+  end
 end

@@ -65,12 +65,12 @@ Rails.application.routes.draw do
     patch '/thread/:id/move' => "forum_threads#move", as: :move_thread
     patch '/thread/:id/pin' => "forum_threads#pin", as: :pin_thread
     patch '/thread/:id/copy' => "forum_threads#copy", as: :copy_thread
-
+    patch '/thread/:id/lock' => "forum_threads#lock", as: :lock_thread
     #comments
     get '/comment/:id/edit' => "forum_comments#edit", as: :edit_comment
     put '/comment/:id' => "forum_comments#update", as: :update_comment
     post '/comment' => "forum_comments#create", as: :create_comment
-    delete '/comment/:id' => "forum_comment#delete", as: :delete_comment
+    delete '/comment/:id' => "forum_comments#delete", as: :delete_comment
 
     #Some scopes for pretty URLS
     scope '/:group/:category' do

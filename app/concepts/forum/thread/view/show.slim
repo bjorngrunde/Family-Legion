@@ -1,5 +1,6 @@
 - if current_user.has_role?(:moderator)
   = cell(Forum::Thread::Cell::React, model)
+  = cell(Forum::Thread::Cell::Alert, model)
 
 .ui.inverted.segment
   - if is_page_one?(context[:page])
@@ -28,13 +29,14 @@
               .item
                 h5= created_at
             = pin_icon
+            = lock_icon
         .thirteen.wide.column
           .forum.content
             = body
 
-  = cell(Forum::Comment::Cell::Collection, collection: context[:comments])
+  = cell(Forum::Comment::Cell::Collection, collection: context[:comments]) unless model.is_locked
 
-- if context[:comments].total_pages > 1
+- unless context[:comments].total_pages <= 1 || model.is_locked
   .ui.inverted.segment
     .dark-box.center.aligned
       = paginate context[:comments] , :views_prefix => "familylegion/view"

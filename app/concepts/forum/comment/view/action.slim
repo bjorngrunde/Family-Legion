@@ -1,10 +1,2 @@
 .right.aligned
-  .ui.dropdown.left.pointing
-    i.settings.icon
-    .menu
-      = link_to t(:edit), forum_edit_thread_path(id: model.id), class: "item"
-      - if current_user.has_role?(:moderator)
-        = link_to t(:move), "#", class: "item move-thread"
-        = link_to t(:copy), "#", class: "item copy-thread"
-        = link_to t(:lock), "#", class: "item lock-thread"
-        = link_to t(:delete), forum_delete_thread_path(id: model.id), class: "item"
+  = link_to "<i class='delete icon'></i>", forum_delete_comment_path(model), class: "item", method: :delete, data: { tooltip: "#{t(:delete_comment)}" }

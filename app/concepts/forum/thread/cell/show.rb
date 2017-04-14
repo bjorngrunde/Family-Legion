@@ -17,6 +17,11 @@ module Forum::Thread::Cell
       "<i class='large pin icon'></i> #{t(:thread_is_pinned)}".html_safe
     end
 
+    def lock_icon
+      return unless model.is_locked
+      "<i class='large lock icon'></i> #{t(:thread_is_locked)}"
+    end
+
     def rank
       model.user.profile.rank.humanize
     end

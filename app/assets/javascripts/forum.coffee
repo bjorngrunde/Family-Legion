@@ -87,6 +87,8 @@ $(document).on 'turbolinks:load', ->
       .modal('attach events', '.copy-thread', 'show')
       .modal('attach events', '.move-thread', 'show')
 
+    $('.alert.basic.modal')
+      .modal('attach events', '.delete-thread', 'show')
 
     $('#move-category-select').change ->
 

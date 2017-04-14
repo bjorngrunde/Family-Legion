@@ -6,7 +6,7 @@ class ForumThread < ApplicationRecord
   belongs_to :forum_category
   belongs_to :user
   has_many :forum_comments, dependent: :destroy
-  has_many :views, as: :viewable
+  has_many :views, as: :viewable, dependent: :destroy
 
   self.authorizer_name = 'ForumAuthorizer'
 

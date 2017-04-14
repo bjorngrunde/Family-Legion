@@ -19,8 +19,10 @@ class Forum::ForumThreadsController < ApplicationController
 
   def show
     result = run Forum::Thread::Show
+
     add_breadcrumb I18n.t("breadcrumbs.forum_category", category: result["model"].forum_category.title), forum_show_category_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug)
     add_breadcrumb I18n.t("breadcrumbs.forum_thread", thread: result["model"].title), forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug)
+
     render cell(Forum::Thread::Cell::Show, result["model"], context: { current_user: current_user, comments: result["comments"], page: params[:page] })
   end
 
@@ -42,7 +44,8 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def delete
-
+    result = run Forum::Thread::Delete
+    redirect_to forum_overview_path, flashy(:positive, t(:oh_yeah), t(:forum_thread_destroyed))
   end
 
   def move
@@ -56,7 +59,8 @@ class Forum::ForumThreadsController < ApplicationController
   end
 
   def lock
-
+    result = run Forum::Thread::Lock
+    redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
   end
 
   def copy

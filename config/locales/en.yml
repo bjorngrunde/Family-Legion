@@ -33,6 +33,18 @@ en:
   search:                   "Search"
   clear:                    "Clear"
   author:                   "Author"
+  lock:                     "Lock"
+  unlock:                   "Unlock"
+  pin:                      "Pin"
+  unpin:                    "Unpin"
+
+  #Pagination
+  views:
+    pagination:
+      previous:             "Prev"
+      first:                "First"
+      next:                 "Next"
+      last:                 "Last"
 
   #Flash, Alert & Message
   oh_dear:                  "Oh dear!"
@@ -46,6 +58,7 @@ en:
   not_authorized:           "Oi! You can't access that!"
   policy_breach_text:       "Something went wrong. You might not have the right authority to access that resource."
   cannot_edit_user:         "You can not edit this user!"
+  are_you_sure:             "Are you sure?"
 
   # BreadCrumbs
   breadcrumbs:
@@ -178,6 +191,8 @@ en:
   move_forum_thread:          "Choose a category to move the thread"
   thread_is_pinned:           "This thread is pinned"
   forum_thread_is_pinned:     "You have pinned a thread!"
-  pin:                        "Pin"
-  unpin:                      "Unpin"
+  thread_is_locked:           "This thread is locked"
+  sure_to_delete_thread:      "Deleting a thread will also delete all comments associated with it."
+  forum_thread_destroyed:     "The thread was successfully destroyed"
+  delete_comment:             "Delete this comment. This action cannot be reversed."
 

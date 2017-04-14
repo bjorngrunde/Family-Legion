@@ -2,12 +2,13 @@
   .ui.dropdown.left.pointing
     i.settings.icon
     .menu
-      = link_to t(:edit), forum_edit_thread_path(id: model.id), class: "item"
+      = edit_link
       - if current_user.has_role?(:moderator)
         .item.move-thread data-path="/forum/thread/#{model.id}/move"
           = t(:move)
         = pin_link
         .item.copy-thread data-path="/forum/thread/#{model.id}/copy"
           = t(:copy)
-        = link_to t(:lock), "#", class: "item lock-thread"
-        = link_to t(:delete), forum_delete_thread_path(id: model.id), class: "item"
+        = lock_link
+        .item.delete-thread
+          = t(:delete)

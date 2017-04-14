@@ -31,6 +31,7 @@ module Forum::Cell
     end
 
    def reply_link
+    return if model.is_a?(ForumThread) && model.is_locked
     category = model.forum_category.slug
     group = model.forum_group.slug
     thread = model.is_a?(ForumThread) ? model.slug : model.forum_thread.slug
@@ -39,6 +40,7 @@ module Forum::Cell
     end
 
     def subscription_link
+      return if model.is_a?(ForumThread) && model.is_locked
       link_to "<i class='bookmark icon'></i> #{t(:subscribe)}", "#", class: "ui tiny alliance button"
     end
 
