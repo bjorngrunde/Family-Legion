@@ -5,11 +5,11 @@ tr
   td
     h4
       i.eye.icon
-      |14
+      = views
   td
     h4
       i.comments.icon
-      = model.forum_comments_count
+      = comments
   td
     = image_tag(model.user.profile.thumbnail, class: "ui avatar image")
     span class="#{model_css_class}"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414110350) do
+ActiveRecord::Schema.define(version: 20170414115912) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170414110350) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "pinned",                             default: false
-    t.string   "forum_comments_count"
+    t.integer  "forum_comments_count"
     t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
     t.index ["forum_group_id"], name: "index_forum_threads_on_forum_group_id", using: :btree
     t.index ["slug", "title"], name: "index_forum_threads_on_slug_and_title", unique: true, using: :btree
@@ -150,6 +150,15 @@ ActiveRecord::Schema.define(version: 20170414110350) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "views", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "viewable_type"
+    t.integer  "viewable_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id", using: :btree
   end
 
 end

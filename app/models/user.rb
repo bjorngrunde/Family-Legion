@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :forum_threads
   has_many :forum_comments
   has_many :image_managers
+  has_many :forum_views
 
   self.authorizer_name = 'AdminAuthorizer'
 

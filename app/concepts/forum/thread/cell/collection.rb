@@ -17,5 +17,13 @@ module Forum::Thread::Cell
     def updated_at
       "#{time_ago_in_words(model.updated_at)}"
     end
+
+    def comments
+      model.forum_comments_count
+    end
+
+    def views
+      model.views.size
+    end
   end
 end
