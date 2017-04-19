@@ -40,3 +40,7 @@
   .ui.inverted.segment
     .dark-box.center.aligned
       = paginate context[:comments] , :views_prefix => "familylegion/view"
+
+.ui.inverted.segment
+  .dark-box
+    = cell(Forum::Comment::Cell::Form, model, context: { form: form})

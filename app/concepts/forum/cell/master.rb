@@ -45,7 +45,7 @@ module Forum::Cell
     end
 
     def quote_link
-      link_to "<i class='quote left icon'></i> #{t(:quote)}", "#", class: "ui tiny alliance button", data: { tooltip: t(:quote_this_comment), position: "top center"}
+      button_tag "<i class='quote left icon'></i> #{t(:quote)}", class: "ui tiny alliance button quote-link", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id}
     end
 
     def moderator_status

@@ -1,16 +1,14 @@
-= form_for([:forum, model], url: forum_create_comment_path(), html: { class: "ui equal width inverted form"}) do |f|
-  -if form.errors.messages.any?
-    = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
-  = f.hidden_field :forum_group_id, value: context[:thread].forum_group.id
-  = f.hidden_field :forum_category_id, value: context[:thread].forum_category.id
-  = f.hidden_field :forum_thread_id, value: context[:thread].id
-  = f.hidden_field :user_id, value: current_user.id
+= form_tag(forum_create_comment_path, class: "ui equal width inverted form", id: "reply-to-thread") do
+  = hidden_field_tag :forum_group_id, model.forum_group.id
+  = hidden_field_tag :forum_category_id, model.forum_category.id
+  = hidden_field_tag :forum_thread_id, model.id
+  = hidden_field_tag :user_id, current_user.id
   .field
-    = f.label :body
-      = t(:whats_on_your_mind)
-    = f.trix_editor :body
+    = label_tag :body
+      = t(:respond_to_thread)
+    = hidden_field_tag :body, "", id: :replier
+    = tag "trix-editor", input: :replier
   .field
-    = f.submit :submit, class: "ui tiny green button", value: t(:submit)
-    = link_to t(:cancel), forum_show_thread_path(group: context[:thread].forum_group.slug, category: context[:thread].forum_category.slug, thread: context[:thread].slug), class: "ui tiny red button"
+    = submit_tag :submit, class: "ui tiny green button", value: t(:submit)
 
 

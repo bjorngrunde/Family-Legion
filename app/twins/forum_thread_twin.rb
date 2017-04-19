@@ -1,5 +1,6 @@
 class ForumThreadTwin < Disposable::Twin
   feature Sync
+  feature Changed
 
   property  :title
   property  :body
