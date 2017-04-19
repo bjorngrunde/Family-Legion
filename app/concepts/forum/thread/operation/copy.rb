@@ -1,16 +1,14 @@
 class Forum::Thread::Copy < Trailblazer::Operation
 
   module ERRORS
-    TWIN_SYNC_ERROR         = :twin_sync_error
-    ASSIGN_ATTRIBUTES_ERROR = :assign_attributes_error
-    NOT_FOUND_ERROR         = :not_found
+    TWIN_SYNC_ERROR = :twin_sync_error
+    NOT_FOUND_ERROR = :not_found
   end
 
-  step Model(ForumThread, :new)
-  step Contract::Build(constant: Forum::Thread::Contract::Move)
-  step Contract::Validate(key: :forum_thread)
   step :find_thread_to_copy!
   step :copy!
+  step Contract::Build(constant: Forum::Thread::Contract::Move)
+  step Contract::Validate(key: :forum_thread)
   success :modify!
   step Contract::Persist()
   failure :errors
