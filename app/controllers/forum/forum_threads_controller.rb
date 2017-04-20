@@ -55,12 +55,12 @@ class Forum::ForumThreadsController < ApplicationController
 
   def pin
     result = run Forum::Thread::Pin
-    redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
+    redirect_to(:back) if result.success?
   end
 
   def lock
     result = run Forum::Thread::Lock
-    redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
+    redirect_to(:back) if result.success?
   end
 
   def copy

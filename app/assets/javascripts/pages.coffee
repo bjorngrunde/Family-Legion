@@ -7,3 +7,8 @@ $('.ui.checkbox').checkbox()
 $('.message .close').on 'click', ->
   $(this).closest('.message').transition 'fade'
   return
+
+window.getBaseUrl = ->
+  getUrl = window.location
+  base = getUrl.protocol + '//' + getUrl.host
+  return base

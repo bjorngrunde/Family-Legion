@@ -14,3 +14,24 @@
 .forum.stats {
   text-align: center;
 }
+
+.forum.action {
+  color: #ffffff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+blockquote {
+  background: $dark-grey;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+trix-editor > blockquote {
+  background: #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  color: #151515;
+}

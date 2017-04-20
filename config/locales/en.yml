@@ -195,4 +195,5 @@ en:
   sure_to_delete_thread:      "Deleting a thread will also delete all comments associated with it."
   forum_thread_destroyed:     "The thread was successfully destroyed"
   delete_comment:             "Delete this comment. This action cannot be reversed."
+  create_thread:              "Create thread"
 

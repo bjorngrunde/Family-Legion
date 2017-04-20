@@ -36,16 +36,16 @@ module Forum::Cell
     group = model.forum_group.slug
     thread = model.is_a?(ForumThread) ? model.slug : model.forum_thread.slug
 
-    link_to "<i class='reply icon'></i> #{t(:reply)}", forum_new_comment_path(group: group, category: category, thread: thread), class: "ui tiny alliance button", data: { tooltip: t(:respond_with_comment), position: "top center"}
+    link_to "<i class='reply icon'></i> #{t(:reply)}", "#reply-to-thread", class: "reply-link forum action", data: { tooltip: t(:respond_with_comment), position: "top center"}
     end
 
     def subscription_link
       return if model.is_a?(ForumThread) && model.is_locked
-      link_to "<i class='bookmark icon'></i> #{t(:subscribe)}", "#", class: "ui tiny alliance button"
+      link_to "<i class='bookmark icon'></i> #{t(:subscribe)}", "#", class: "forum action"
     end
 
     def quote_link
-      button_tag "<i class='quote left icon'></i> #{t(:quote)}", class: "ui tiny alliance button quote-link", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id}
+      link_to "<i class='quote left icon'></i> #{t(:quote)}", "", class: "quote-link forum action", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id}, onClick: "this.disabled=true;"
     end
 
     def moderator_status

@@ -125,8 +125,3 @@ $(document).on 'turbolinks:load', ->
   #Reset current element, accepts element class or id
   resetElement = (element) ->
     document.querySelector(element).load(location.href + " " + element)
-
-  getBaseUrl = ->
-    getUrl = window.location
-    base = getUrl.protocol + '//' + getUrl.host
-    return base

@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     patch '/thread/:id/lock' => "forum_threads#lock", as: :lock_thread
     #comments
     get '/comment/:id/edit' => "forum_comments#edit", as: :edit_comment
+    post '/comment/:id/quote' => "forum_comments#quote", as: :quote_comment
     put '/comment/:id' => "forum_comments#update", as: :update_comment
     post '/comment' => "forum_comments#create", as: :create_comment
     delete '/comment/:id' => "forum_comments#delete", as: :delete_comment

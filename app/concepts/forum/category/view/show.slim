@@ -1,12 +1,14 @@
 .ui.inverted.segment
   .thread.actions
-    = create_thread_link
+
 
   table.ui.inverted.selectable.table
     thead
       tr.dark-box
-        th colspan="3"
+        th colspan="4"
           = model.title
+        th.right.aligned
+          = create_thread_link
     tbody
       = cell(Forum::Thread::Cell::Collection, collection: context[:threads])
 

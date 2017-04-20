@@ -6,10 +6,13 @@
   - if is_page_one?(context[:page])
     .dark-box
       .ui.grid
-        .ten.wide.column
-          = reply_link
-          = subscription_link
-        .six.wide.column
+        .three.wide.column.center.aligned
+          .ui.horizontal.list
+            .item
+              = reply_link
+            .item
+              = subscription_link
+        .thirteen.wide.column
           = cell(Forum::Thread::Cell::Action, model) if current_user.has_role?(:moderator) || is_owner?(current_user)
 
     .dark-box
@@ -41,6 +44,7 @@
     .dark-box.center.aligned
       = paginate context[:comments] , :views_prefix => "familylegion/view"
 
-.ui.inverted.segment
-  .dark-box
-    = cell(Forum::Comment::Cell::Form, model, context: { form: form})
+- unless model.is_locked
+  .ui.inverted.segment
+    .dark-box
+      = cell(Forum::Comment::Cell::Form, model, context: { form: form})
