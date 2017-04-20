@@ -6,7 +6,7 @@
           = reply_link
         .item
           = quote_link
-    .six.wide.column
+    .thirteen.wide.column
       = cell(Forum::Comment::Cell::Action, model) if current_user.has_role?(:moderator)
 .dark-box id="#{model.id}"
   .ui.grid
