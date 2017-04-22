@@ -47,7 +47,7 @@ RSpec.feature "Roles", type: :feature do
     select "Member", :from => "role_contract_new[roles]"
     click_button("Add role")
 
-    expect(page).to have_text("Ohh my! This does not look right.")
+    expect(page).to have_text("Ohh my! Something went wrong with the request.")
     expect(page).to have_text("Base: The user already has this role!")
   end
 

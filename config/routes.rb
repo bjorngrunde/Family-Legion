@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     #threads
     get '/thread' => "forum_threads#new", as: :new_thread
     get '/thread/:id/edit' => "forum_threads#edit", as: :edit_thread
+    post '/thread/:id/quote' => "forum_threads#quote", as: :quote_thread
     patch '/thread/:id' => "forum_threads#update", as: :update_thread
     post '/thread' => "forum_threads#create", as: :create_thread
     delete '/thread/:id' => "forum_threads#delete", as: :delete_thread

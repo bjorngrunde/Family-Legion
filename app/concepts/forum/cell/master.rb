@@ -27,7 +27,7 @@ module Forum::Cell
     end
 
     def is_owner? user
-      model.user.id == user.id
+      model.user == user
     end
 
    def reply_link
@@ -45,12 +45,16 @@ module Forum::Cell
     end
 
     def quote_link
-      link_to "<i class='quote left icon'></i> #{t(:quote)}", "", class: "quote-link forum action", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id}, onClick: "this.disabled=true;"
+      link_to "<i class='quote left icon'></i> #{t(:quote)}", "", class: "quote-link forum action", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id, type: model.class.name}, onClick: "this.disabled=true;"
     end
 
     def moderator_status
       return unless model.user.has_role? :moderator
       "<span class='moderator-color'>Moderator</span>".html_safe
+    end
+
+    def updated_at
+      "#{time_ago_in_words(model.updated_at)}".humanize
     end
   end
 end

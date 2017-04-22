@@ -54,7 +54,7 @@ en:
   successfull_delete:       "The object has been permamently deleted"
   successfull_save:         "Your changes has been saved"
   alert_delete:             "Are you sure you want to delete the object?"
-  something_went_wrong:     "Ohh my! Something went wrong with the request, try again or contact an administrator."
+  something_went_wrong:     "Ohh my! Something went wrong with the request."
   not_authorized:           "Oi! You can't access that!"
   policy_breach_text:       "Something went wrong. You might not have the right authority to access that resource."
   cannot_edit_user:         "You can not edit this user!"
@@ -195,5 +195,6 @@ en:
   sure_to_delete_thread:      "Deleting a thread will also delete all comments associated with it."
   forum_thread_destroyed:     "The thread was successfully destroyed"
   delete_comment:             "Delete this comment. This action cannot be reversed."
-  create_thread:              "Create thread"
+  create_thread:              "Create a new topic!"
+  new_thread:                 "New thread"
 

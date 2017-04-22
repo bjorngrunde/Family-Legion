@@ -5,7 +5,7 @@ module Forum::Category::Cell
     property :description
 
     def link_to_category_page
-      link_to model.title.humanize, forum_show_category_path(group: model.forum_group.slug, category: model.slug, page: 1)
+      link_to model.title.titleize, forum_show_category_path(group: model.forum_group.slug, category: model.slug, page: 1)
     end
 
     def latest_activity

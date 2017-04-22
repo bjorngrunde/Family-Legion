@@ -6,13 +6,15 @@
   - if is_page_one?(context[:page])
     .dark-box
       .ui.grid
-        .three.wide.column.center.aligned
+        .five.wide.column
           .ui.horizontal.list
             .item
               = reply_link
             .item
+              = quote_link
+            .item
               = subscription_link
-        .thirteen.wide.column
+        .eleven.wide.column
           = cell(Forum::Thread::Cell::Action, model) if current_user.has_role?(:moderator) || is_owner?(current_user)
 
     .dark-box

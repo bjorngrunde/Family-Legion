@@ -2,11 +2,11 @@ module Forum::Thread::Cell
   class Collection < Forum::Cell::Master
 
     def link_to_thread
-      link_to pinned_or_locked_thread?(model.title), forum_show_thread_path(thread: model.slug, category: model.forum_category.slug, group: model.forum_group.slug, page: 1), class: "forum action"
+      link_to truncate(pinned_or_locked_thread?(model.title), length: 50), forum_show_thread_path(thread: model.slug, category: model.forum_category.slug, group: model.forum_group.slug, page: 1), data: { tooltip: model.title }
     end
 
     def author
-      model.user.username.humanize
+      profile_link model.user
     end
 
     def pinned_or_locked_thread? title
@@ -20,11 +20,11 @@ module Forum::Thread::Cell
     end
 
     def updated_at
-      "#{time_ago_in_words(model.updated_at)}".humanize
+      super
     end
 
     def comments
-      model.forum_comments_count
+      model.forum_comments_count || "0"
     end
 
     def views

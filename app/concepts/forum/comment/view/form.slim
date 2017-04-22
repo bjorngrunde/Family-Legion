@@ -5,7 +5,7 @@
   = hidden_field_tag :user_id, current_user.id
   .field
     = label_tag :body
-      = t(:respond_to_thread)
+      = t(:respond_with_comment)
     = hidden_field_tag :body, "", id: :replier
     = tag "trix-editor", input: :replier
   .field

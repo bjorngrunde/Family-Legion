@@ -68,4 +68,10 @@ class Forum::ForumThreadsController < ApplicationController
     redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
     redirect_to(:back, flashy(:negative, t(:oh_dear), t(result["error"]))) if result.failure?
   end
+
+  def quote
+    result = run Forum::Thread::Quote
+    render status: 302, json: ForumThreadRepresenter.new(result["model"]).to_json if result.success?
+    render status: 422, json: { error: t(:something_went_wrong)} if result.failure?
+  end
 end

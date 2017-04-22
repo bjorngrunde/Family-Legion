@@ -41,7 +41,7 @@
           url: response.url
           href: response.url
       else if xhr.status == 422
-        alert(response.errors)
+        errorModal("422: Unprocessable Entity", response.errors)
 
 
     xhr.send form

@@ -1,6 +1,11 @@
 $(document).on 'turbolinks:load', ->
   if page.controller() == 'forum_threads' && page.action() == "show"
 
+    #init code highligher
+    $('pre').each (i, block) ->
+      hljs.highlightBlock block
+      return
+
     #Get editor
 
     element = document.querySelector('trix-editor')
@@ -20,13 +25,13 @@ $(document).on 'turbolinks:load', ->
 
     #clear storage if form submit
 
-    $('#reply-to-thread').event('submit', ->
+    $('#reply-to-thread').event 'submit', ->
 
       if localStorage["editorState"]
         localStorage.removeItem("editorState")
 
       return true
-      )
+
 
     #Add quotes to editor
 
@@ -37,10 +42,15 @@ $(document).on 'turbolinks:load', ->
         element = document.querySelector('trix-editor')
 
       event.target.className += ' quoted'
-      comment = event.target.getAttribute("data-id")
+      comment_or_thread = event.target.getAttribute('data-id')
+      model = event.target.getAttribute('data-type')
 
       baseUrl = getBaseUrl()
-      host = baseUrl + '/forum/comment/' + comment + '/quote'
+
+      if model == "ForumComment"
+        host = baseUrl + '/forum/comment/' + comment_or_thread + '/quote'
+      else
+        host = baseUrl + '/forum/thread/' + comment_or_thread + '/quote'
 
       auth_token = $('meta[name=csrf-token]').attr('content')
 
@@ -68,7 +78,7 @@ $(document).on 'turbolinks:load', ->
           element.editor.insertLineBreak()
 
         if xhr.status == 422
-          alert(response.error)
+          errorModal("422: Unprocessable Entity", response.error)
 
       xhr.send form
 
