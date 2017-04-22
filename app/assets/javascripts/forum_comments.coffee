@@ -12,7 +12,7 @@ $(document).on 'turbolinks:load', ->
 
     #Store the editors document in case of requesting new page
 
-    $('.page, .last, .next, .prev, .first').click ->
+    $('.page, .last, .next, .prev, .first').event 'click', ->
 
       localStorage["editorState"] = JSON.stringify(element.editor)
 
@@ -20,18 +20,23 @@ $(document).on 'turbolinks:load', ->
 
     #clear storage if form submit
 
-    $('#reply-to-thread').submit ->
+    $('#reply-to-thread').event('submit', ->
 
       if localStorage["editorState"]
         localStorage.removeItem("editorState")
 
       return true
+      )
 
     #Add quotes to editor
 
-    $('.quote-link').click (event) ->
+    $('.quote-link').event 'click', (event) ->
       event.preventDefault()
 
+      unless element.editor
+        element = document.querySelector('trix-editor')
+
+      event.target.className += ' quoted'
       comment = event.target.getAttribute("data-id")
 
       baseUrl = getBaseUrl()
@@ -67,7 +72,8 @@ $(document).on 'turbolinks:load', ->
 
       xhr.send form
 
-    $(".clear-form").click (event) ->
+
+    $(".clear-form").event 'click', (event) ->
       event.preventDefault()
 
       length = element.editor.getDocument().toString().length
@@ -77,7 +83,14 @@ $(document).on 'turbolinks:load', ->
       if localStorage["editorState"]
         localStorage.removeItem("editorState")
 
+      quotedElements = document.querySelectorAll('.quoted')
+
+      for element in quotedElements
+        element.classList.remove('quoted')
+      return
+
+
     #Quickly scroll to comment form
-    $('.reply-link').click (event) ->
+    $('.reply-link').event 'click', (event) ->
       event.preventDefault()
       $('html, body').animate { scrollTop: $('#reply-to-thread').offset().top }, 1000

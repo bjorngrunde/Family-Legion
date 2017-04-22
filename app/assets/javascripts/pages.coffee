@@ -12,3 +12,6 @@ window.getBaseUrl = ->
   getUrl = window.location
   base = getUrl.protocol + '//' + getUrl.host
   return base
+
+$.fn.event = (name, fn) ->
+  @unbind(name).bind name, fn
