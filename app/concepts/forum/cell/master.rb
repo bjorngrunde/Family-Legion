@@ -31,7 +31,7 @@ module Forum::Cell
     end
 
    def reply_link
-    return if model.is_a?(ForumThread) && model.is_locked
+    return if is_locked?
     category = model.forum_category.slug
     group = model.forum_group.slug
     thread = model.is_a?(ForumThread) ? model.slug : model.forum_thread.slug
@@ -40,11 +40,12 @@ module Forum::Cell
     end
 
     def subscription_link
-      return if model.is_a?(ForumThread) && model.is_locked
+      return if is_locked?
       link_to "<i class='bookmark icon'></i> #{t(:subscribe)}", "#", class: "forum action"
     end
 
     def quote_link
+      return if is_locked?
       link_to "<i class='quote left icon'></i> #{t(:quote)}", "", class: "quote-link forum action", data: { tooltip: t(:quote_this_comment), position: "top center", id: model.id, type: model.class.name}, onClick: "this.disabled=true;"
     end
 
@@ -55,6 +56,10 @@ module Forum::Cell
 
     def updated_at
       "#{time_ago_in_words(model.updated_at)}".humanize
+    end
+
+    def is_locked?
+      model.is_a?(ForumThread) && model.is_locked
     end
   end
 end

@@ -5,7 +5,7 @@
         = model.title
       th
         p= t(:threads)
-      th
+      th.right.aligned
         p= t(:last_activity)
       th
         - if current_user.has_role?(:moderator)
