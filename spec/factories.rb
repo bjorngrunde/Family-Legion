@@ -1,21 +1,26 @@
 FactoryGirl.define do
-  factory :forum_view do
-    
-  end
+
   factory :forum_comment do
-    
+
   end
+
   factory :image_manager do
-    
+
   end
+
   factory :forum_thread do
-    
+
   end
+
   factory :forum_category do
-    
+    title "The Tavern"
+    description "Have an ale and spill your guts"
+    role  "default"
   end
+
   factory :forum_group do
-    
+    title "General"
+    role  "default"
   end
 
   factory :guild_application do

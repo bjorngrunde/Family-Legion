@@ -11,7 +11,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/dragonfly.log
+dragonfly.log
 /spec/examples.txt
 
 # Ignore Byebug command history file.
@@ -21,3 +21,5 @@
 /config/application.yml
 /public/uploads/*
 .DS_Store
+
+/spec/examples.txt

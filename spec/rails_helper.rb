@@ -10,6 +10,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'support/features/session_helpers'
 require 'support/features/form_helpers'
+require 'support/features/wait_for_ajax'
 require 'support/features'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -47,6 +48,6 @@ RSpec.configure do |config|
   Capybara.register_driver :selenium_chrome do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
-  
+
   Capybara.javascript_driver = :selenium_chrome
 end

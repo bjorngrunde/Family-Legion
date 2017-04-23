@@ -6,7 +6,7 @@ class Forum::Group::Delete < Trailblazer::Operation
   step :delete_group!
 
   def move_content!(options, **)
-    return unless options["model"].forum_categories.any?
+    return true unless options["model"].forum_categories.any?
 
     options["group"] = ForumGroup.find_by(slug: "uncategorized-categories") || ForumGroup.create(title: "Uncategorized Categories", role: "moderator")
 

@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     flashy(:warning, t(:oh_dear), t(:something_went_wrong))
   end
 
+  def flash_errors contract
+    contract.errors.map { |error, message| t(message.split(".").last.to_sym) }
+  end
+
   private
   def _run_options(options)
     options.merge( "current_user" => tyrant.current_user )

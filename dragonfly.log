@@ -226,3 +226,4 @@ D, [2017-04-22T17:49:11.445196 #1676] DEBUG -- : DRAGONFLY: shell command: 'iden
 D, [2017-04-22T17:49:11.451982 #1676] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170422-1676-1do9w9q.jpg'
 D, [2017-04-22T17:49:11.457257 #1676] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170422-1676-1420ld8.jpg'
 D, [2017-04-22T17:49:11.723000 #1676] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170422-1676-se9gh0.jpg'
+D, [2017-04-23T16:38:32.040984 #28406] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170423-28406-1122pf2.jpg'

@@ -1,6 +1,6 @@
 module Features
   module SessionHelpers
-    
+
     def login(email)
       visit("/")
       fill_in "email", :with => email
@@ -8,7 +8,7 @@ module Features
       submit_form
     end
 
-    def create_user(role = nil)
+    def create_user(roles = nil)
       user_attrs = attributes_for :user
       profile_attrs = attributes_for :profile
       user = User.new(user_attrs)
@@ -20,10 +20,10 @@ module Features
       profile = Profile.new(profile_attrs)
       profile.user = user
       profile.save
-      if role.nil?
+      if roles.nil?
         user.add_role :admin
       else
-        user.add_role role
+        roles.each { |role| user.add_role role }
       end
       user
     end

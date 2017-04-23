@@ -2,19 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('.ui.dropdown').dropdown()
-$('.ui.checkbox').checkbox()
-$('.message .close').on 'click', ->
-  $(this).closest('.message').transition 'fade'
-  return
+$.fn.event = (name, fn) ->
+  @unbind(name).bind name, fn
 
 window.getBaseUrl = ->
   getUrl = window.location
   base = getUrl.protocol + '//' + getUrl.host
   return base
-
-$.fn.event = (name, fn) ->
-  @unbind(name).bind name, fn
 
 window.errorModal = (status, errors) ->
   body = document.querySelector('body')
@@ -54,4 +48,11 @@ window.errorModal = (status, errors) ->
   $('.ui.small.modal.ajax-error')
     .modal('show')
 
+  return
+
+$('.ui.dropdown').dropdown()
+
+$('.ui.checkbox').checkbox()
+$('.message .close').on 'click', ->
+  $(this).closest('.message').transition 'fade'
   return

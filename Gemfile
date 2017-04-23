@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem "selenium-webdriver"
   gem "chromedriver-helper"
+  gem "pry"
 end
 
 group :development do
