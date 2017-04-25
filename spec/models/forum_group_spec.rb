@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe ForumGroup, type: :model do
 
   it "should create a forum_group" do
-    forum_group = create(:forum_group, title: "test", role: "default")
+    attrs = attributes_for(:forum_group, title: "test", role: "default")
+
+    forum_group = ForumGroup.create(attrs)
 
     expect(forum_group.title).to eq("test")
     expect(forum_group.role).to eq("default")
@@ -12,7 +14,9 @@ RSpec.describe ForumGroup, type: :model do
 
   it "should be able to update forum_group" do
 
-    forum_group = create(:forum_group, title: "test group", role: "default")
+    attrs = attributes_for(:forum_group, title: "test group", role: "default")
+
+    forum_group = ForumGroup.create(attrs)
 
     expect(forum_group.title).to eq("test group")
     expect(forum_group.role).to eq("default")

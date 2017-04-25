@@ -9,17 +9,20 @@ FactoryGirl.define do
   end
 
   factory :forum_thread do
-
+    title "A test thread"
+    body "<div>A comment about current things and stuff</div>"
+    is_locked false
+    pinned false
   end
 
   factory :forum_category do
-    title "The Tavern"
+    title "Test Category"
     description "Have an ale and spill your guts"
     role  "default"
   end
 
   factory :forum_group do
-    title "General"
+    title "Test Group"
     role  "default"
   end
 

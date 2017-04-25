@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
 
-  scenario "User can change password" do
+  scenario "User can change password", js: true do
 
     new_password = "taskmört1337"
 
@@ -22,7 +22,7 @@ RSpec.feature "Users", type: :feature do
   end
 
 
-  scenario "Should show validation errors when changing password" do
+  scenario "Should show validation errors when changing password", js: true do
 
     new_password = "taskmört1337"
 

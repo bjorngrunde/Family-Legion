@@ -3,9 +3,6 @@ require 'rails_helper'
 RSpec.feature "ForumGroups", type: :feature do
 
   before :each do
-    DatabaseCleaner.clean_with(:truncation)
-    Rails.application.load_seed #Base forum is always seeded
-
     roles = [:moderator, :raid_leader, :member, :raider, :admin]
     user = create_user roles
     login(user.email)

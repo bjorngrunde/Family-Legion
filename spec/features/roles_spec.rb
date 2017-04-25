@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.feature "Roles", type: :feature do
 
   before :each do
-    DatabaseCleaner.clean_with(:truncation)
-    Rails.application.load_seed
-
-    @user = create_user # OMG an instance variable, call the code police!!!!
+    @user = create_user
     login(@user.email)
   end
 
@@ -50,7 +47,6 @@ RSpec.feature "Roles", type: :feature do
   scenario "admin should not be able to edit developer", js: true do
 
     visit(admin_users_path)
-    #binding.pry
     find("a", id: "1", text: "Show").click #id of seeded user, aka developer
 
     expect(page).to have_text("Roles")
