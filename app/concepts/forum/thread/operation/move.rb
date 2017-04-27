@@ -8,6 +8,7 @@ class Forum::Thread::Move < Trailblazer::Operation
   step :update_comments!
 
   def update_comments!(options, **)
+    return true if options["model"].forum_comments.nil?
     options["model"].forum_comments.update_all(forum_group_id: options["model"].forum_group_id, forum_category_id: options["model"].forum_category_id)
   end
 end

@@ -197,4 +197,5 @@ en:
   delete_comment:             "Delete this comment. This action cannot be reversed."
   create_thread:              "Create a new topic!"
   new_thread:                 "New thread"
+  delete_category:            "Delete Category"
 

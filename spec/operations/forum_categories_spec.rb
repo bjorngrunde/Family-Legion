@@ -81,4 +81,15 @@ RSpec.describe "Forum Category Operation", type: :operation do
     expect(new_category.forum_threads.first.title).to eq("A test thread")
     expect(new_category.forum_threads.first.user).to eq(@user)
   end
+
+  it "policy will fail if user is not moderator" do
+
+    attrs = attributes_for(:forum_category)
+    @user.remove_role :moderator
+
+    result = Forum::Category::Create.(attrs, "current_user" => @user)
+
+    expect(result).to be_failure
+    expect(result["result.policy.default"].failure?).to eq(true)
+  end
 end
