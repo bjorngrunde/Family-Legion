@@ -27,5 +27,13 @@ module Familylegion::Cell
     def profile_link user
       link_to user.username.humanize, show_profile_path(username: user.username), class: "#{model_css_class}", data: { turbolinks: false }
     end
+
+    def updated_at
+      "#{time_ago_in_words(model.updated_at)}".humanize
+    end
+
+    def created_at
+      "#{time_ago_in_words(model.created_at)}".humanize
+    end
   end
 end

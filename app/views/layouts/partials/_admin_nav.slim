@@ -12,24 +12,15 @@
     .header= t(:users)
     .menu
       = link_to t(:show_all), admin_users_path(page: 1), class: "item"
-      = link_to t(:create), new_admin_user_path, class: "item"
+      = link_to t(:add_user), new_admin_user_path, class: "item"
 
   .item
-    .header= t(:authorization)
+    .header= t(:dungeons)
     .menu
-      = link_to t(:show_all), "#", class: "item"
+      = link_to t(:show_all), admin_dungeons_path(page: 1), class: "item"
+      = link_to t(:add_dungeon), new_admin_dungeon_path, class: "item"
 
   .item
-    .header= t(:users)
-    .menu
-      = link_to t(:show_all), "#", class: "item"
-
-  .item
-    .header= t(:users)
-    .menu
-      = link_to t(:show_all), "#", class: "item"
-
-  .item
-    .header= t(:users)
+    .header= t(:recruitment)
     .menu
       = link_to t(:show_all), "#", class: "item"

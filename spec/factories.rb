@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :dungeon do
+    
+  end
 
   factory :forum_comment do
     body "<div>Hejsan svejsan</div>"
