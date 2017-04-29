@@ -1,0 +1,29 @@
+.dark-box
+  .ui.grid
+    .three.wide.column.center.aligned
+      .ui.horizontal.list
+        .item
+          = reply_link
+        .item
+          = quote_link
+    .thirteen.wide.column
+      = cell(Forum::Comment::Cell::Action, model) if current_user.has_role?(:moderator)
+.dark-box id="#{model.id}"
+  .ui.grid
+    .three.wide.column
+      .forum.profile
+        .image
+          = image_tag(model.user.profile.thumbnail, class: "ui circular image")
+        = profile_link model.user
+        = moderator_status
+      .forum.stats
+        .ui.list
+          .item
+            h5= model.user.profile.rank.humanize
+          .item
+            h5= "#{t(:posts)}: #{post_counter(model.user)}"
+          .item
+            h5= model.created_at.strftime("%d-%m-%Y %H:%M")
+    .thirteen.wide.column
+      .forum.content
+        = body

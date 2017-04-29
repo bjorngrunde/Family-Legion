@@ -1,0 +1,19 @@
+.ui.borderless.pagination.menu {
+  background: $alliance;
+  color: #ffffff;
+
+  .item {
+    color: inherit;
+
+    a {
+      color: inherit;
+    }
+    &:hover {
+      background: lighten($alliance, 5%);
+    }
+  }
+.page.current.item {
+    text-decoration: underline;
+    font-size: 1.1rem;
+  }
+}

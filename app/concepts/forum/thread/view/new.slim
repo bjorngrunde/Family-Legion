@@ -1,0 +1,3 @@
+.ui.inverted.segment
+  .dark-box
+    = cell(Forum::Thread::Cell::Form, model, context: { path: forum_create_thread_path(category: context[:category]), return_path: forum_show_category_path(group: context[:group], category: context[:category])})

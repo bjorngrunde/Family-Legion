@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314200701) do
+ActiveRecord::Schema.define(version: 20170414130506) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -21,6 +21,61 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_alts_on_username", unique: true, using: :btree
+  end
+
+  create_table "forum_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "role"
+    t.integer  "forum_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_forum_categories_on_slug", unique: true, using: :btree
+    t.index ["title"], name: "index_forum_categories_on_title", unique: true, using: :btree
+  end
+
+  create_table "forum_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "body",              limit: 65535
+    t.integer  "user_id"
+    t.integer  "forum_group_id"
+    t.integer  "forum_category_id"
+    t.integer  "forum_thread_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["forum_category_id"], name: "index_forum_comments_on_forum_category_id", using: :btree
+    t.index ["forum_group_id"], name: "index_forum_comments_on_forum_group_id", using: :btree
+    t.index ["forum_thread_id"], name: "index_forum_comments_on_forum_thread_id", using: :btree
+    t.index ["user_id"], name: "index_forum_comments_on_user_id", using: :btree
+  end
+
+  create_table "forum_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_forum_groups_on_slug", unique: true, using: :btree
+    t.index ["title"], name: "index_forum_groups_on_title", unique: true, using: :btree
+  end
+
+  create_table "forum_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "body",                 limit: 65535
+    t.integer  "forum_group_id"
+    t.integer  "forum_category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.boolean  "pinned",                             default: false
+    t.integer  "forum_comments_count"
+    t.boolean  "is_locked",                          default: false
+    t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
+    t.index ["forum_group_id"], name: "index_forum_threads_on_forum_group_id", using: :btree
+    t.index ["slug", "title"], name: "index_forum_threads_on_slug_and_title", unique: true, using: :btree
+    t.index ["slug"], name: "index_forum_threads_on_slug", unique: true, using: :btree
+    t.index ["user_id"], name: "index_forum_threads_on_user_id", using: :btree
   end
 
   create_table "guild_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,6 +101,14 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["email", "username"], name: "index_guild_applications_on_email_and_username", unique: true, using: :btree
+  end
+
+  create_table "image_managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.text     "image_meta_data", limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_image_managers_on_user_id", using: :btree
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -88,6 +151,15 @@ ActiveRecord::Schema.define(version: 20170314200701) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "views", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "viewable_type"
+    t.integer  "viewable_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id", using: :btree
   end
 
 end

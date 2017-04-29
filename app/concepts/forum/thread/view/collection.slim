@@ -1,0 +1,19 @@
+tr
+  td
+    h4
+      = link_to_thread
+  td
+    h4
+      i.eye.icon
+      = views
+  td
+    h4
+      i.comments.icon
+      = comments
+  td
+    = image_tag(model.user.profile.thumbnail, class: "ui avatar image")
+    span class="#{model_css_class}"
+      = author
+  td.right.aligned
+    span
+      = updated_at

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root :to => "pages#index"
   get 'dashboard' => 'pages#dashboard', as: :dashboard
 
@@ -35,6 +34,56 @@ Rails.application.routes.draw do
     end
   end
 
+  #Image managment
+  namespace :image do
+    post '/store/attachment/' => "image_manager#create"
+  end
+
+  #Forum
+  namespace :forum do
+    #Since rails is not perfect it fails to guess correct paths here using 'resources'. Use regular paths with convention action_resource
+
+    #groups
+    get '/' => "forum_groups#index", as: :overview
+    post '/group/:id/edit' => "forum_groups#edit", as: :edit_group
+    put '/group/:id' => "forum_groups#update", as: :update_group
+    post '/group' => "forum_groups#create", as: :create_group
+    delete '/group/:id' => "forum_groups#delete", as: :delete_group
+
+    #categories
+    post '/category/:id/edit' => "forum_category#edit", as: :edit_category
+    put '/category/:id' => "forum_category#update", as: :update_category
+    post '/category' => "forum_category#create", as: :create_category
+    delete '/category/:id' => "forum_category#delete", as: :delete_category
+
+    #threads
+    get '/thread' => "forum_threads#new", as: :new_thread
+    get '/thread/:id/edit' => "forum_threads#edit", as: :edit_thread
+    post '/thread/:id/quote' => "forum_threads#quote", as: :quote_thread
+    patch '/thread/:id' => "forum_threads#update", as: :update_thread
+    post '/thread' => "forum_threads#create", as: :create_thread
+    delete '/thread/:id' => "forum_threads#delete", as: :delete_thread
+    patch '/thread/:id/move' => "forum_threads#move", as: :move_thread
+    patch '/thread/:id/pin' => "forum_threads#pin", as: :pin_thread
+    patch '/thread/:id/copy' => "forum_threads#copy", as: :copy_thread
+    patch '/thread/:id/lock' => "forum_threads#lock", as: :lock_thread
+    #comments
+    get '/comment/:id/edit' => "forum_comments#edit", as: :edit_comment
+    post '/comment/:id/quote' => "forum_comments#quote", as: :quote_comment
+    put '/comment/:id' => "forum_comments#update", as: :update_comment
+    post '/comment' => "forum_comments#create", as: :create_comment
+    delete '/comment/:id' => "forum_comments#delete", as: :delete_comment
+
+    #Some scopes for pretty URLS
+    scope '/:group/:category' do
+      get '/' => "forum_category#show", as: :show_category, concerns: :paginatable
+      scope '/:thread/' do
+        get '/' => "forum_threads#show", as: :show_thread, concerns: :paginatable
+        get '/comment' => "forum_comments#new", as: :new_comment
+      end
+    end
+  end
+
   #Admin
   namespace :admin do
     get 	'control_panel' => 'pages#control_panel', as: :control_panel
@@ -46,8 +95,6 @@ Rails.application.routes.draw do
     resources :guild_applications, except: [:new, :create], concerns: :paginatable
     resources :users, concerns: :paginatable
   end
-
-
 
 
 end

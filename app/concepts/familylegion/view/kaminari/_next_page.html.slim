@@ -1,2 +1,2 @@
-span.next
-  = link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, :rel => 'next', :remote => remote, class: "item"
+span.next.item
+  = link_to_unless current_page.last?, "#{t('views.pagination.next')} <i class='angle right icon'></i> ".html_safe, url, :rel => 'next', :remote => remote

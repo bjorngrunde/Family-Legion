@@ -3,6 +3,6 @@
     = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
   .field
     = f.label :roles
-    = f.select :roles, Role.all.reverse.map { |role| [role.name.titleize, role.name] unless role.name == "developer" }, {}, { class: "ui dropdown" }
+    = f.select :roles, Role.all.reverse.map { |role| [role.name.titleize, role.name] unless role.name == "developer" }, {}, { class: "ui dropdown"}
   .field
     = f.submit :submit, class: "tiny ui green button", value: t(:add_role)

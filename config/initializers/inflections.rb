@@ -14,3 +14,9 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+   inflect.irregular 'forum_thread', 'forum_threads'
+   inflect.irregular 'forum_group', 'forum_groups'
+   inflect.irregular 'forum_category', 'forum_categories'
+end

@@ -37,6 +37,7 @@ gem 'kaminari'
 gem 'kaminari-cells'
 gem 'authority'
 gem "rolify"
+gem 'trix'
 
 group :development, :test do
   gem "database_cleaner"
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem "selenium-webdriver"
   gem "chromedriver-helper"
+  gem "pry"
 end
 
 group :development do

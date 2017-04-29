@@ -1,2 +1,2 @@
-span.last
-  = link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, :remote => remote, class: "item"
+span.last.item
+  = link_to_unless current_page.last?, "#{t('views.pagination.last')} <i class='angle double right icon'></i> ".html_safe, url, :remote => remote

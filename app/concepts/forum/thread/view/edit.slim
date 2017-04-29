@@ -1,0 +1,3 @@
+.ui.inverted.segment
+  .dark-box
+    = cell(Forum::Thread::Cell::Form, model, context: { path: forum_update_thread_path(id: model.id), return_path: forum_show_thread_path(group: model.forum_group.slug, category: model.forum_category.slug, thread: model.slug)})

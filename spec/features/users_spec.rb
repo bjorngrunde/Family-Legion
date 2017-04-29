@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
 
-  scenario "User can change password" do
+  scenario "User can change password", js: true do
 
     new_password = "taskmört1337"
 
@@ -22,7 +22,7 @@ RSpec.feature "Users", type: :feature do
   end
 
 
-  scenario "Should show validation errors when changing password" do
+  scenario "Should show validation errors when changing password", js: true do
 
     new_password = "taskmört1337"
 
@@ -37,7 +37,7 @@ RSpec.feature "Users", type: :feature do
     fill_in "user_confirm_new_password", :with => ""
     click_button("Save")
 
-    expect(page).to have_text("Ohh my! This does not look right")
+    expect(page).to have_text("Ohh my! Something went wrong with the request.")
     expect(page).to have_text("Old password: Wrong password")
     expect(page).to have_text("Confirm new password: Can't Be Blank")
     expect(page).to have_text("New password: Can't Be Blank")
@@ -48,7 +48,7 @@ RSpec.feature "Users", type: :feature do
     fill_in "user_confirm_new_password", :with => "crappy string"
     click_button("Save")
 
-    expect(page).to have_text("Ohh my! This does not look right.")
+    expect(page).to have_text("Ohh my! Something went wrong with the request.")
     expect(page).to have_text("New password: Passwords dont match")
 
   end
