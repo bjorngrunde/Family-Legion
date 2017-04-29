@@ -55,18 +55,20 @@ class Forum::ForumThreadsController < ApplicationController
 
   def pin
     result = run Forum::Thread::Pin
-    redirect_to(:back) if result.success?
+    redirect_back(fallback_location: forum_overview_path) if result.success?
+    render status: 422, nothing: true if result.failure?
   end
 
   def lock
     result = run Forum::Thread::Lock
-    redirect_to(:back) if result.success?
+    redirect_back(fallback_location: forum_overview_path) if result.success?
+    render status: 422, nothing: true if result.failure?
   end
 
   def copy
     result = run Forum::Thread::Copy
     redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_category.slug, thread: result["model"].slug) if result.success?
-    redirect_to(:back, flashy(:negative, t(:oh_dear), t(result["error"]))) if result.failure?
+    redirect_back(fallback_location: forum_overview_path, flash: flashy(:negative, t(:oh_dear), t(result["error"])) ) if result.failure?
   end
 
   def quote

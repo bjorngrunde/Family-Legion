@@ -16,13 +16,13 @@ class Forum::ForumCommentsController < ApplicationController
   def create
     result = run Forum::Comment::Create
     return redirect_to forum_show_thread_path(group: result["model"].forum_group.slug, category: result["model"].forum_group.slug, thread: result["model"].forum_thread.slug, page: result["pages"], anchor:  "#{result["model"].id}") if result.success?
-    redirect_to :back, flashy(:negative, t(:oh_dear), t(:something_went_wrong)) if result.failure?
+    redirect_back(fallback_location: forum_overview_path, flash: flashy(:negative, t(:oh_dear), t(:something_went_wrong)) ) if result.failure?
   end
 
   def delete
     result = run Forum::Comment::Delete
-    return redirect_to(:back) if result.success?
-    render status: 422, json: { error: t(:something_went_wrong) } if result.failure?
+    return redirect_back(fallback_location: forum_overview_path, flash: flashy(:positive, "", t(:comment_deleted)) ) if result.success?
+    render status: 422, nothing: true if result.failure?
   end
 
   def quote
