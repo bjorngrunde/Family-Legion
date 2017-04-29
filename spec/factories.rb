@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :forum_comment do
-
+    body "<div>Hejsan svejsan</div>"
   end
 
   factory :image_manager do

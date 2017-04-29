@@ -25,7 +25,7 @@ module Familylegion::Cell
     end
 
     def profile_link user
-      link_to user.username.humanize, show_profile_path(username: user.username), class: "#{model_css_class}"
+      link_to user.username.humanize, show_profile_path(username: user.username), class: "#{model_css_class}", data: { turbolinks: false }
     end
   end
 end
