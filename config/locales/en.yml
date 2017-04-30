@@ -213,4 +213,5 @@ en:
   dungeon_image:               "Select an image for the dungeon"
   dungeon_saved:               "Dungeon successfully saved!"
   dungeon_image_explained:     "If you want pretty background images for dungeons, you can find them <a href='http://wow.gamepedia.com/Loading_screen' target='_blank'> here </a> , download the image and crop away the WoW logotype and then upload it."
-
+  dungeon_updated:             "Dungeon was successfully updated"
+  dungeon_deleted:             "Dungeon was sucessfully deleted"

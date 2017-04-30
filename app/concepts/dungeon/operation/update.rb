@@ -1,8 +1,6 @@
-class Dungeon::Create < Trailblazer::Operation
+class Dungeon::Update < Trailblazer::Operation
 
-  step Model(Dungeon, :new)
-  step Policy::Pundit(AdminPolicy, :create?)
-  step Contract::Build(constant: Dungeon::Contract::New)
+  step Nested(:build!)
   step Contract::Validate(key: :dungeon)
   step :upload_image!
   step Contract::Persist()
@@ -14,5 +12,9 @@ class Dungeon::Create < Trailblazer::Operation
       v.process!(:original)
       v.process!(:thumbnail) { |job| job.thumb!("300x300+20+20") }
     end
+  end
+
+  def build!(options, **)
+    Dungeon::Edit
   end
 end

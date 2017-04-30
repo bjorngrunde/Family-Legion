@@ -6,4 +6,12 @@ class AdminPolicy
   def create?
     @model.id.nil? && @user.has_role?(:admin)
   end
+
+  def update?
+    @model.id && @user.has_role?(:admin)
+  end
+
+  def delete?
+    @model.id && @user.has_role?(:admin) && !@model.is_a?(User)
+  end
 end

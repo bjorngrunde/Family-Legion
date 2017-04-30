@@ -1,6 +1,8 @@
 = form_for([:admin, model], html: { class: "ui equal width inverted form dungeon"}, multipart: true) do |f|
   -if form.errors.messages.any?
     = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
+  .field
+    = dungeon_image
   .two.fields
     .field
       = f.label :name
@@ -16,4 +18,4 @@
     = f.file_field :dungeon_image
   .field
     = f.submit :submit, class: "tiny ui green button", value: t(:save)
-    = link_to t(:cancel), admin_control_panel_path(model), class: "tiny ui red button"
+    = link_to t(:cancel), admin_dungeons_path(), class: "tiny ui red button"
