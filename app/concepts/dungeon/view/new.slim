@@ -1,0 +1,10 @@
+.dark-box
+  .ui.icon.notice.message
+    i.warning.icon
+    .content
+      .header
+        = t(:pretty_image)
+      p
+        = t(:dungeon_image_explained)
+
+  = cell(Dungeon::Cell::Form, model)

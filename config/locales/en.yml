@@ -37,6 +37,9 @@ en:
   unlock:                   "Unlock"
   pin:                      "Pin"
   unpin:                    "Unpin"
+  show_all:                 "Show all"
+  pretty_image:             "Pretty background image"
+
 
   #Pagination
   views:
@@ -74,6 +77,7 @@ en:
     forum_create_thread:    "New Thread"
     forum_thread:           "%{thread}"
     forum_new_comment:      "New Reply"
+    dungeons:               "Dungeons"
 
   #GuildApplication
   first_name:               "First Name"
@@ -120,6 +124,7 @@ en:
   ban:                       "Ban"
   ban_user:                  "Ban the user. They will no longer be able to login"
   base_user_does_not_exist:  "The user you tried to show does not seem to exist anymore."
+  add_user:                  "Add a user"
 
 
   #Profile
@@ -198,4 +203,15 @@ en:
   create_thread:              "Create a new topic!"
   new_thread:                 "New thread"
   delete_category:            "Delete Category"
+  comment_deleted:            "Comment was successfully deleted"
 
+  #Dungeons
+  dungeons:                    "Dungeons"
+  add_dungeon:                 "Add a dungeon"
+  dungeon_name:                "Name of dungeon"
+  dungeon_type:                "Select a dungeon type"
+  dungeon_image:               "Select an image for the dungeon"
+  dungeon_saved:               "Dungeon successfully saved!"
+  dungeon_image_explained:     "If you want pretty background images for dungeons, you can find them <a href='http://wow.gamepedia.com/Loading_screen' target='_blank'> here </a> , download the image and crop away the WoW logotype and then upload it."
+  dungeon_updated:             "Dungeon was successfully updated"
+  dungeon_deleted:             "Dungeon was sucessfully deleted"

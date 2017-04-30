@@ -94,6 +94,7 @@ Rails.application.routes.draw do
     delete 'roles/:username' => 'roles#remove_role', as: :remove_user_role
     resources :guild_applications, except: [:new, :create], concerns: :paginatable
     resources :users, concerns: :paginatable
+    resources :dungeons, concerns: :paginatable
   end
 
 

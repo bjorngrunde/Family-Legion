@@ -1,0 +1,12 @@
+table.ui.selectable.inverted.table
+  thead
+    tr
+      th= t(:name)
+      th= t(:type)
+      th= t(:edit)
+      th= t(:delete)
+      th.right.aligned.collapsing= t(:created_at)
+  tbody
+    = cell(Dungeon::Cell::Collection, collection: model)
+.dark-box.center.aligned
+  = paginate model , :views_prefix => "familylegion/view"

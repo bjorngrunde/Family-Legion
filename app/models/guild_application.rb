@@ -3,7 +3,7 @@ class GuildApplication < ApplicationRecord
 
   include Authority::Abilities
   include Paperdragon::Model
-  
+
   self.authorizer_name = 'AdminAuthorizer'
   processable :screenshot
 
