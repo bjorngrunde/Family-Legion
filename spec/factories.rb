@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :event do
+    
+  end
   factory :dungeon do
     
   end

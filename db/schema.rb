@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429214321) do
+ActiveRecord::Schema.define(version: 20170430155402) do
 
   create_table "alts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
@@ -29,6 +29,23 @@ ActiveRecord::Schema.define(version: 20170429214321) do
     t.text     "image_meta_data", limit: 65535
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description", limit: 65535
+    t.integer  "difficulty"
+    t.boolean  "public",                    default: false
+    t.boolean  "guild_event",               default: false
+    t.string   "start_time"
+    t.string   "end_time"
+    t.date     "start_date"
+    t.integer  "dungeon_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["dungeon_id"], name: "index_events_on_dungeon_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "forum_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -117,6 +134,17 @@ ActiveRecord::Schema.define(version: 20170429214321) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["user_id"], name: "index_image_managers_on_user_id", using: :btree
+  end
+
+  create_table "invites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "inviteable_type"
+    t.integer  "inviteable_id"
+    t.string   "notice"
+    t.integer  "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["inviteable_type", "inviteable_id"], name: "index_invites_on_inviteable_type_and_inviteable_id", using: :btree
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

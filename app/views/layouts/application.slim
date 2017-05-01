@@ -7,8 +7,9 @@ html
       .column
         - unless flash.empty?
           = render html: cell(Familylegion::Cell::Flash, nil, context: { flash: flash })
-        .ui.inverted.segment
-          .ui.large.breadcrumb
-            = render_breadcrumbs :separator => ' / '
+        - unless breadcrumbs.empty?
+          .ui.inverted.segment
+            .ui.large.breadcrumb
+              = render_breadcrumbs :separator => ' / '
         == yield
     = render "layouts/partials/footer"

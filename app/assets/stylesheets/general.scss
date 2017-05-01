@@ -60,6 +60,7 @@ body {
   background: darken($dark-grey, 5%);
   padding: 10px;
   @include box-shadow(0, 0 , 4px, #151515);
+  position: relative;
 }
 
 .dark-box.darker {
@@ -216,4 +217,58 @@ body {
   text-align: right;
 }
 
-/***** THREAD *****/
+.alliance-text-color {
+  color: $alliance;
+}
+
+.inline.field {
+  margin-bottom: 2em;
+}
+/***** Events *****/
+.layer {
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+&.light {
+  background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.ui.fluid.event.card {
+  box-shadow: none;
+  border: none;
+  color: #ffffff;
+
+  .content {
+    z-index: 3;
+  }
+  .blurring.dimmable.action {
+    z-index: 5;
+  }
+  .header {
+    font-size: 1em;
+    color: inherit;
+  }
+  .meta {
+    color: $orange-dark;
+
+    .guild_event {
+      color: $tan-green;
+    }
+  }
+  .description {
+    color: inherit;
+  }
+  .extra.content {
+    color: #eee;
+  }
+}
+
+.event-show {
+  width: 100%;
+  min-height: 250px;
+}

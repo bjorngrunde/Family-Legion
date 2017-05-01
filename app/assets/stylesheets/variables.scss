@@ -47,3 +47,7 @@ $link-color:    $alliance;
 @import 'forum';
 @import 'pagination';
 @import 'highlight/darcula.css';
+@import 'datetime/default';
+@import 'datetime/default.date';
+@import 'datetime/default.time';
+@import 'datetime/rtl';

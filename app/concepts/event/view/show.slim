@@ -1,0 +1,8 @@
+.dark-box.event-show style="background: url(#{background_image}) no-repeat center center; background-size: cover;"
+  .layer.light
+  .content
+    h3= name
+    p= dungeon
+    p= model.description
+    p= "Between: #{model.start_time.strftime('%H:%M')} - #{model.end_time.strftime('%H:%M')}"
+

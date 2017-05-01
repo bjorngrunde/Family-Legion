@@ -1,0 +1,68 @@
+= form_for([:flrs, model], html: { class: "ui equal width inverted form event" }) do |f|
+  - if form.errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: form.errors.messages})
+  .field
+    = f.label :name
+      = t(:event_name)
+    = f.text_field :name
+  .field
+    = f.label :description
+      = t(:event_description)
+    = f.text_area :description
+  .two.fields
+    .field
+      = f.label :dungeon_id
+        = t(:event_dungeon)
+      = f.select :dungeon_id, dungeons_select, {}, { class: "ui search dropdown" }
+    .field
+      = f.label :difficulty
+        = t(:event_difficulty)
+      = f.select :difficulty, difficulty_select, {}, { class: "ui dropdown" }
+  .three.fields
+    .field
+      = f.label :start_date
+        = t(:start_date)
+      .ui.left.icon.input
+        = f.text_field :start_date, class: "datepicker"
+        i.alliance-text-color.calendar.icon
+    .field
+      = f.label :start_time
+        = t(:start_time)
+      .ui.left.icon.input
+        = f.text_field :start_time, class: "timepicker"
+        i.alliance-text-color.wait.icon
+    .field
+      = f.label :end_time
+        = t(:end_time)
+      .ui.left.icon.input
+        = f.text_field :end_time, class: "timepicker"
+        i.alliance-text-color.wait.icon
+  .two.fields
+    .field
+      .ui.list
+        .item
+          .inline.field
+            .ui.checkbox
+              = f.check_box :public, {class: "hidden public-event", checked: true }, "1", "0"
+              = f.label :public
+                = t(:public_event)
+            span data-tooltip="#{t(:public_event_explained)}"
+              i.help.circle.icon
+
+        - if current_user.has_role?(:admin) || current_user.has_role?(:raid_leader)
+          .item
+            .inline.field
+              .ui.checkbox
+                = f.check_box :guild_event, {class: "hidden", checked: true }, "1", "0"
+                = f.label :guild_event
+                  = t(:this_is_guild_event)
+              span data-tooltip="#{t(:guild_event_explained)}"
+                i.help.circle.icon
+
+    .field.selector.transition.hidden
+      = label_tag :invites
+        = t(:invite_players)
+      = select :invites, :inviteable, users_select, {allow_blank: false }, class: "ui search dropdown" , multiple: ""
+  .field
+    = f.submit :submit, class: "ui tiny green button", value: t(:submit)
+    = link_to t(:cancel), flrs_events_path, class: "ui tiny red button"

@@ -1,0 +1,23 @@
+.column
+  .ui.fluid.event.card style="background: url(#{background_image}) no-repeat center center; background-size: cover;"
+    .layer
+    .ui.dimmer
+      .content
+        .center
+          = link_to t(:show), flrs_event_path(model), class: "ui tiny alliance button"
+    .content
+      .header
+        =name
+      .meta
+        span.right.floated.guild_event
+          = guild_event
+        span
+          = difficulty
+      .description
+        = dungeon
+    .extra.content
+      span.right.floated
+        = model.start_date
+      span
+        i.users.icon
+        = "#{model.invites.count} joined"

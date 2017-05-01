@@ -39,6 +39,9 @@ Rails.application.routes.draw do
     post '/store/attachment/' => "image_manager#create"
   end
 
+  namespace :flrs do
+    resources :events
+  end
   #Forum
   namespace :forum do
     #Since rails is not perfect it fails to guess correct paths here using 'resources'. Use regular paths with convention action_resource
