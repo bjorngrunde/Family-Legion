@@ -39,6 +39,10 @@ en:
   unpin:                    "Unpin"
   show_all:                 "Show all"
   pretty_image:             "Pretty background image"
+  status:                   "Status"
+  role:                     "Role"
+  notice:                   "Notice"
+  sign_up:                  "Sign up"
 
 
   #Pagination
@@ -231,3 +235,7 @@ en:
   guild_event_explained:       "Guild events are always public and anyone can sign up. Uncheck to invite specific players"
   invite_players:              "Invite users to the event"
   guild_event:                 "Guild Event"
+  private_event:               "This event is private"
+  created_by:                  "Created by"
+  event_created:               "You successfully created an event"
+  you_signed_up:               "You signed up to this event"

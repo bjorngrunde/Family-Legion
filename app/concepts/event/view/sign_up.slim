@@ -1,0 +1,13 @@
+= form_for(invite_model, url: sign_up_flrs_event_path(model), method: :post, html: { class: "ui equal width inverted form event"}) do |f|
+  .four.fields
+    = f.hidden_field :inviteable_type, value: model.class.name
+    = f.hidden_field :inviteable_id, value: model.id
+    = f.hidden_field :user_id, value: current_user.id
+    .field
+      = f.select :status, select_statuses,{}, class: "ui dropdown"
+    .field
+      = f.select :role, select_roles, {}, class: "ui dropdown"
+    .field
+      = f.text_field :notice
+    .field
+      = f.submit :submit, class: "ui green fluid button", value: t(:sign_up)

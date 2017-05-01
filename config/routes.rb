@@ -40,7 +40,11 @@ Rails.application.routes.draw do
   end
 
   namespace :flrs do
-    resources :events
+    resources :events do
+      member do
+        post "/sign_up" => "events#sign_up", as: :sign_up
+      end
+    end
   end
   #Forum
   namespace :forum do

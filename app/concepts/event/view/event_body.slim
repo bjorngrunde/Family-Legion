@@ -1,0 +1,55 @@
+.ui.grid
+  .four.column.row
+    .column
+      h3= t(:tanks)
+    .column
+      h3= t(:healers)
+    .column
+      h3= t(:ranged)
+    .column
+      h3= t(:melee)
+  .four.column.row
+    .column
+      .ui.list
+        - model.invites.role_is(:tank).each do |invite|
+          .item
+            = user_icon invite.user
+            .content
+              .header
+                = profile_link invite.user
+              .description
+                span class="#{invite.status}"
+                  = invite.status.humanize
+    .column
+      .ui.list
+        - model.invites.role_is(:healer).each do |invite|
+          .item
+            = user_icon invite.user
+            .content
+              .header
+                = profile_link invite.user
+              .description
+                span class="#{invite.status}"
+                  = invite.status.humanize
+    .column
+      .ui.list
+        - model.invites.role_is(:ranged).each do |invite|
+          .item
+            = user_icon invite.user
+            .content
+              .header
+                = profile_link invite.user
+              .description
+                span class="#{invite.status}"
+                  = invite.status.humanize
+    .column
+      .ui.list
+        - model.invites.role_is(:melee).each do |invite|
+          .item
+            = user_icon invite.user
+            .content
+              .header
+                = profile_link invite.user
+              .description
+                span class="#{invite.status}"
+                  = invite.status.humanize

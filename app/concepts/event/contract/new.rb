@@ -10,7 +10,7 @@ module Event::Contract
     property :start_date
     property :dungeon_id
 
-    validates :name, :description, :difficulty, :public, :guild_event, :start_date, :start_time, :end_time, presence: true, allow_blank: false
+    validates :name, :description, :difficulty, :public, :start_date, :start_time, :end_time, presence: true, allow_blank: false
     validates :name, length: { minimum: 5 }
     validates :description, length: { maximum: 725 }
   end

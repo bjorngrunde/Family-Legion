@@ -18,7 +18,35 @@ module Event::Cell
     end
 
     def guild_event
-      "<i class='star icon'></i>#{t(:Guild_Event)}" if model.guild_event
+      "<i class='star icon'></i>#{t(:guild_event)}"
+    end
+
+    def public_event
+      "<i class='heart icon'></i> #{t(:public_event)}"
+    end
+
+    def private_event
+      "<i class='protect icon'></i> #{t(:private_event)}"
+    end
+
+    def author
+      "#{t(:created_by)}: #{image_tag(model.user.profile.thumbnail, class: 'ui avatar image')} #{profile_link model.user}"
+    end
+
+    def private?
+      !model.guild_event && !model.public
+    end
+
+    def public?
+      model.public
+    end
+
+    def guild_event?
+      model.guild_event
+    end
+
+    def can_access?
+      model.public || model.guild_event || model.invites.find_by(user_id: current_user.id )
     end
   end
 end

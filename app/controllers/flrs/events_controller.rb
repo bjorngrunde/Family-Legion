@@ -19,6 +19,12 @@ class Flrs::EventsController < ApplicationController
 
   def show
     result = run Event::Show
-    render cell(Event::Cell::Show, result["model"], context: { current_user: current_user })
+    render cell(Event::Cell::Show, result["model"], context: { current_user: current_user, invite: result["invite"] })
+  end
+
+
+  def sign_up
+    result = run Event::SignUp
+    return redirect_back(fallback_location: dashboard_path, flash: flashy(:positive, t(:oh_yeah), t(:you_signed_up)) ) if result.success?
   end
 end

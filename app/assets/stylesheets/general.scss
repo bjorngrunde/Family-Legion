@@ -2,8 +2,11 @@ body {
   margin-top: 60px;
   background: image-url('bg2.jpg') no-repeat center center fixed;
   @include background-size(cover);
+  color: #ffffff;
 }
-
+h1,h2,h3,h5,h6 {
+  color: #ffffff;
+}
 /**** Landing Page Specific ***/
 
 .hero {
@@ -226,15 +229,16 @@ body {
 }
 /***** Events *****/
 .layer {
-    background: rgba(0, 0, 0, 0.6);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  &.light {
+    background: rgba(0, 0, 0, 0.3);
     z-index: 2;
-&.light {
-  background: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -271,4 +275,68 @@ body {
 .event-show {
   width: 100%;
   min-height: 250px;
+  z-index: 1;
+
+}
+.event-show .ui.vertical.segment {
+
+  .content {
+    position: relative;
+    color: #fff;
+    z-index: 5;
+    padding: 10px;
+
+    .header {
+      font-size: 1.8em;
+      width: 100%;
+      height: auto;
+
+      .first {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        color: $orange-dark;
+
+        }
+      .second {
+        font-size: 2em;
+        margin-top: 0.4em;
+        margin-bottom: 1em;
+
+        }
+      }
+    .description {
+      margin-bottom: 0.8em;
+
+      h5 {
+        margin-bottom: 0.4em;
+        }
+      }
+    .meta {
+      margin-top: 1em;
+
+      .public-event {
+        color: $orange-dark;
+        }
+      .guild-event {
+        color: $tan-green;
+        }
+      .private-event {
+        color: $chestnut-red;
+      }
+    }
+  }
+}
+
+.accepted {
+  color: $tan-green;
+}
+.not_sure {
+  color: $orange-dark;
+}
+.declined {
+  color: $chestnut-red;
+}
+
+table .users-list tr td .item a {
+  vertical-align: center;
 }

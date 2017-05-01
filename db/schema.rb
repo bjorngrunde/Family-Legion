@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20170430155402) do
     t.integer  "inviteable_id"
     t.string   "notice"
     t.integer  "role"
+    t.integer  "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["inviteable_type", "inviteable_id"], name: "index_invites_on_inviteable_type_and_inviteable_id", using: :btree
