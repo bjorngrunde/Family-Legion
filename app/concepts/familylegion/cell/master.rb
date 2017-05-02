@@ -39,5 +39,9 @@ module Familylegion::Cell
     def created_at
       "#{time_ago_in_words(model.created_at)}".humanize
     end
+
+    def is_owner?
+      model.user == current_user
+    end
   end
 end

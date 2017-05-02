@@ -9,7 +9,8 @@ class Event::Create < Trailblazer::Operation
 
 
   def add_invites!(options, params:, **)
-    params[:invites][:inviteable].each { |id| options["model"].invites.create({ user_id: id, status: :not_sure }) unless options["model"].invites.find_by(user_id: id) || id.empty? }
+    user_ids = params[:invites][:inviteable] << options["current_user"].id.to_s
+    user_ids.each { |id| options["model"].invites.create({ user_id: id, status: :not_sure }) unless options["model"].invites.find_by(user_id: id) || id.empty? }
   end
 
   def add_user!(options, **)

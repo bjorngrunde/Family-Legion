@@ -10,7 +10,7 @@ module Event::Cell
     end
 
     def users_select
-      User.all.map { |user| [user.username.humanize, user.id ]}
+      User.all.map { |user| [user.username.humanize, user.id ] unless user == current_user }
     end
   end
 end

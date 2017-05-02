@@ -1,7 +1,3 @@
 = cell(Event::Cell::EventHeader, model)
-.ui.vertical.segment
-  .dark-box
-    = cell(Event::Cell::SignUp, model, context: { invite: context[:invite] })
-.ui.vertical.segment
-  .dark-box
-    = cell(Event::Cell::EventBody, model)
+= cell(Event::Cell::SignUp, model, context: { invite: context[:invite] })
+= cell(Event::Cell::EventBody, model)

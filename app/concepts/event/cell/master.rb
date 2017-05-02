@@ -29,12 +29,8 @@ module Event::Cell
       "<i class='protect icon'></i> #{t(:private_event)}"
     end
 
-    def author
-      "#{t(:created_by)}: #{image_tag(model.user.profile.thumbnail, class: 'ui avatar image')} #{profile_link model.user}"
-    end
-
     def private?
-      !model.guild_event && !model.public
+      !public? && !guild_event?
     end
 
     def public?
