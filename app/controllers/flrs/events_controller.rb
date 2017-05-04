@@ -12,8 +12,9 @@ class Flrs::EventsController < ApplicationController
   end
 
   def create
-    result = run Event::Create
-    return redirect_to flrs_events_path, flashy(:positive, "", t(:event_created)) if result.success?
+    run Event::Create do |result|
+      return redirect_to flrs_event_path(result["model"]), flashy(:positive, "", t(:event_created))
+    end
     render cell(Event::Cell::New, result["model"], context: { current_user: current_user, form: result["contract.default"] })
   end
 
