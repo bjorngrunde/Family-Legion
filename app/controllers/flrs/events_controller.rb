@@ -22,6 +22,10 @@ class Flrs::EventsController < ApplicationController
     render cell(Event::Cell::Show, result["model"], context: { current_user: current_user, invite: result["invite"] })
   end
 
+  def edit
+    result = run Event::Edit
+    render cell(Event::Cell::Edit, result["model"], context: { current_user: current_user, form: result["contract.default"]})
+  end
 
   def sign_up
     result = run Event::SignUp

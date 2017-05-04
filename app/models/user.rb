@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :events
   has_many :invites
 
+  #Scopes
+  scope :only_uninvited,->(inviteable_id, inviteable_type ) { left_outer_joins(:invites).where.not( intvites: {inviteable_id: inviteable_id, inviteable_type: inviteable_type}) }
+
   self.authorizer_name = 'AdminAuthorizer'
 
   after_create :assign_default_role
