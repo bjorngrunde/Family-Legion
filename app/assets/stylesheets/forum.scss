@@ -1,0 +1,45 @@
+.forum.profile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.forum.profile {
+  .image > img {
+    margin: 0 auto;
+  }
+}
+.forum.stats {
+  text-align: center;
+}
+
+.forum.action {
+  color: #ffffff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+blockquote {
+  background: $dark-grey;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+trix-editor > blockquote {
+  background: #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  color: #151515;
+}
+
+.quoted {
+  color: $tan-green !important;
+}
+
+h4.subheader {
+  margin-bottom: 0px;
+}

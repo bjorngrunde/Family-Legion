@@ -1,0 +1,52 @@
+- if current_user.has_role?(:moderator)
+  = cell(Forum::Thread::Cell::React, model)
+  = cell(Forum::Thread::Cell::Alert, model)
+
+.ui.inverted.segment
+  - if is_page_one?(context[:page])
+    .dark-box
+      .ui.grid
+        .five.wide.column
+          .ui.horizontal.list
+            .item
+              = reply_link
+            .item
+              = quote_link
+            .item
+              = subscription_link
+        .eleven.wide.column
+          = cell(Forum::Thread::Cell::Action, model) if current_user.has_role?(:moderator) || is_owner?(current_user)
+
+    .dark-box
+      .ui.grid
+        .three.wide.column
+          .forum.profile
+            .image
+              = portrait
+            = profile_link model.user
+            = moderator_status
+          .forum.stats
+            .ui.list
+              .item
+                h5= rank
+              .item
+                h5= posts
+              .item
+                h5= created_at
+            = pin_icon
+            = lock_icon
+        .thirteen.wide.column
+          .forum.content
+            = body
+
+  = cell(Forum::Comment::Cell::Collection, collection: context[:comments]) unless model.is_locked
+
+- unless context[:comments].total_pages <= 1 || model.is_locked
+  .ui.inverted.segment
+    .dark-box.center.aligned
+      = paginate context[:comments] , :views_prefix => "familylegion/view"
+
+- unless model.is_locked
+  .ui.inverted.segment
+    .dark-box
+      = cell(Forum::Comment::Cell::Form, model, context: { form: form})

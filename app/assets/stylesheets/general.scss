@@ -25,7 +25,6 @@ body {
 .ui.vertical.inverted.menu {
   background: darken($dark-grey, 5%);
 }
-
 /**** Status Guild Application ****/
 
 .pending {
@@ -43,7 +42,7 @@ body {
 
 .ui.inverted.table {
   background: darken($dark-grey, 5%);
-  
+
   @include box-shadow(0, 0 , 4px, #151515);
 }
 .ui.inverted.table th {
@@ -63,6 +62,11 @@ body {
   @include box-shadow(0, 0 , 4px, #151515);
 }
 
+.dark-box.darker {
+  background: darken($dark-grey, 6%);
+  padding: 10px;
+  @include box-shadow(0, 0 , 4px, #151515);
+}
 .avatar-box {
   height: 450px;
   width: 400px;
@@ -71,7 +75,7 @@ body {
   @include box-shadow(0, 0 , 4px, #151515);
 }
 
-.gear-items.left { 
+.gear-items.left {
   width: 40px;
   float: left;
 }
@@ -89,7 +93,7 @@ body {
   .item {
     width: 40px;
     margin-right: 5px;
-    
+
     &:last-child {
       margin-right: 0px;
     }
@@ -208,3 +212,8 @@ body {
 .center.aligned {
   text-align: center
 }
+.right.aligned {
+  text-align: right;
+}
+
+/***** THREAD *****/

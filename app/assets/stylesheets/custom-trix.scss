@@ -1,0 +1,19 @@
+trix-toolbar .button_group {
+  border: 1px solid #151515;
+  border-top-color: none;
+  border-bottom-color: none;
+  box-shadow: 0 0 3px #000000;
+}
+
+trix-toolbar .button_row {
+  justify-content: flex-start;
+}
+
+trix-toolbar .button_group button, trix-toolbar .button_group input[type=button] {
+  background: #ffffff;
+}
+
+trix-editor {
+  background: #ffffff;
+  color: #151515;
+}

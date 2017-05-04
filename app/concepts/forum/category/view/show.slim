@@ -1,0 +1,18 @@
+.ui.inverted.segment
+  .thread.actions
+
+
+  table.ui.inverted.selectable.table
+    thead
+      tr.dark-box
+        th colspan="4"
+          = model.title
+        th.right.aligned
+          = create_thread_link
+    tbody
+      = cell(Forum::Thread::Cell::Collection, collection: context[:threads])
+
+- if context[:threads].total_pages > 1
+  .dark-box.center.aligned
+    = paginate context[:threads] , :views_prefix => "familylegion/view"
+

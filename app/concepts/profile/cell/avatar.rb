@@ -1,6 +1,6 @@
 module Profile::Cell
   class Avatar < Profile::Cell::Show
-    
+
     def item_link(item, type)
       if item.nil?
         image = image_tag("#{type.to_s}.png", class: "ui image", width: "36", height: "36")
@@ -8,7 +8,7 @@ module Profile::Cell
       end
       image = icon_image(item["icon"], item["quality"])
 
-      link_to("#{image}", "#", rel: link_data_types(item)).html_safe
+      link_to("#{image}", "#", data: { turbolinks_track: false }, class: "avatar-item", rel: link_data_types(item)).html_safe
     end
 
     private

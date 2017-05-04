@@ -1,0 +1,14 @@
+= form_for([:forum, model], url: context[:path], html: {class: "ui equal width inverted form"}) do |f|
+  -if context[:form].errors.messages.any?
+    = cell(Familylegion::Cell::FormError, nil, context: {errors: context[:form].errors.messages})
+  .field
+    = f.label :title
+      = t(:title)
+    = f.text_field :title
+  .field
+    = f.label :body
+      = t(:whats_on_your_mind)
+    = f.trix_editor :body
+  .field
+    = f.submit :submit, class: "ui tiny green button", value: t(:submit)
+    = link_to t(:cancel), context[:return_path], class: "ui tiny red button"

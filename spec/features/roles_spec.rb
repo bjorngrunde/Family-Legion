@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.feature "Roles", type: :feature do
 
-  scenario "user should be able to create a role" do
+  before :each do
+    @user = create_user
+    login(@user.email)
+  end
 
-    user = create_user
-
-    login(user.email)
+  scenario "user should be able to create a role", js: true do
 
     visit(admin_users_path)
-    click_link("#{user.id}")
+    click_link("#{@user.id}")
 
     expect(page).to have_text("Roles")
 
@@ -21,16 +22,13 @@ RSpec.feature "Roles", type: :feature do
     click_button("Add role")
 
     expect(page).to have_text("Member")
-    expect(page).to have_text("You have added the role member to Bubbleoncd")
+    expect(page).to have_text("You have added the role Member to Bubbleoncd")
   end
 
-  scenario "should return error on multiple roles" do
-    user = create_user
-
-    login(user.email)
+  scenario "should return error on uniq roles", js: true do
 
     visit(admin_users_path)
-    click_link("#{user.id}")
+    click_link("#{@user.id}")
 
     expect(page).to have_text("Roles")
 
@@ -38,26 +36,18 @@ RSpec.feature "Roles", type: :feature do
 
     expect(page).to have_text("Admin")
 
-    select "Member", :from => "role_contract_new[roles]"
+    @user.add_role :member
+
+    select "Member", from: "role_contract_new[roles]"
     click_button("Add role")
 
-    expect(page).to have_text("Member")
-    expect(page).to have_text("You have added the role member to Bubbleoncd")
-
-    select "Member", :from => "role_contract_new[roles]"
-    click_button("Add role")
-
-    expect(page).to have_text("Ohh my! This does not look right.")
-    expect(page).to have_text("Base: The user already has this role!")
+    expect(page).to have_text("The user already has this role!")
   end
 
-  scenario "admin should not be able to edit developer" do
-    user = create_user
-
-    login(user.email)
+  scenario "admin should not be able to edit developer", js: true do
 
     visit(admin_users_path)
-    click_link("1") #id of seeded user, aka developer
+    find("a", id: "1", text: "Show").click #id of seeded user, aka developer
 
     expect(page).to have_text("Roles")
 

@@ -1,0 +1,10 @@
+.ui.inverted.segment
+  - if current_user.has_role? :moderator
+    = cell(Forum::Group::Cell::New)
+    = cell(Forum::Group::Cell::Edit)
+    = cell(Forum::Category::Cell::New)
+    = cell(Forum::Category::Cell::Edit)
+
+  table.ui.inverted.selectable.table
+    = cell(Forum::Group::Cell::Collection, collection: model)
+

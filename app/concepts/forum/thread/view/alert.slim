@@ -1,0 +1,10 @@
+.ui.alert.basic.modal
+  .ui.header.center.aligned
+    = t(:are_you_sure)
+  .content.center.aligned
+    p = t(:sure_to_delete_thread)
+  .actions
+    .ui.red.basic.cancel.inverted.button
+      i.remove.icon
+      = t(:no)
+    = link_to "<i class='checkmark icon'></i> #{t(:yes)}", forum_delete_thread_path(model), class: "ui green ok inverted button", method: :delete

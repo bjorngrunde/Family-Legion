@@ -2,7 +2,7 @@
   .ui.container
     = link_to "Overview", dashboard_path, class: "item"
     = link_to "FLRS", "#", class: "item"
-    = link_to "Forum", "#", class: "item"
+    = link_to "Forum", forum_overview_path, class: "item"
     = link_to "Discord", "#", class: "item"
     = link_to "Guild", "#", class: "item"
 
@@ -10,12 +10,12 @@
       .item
         .ui.inline.dropdown
           .text
-            == avatar_image 
+            == avatar_image
             span class="#{current_user.profile.klass}"
               = current_user.username
           i.dropdown.icon
           .inverted.menu
-            = link_to "Profile", show_profile_path(username: current_user.username), class: "item"
+            = link_to "Profile", show_profile_path(username: current_user.username), class: "item", data: { turbolinks: false }
             = link_to "Settings", user_setting_control_panel_path(username: current_user.username), class: "item"
             = link_to "Admin", admin_control_panel_path, class: "item" if current_user.has_role?(:admin)
             = link_to "Logout", sign_out_path, class: "item"

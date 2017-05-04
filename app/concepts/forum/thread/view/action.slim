@@ -1,0 +1,14 @@
+.right.aligned
+  .ui.dropdown.left.pointing
+    i.settings.icon
+    .menu
+      = edit_link
+      - if current_user.has_role?(:moderator)
+        .item.move-thread data-path="/forum/thread/#{model.id}/move"
+          = t(:move)
+        = pin_link
+        .item.copy-thread data-path="/forum/thread/#{model.id}/copy"
+          = t(:copy)
+        = lock_link
+        .item.delete-thread
+          = t(:delete)

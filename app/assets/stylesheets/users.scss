@@ -3,51 +3,111 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .death-knight {
 	color: $death-knight;
+
+&:hover {
+	color: lighten($death-knight, 5%)
+	}
 }
 .druid {
 	color: $druid;
+
+&:hover {
+	color: lighten($druid, 5%)
+	}
 }
 .hunter {
 	color: $hunter;
-}				
+
+&:hover {
+	color: lighten($hunter, 5%)
+	}
+}
 .warlock {
 	color: $warlock;
+
+&:hover {
+	color: lighten($warlock, 5%)
+	}
 }
 .mage {
 	color: $mage;
+
+&:hover {
+	color: lighten($mage, 5%)
+	}
 }
 .paladin {
 	color: $paladin;
+
+&:hover {
+	color: lighten($paladin, 5%)
+	}
 }
 .shaman {
 	color: $shaman;
+
+&:hover {
+	color: lighten($shaman, 5%)
+	}
 }
 .warrior {
 	color: $warrior;
+
+&:hover {
+	color: lighten($warrior, 5%)
+	}
 }
 .priest {
 	color: $priest;
+
+&:hover {
+	color: lighten($priest, 5%)
+	}
 }
 .monk {
 	color: $monk;
+
+&:hover {
+	color: lighten($monk, 5%)
+	}
 }
 .rogue {
 	color: $rogue;
+
+&:hover {
+	color: lighten($rogue, 5%)
+	}
 }
 .demon-hunter {
 	color: $demon-hunter;
+
+&:hover {
+	color: lighten($demon-hunter, 5%)
+	}
 }
 .epic {
 	color: $epic;
+
+&:hover {
+	color: lighten($epic, 5%)
+	}
 }
 .rare {
 	color: $rare;
+
+&:hover {
+	color: lighten($rare, 5%)
+	}
 }
 .white {
 	color: #ffffff;
 }
 .alliance {
 	background: $alliance;
+}
+
+.moderator-color {
+	color: $orange-dark;
 }
 
 .dark-grey {

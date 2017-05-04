@@ -35,7 +35,7 @@ RSpec.feature "Alts", type: :feature do
 
     click_button("Save")
 
-    expect(page).to have_text("Ohh my! This does not look right.")
+    expect(page).to have_text("Ohh my! Something went wrong with the request.")
     expect(page).to have_text("Username: Can't Be Blank")
     expect(page).to have_text("Server: Can't Be Blank")
 

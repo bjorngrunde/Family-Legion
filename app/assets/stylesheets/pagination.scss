@@ -1,0 +1,16 @@
+.ui.borderless.pagination.menu {
+  background: none;
+  color: #ffffff;
+  font-size: 0.9em;
+
+  .item {
+    color: inherit;
+
+    a {
+      color: inherit;
+    }
+  }
+.page.current.item {
+    text-decoration: underline;
+  }
+}
