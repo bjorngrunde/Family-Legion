@@ -30,7 +30,7 @@ module Event::Cell
     end
 
     def private?
-      !public? && !guild_event?
+      !public? && !guild_event? && model.id
     end
 
     def public?

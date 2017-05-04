@@ -10,7 +10,7 @@ module Event::Cell
     end
 
     def users_select
-      User.only_uninvited(model.id, model.class.name).map { |user| [user.username.humanize, user.id ] unless user == current_user }
+      User.all.map { |user| [user.username.humanize, user.id ] unless user == current_user }
     end
 
     def hidden_class
