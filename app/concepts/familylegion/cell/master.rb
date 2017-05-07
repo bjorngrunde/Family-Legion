@@ -32,6 +32,10 @@ module Familylegion::Cell
       "#{image_tag(user.profile.thumbnail, class:"ui avatar image")} #{profile_link(user)}"
     end
 
+    def current_user_avatar_image
+      image_tag(current_user.profile.thumbnail, class:"ui avatar image")
+    end
+
     def updated_at
       "#{time_ago_in_words(model.updated_at)}".humanize
     end

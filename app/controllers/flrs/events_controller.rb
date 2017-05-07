@@ -12,9 +12,8 @@ class Flrs::EventsController < ApplicationController
   end
 
   def create
-    run Event::Create do |result|
-      return redirect_to flrs_event_path(result["model"]), flashy(:positive, "", t(:event_created))
-    end
+    result= run Event::Create
+    return redirect_to flrs_event_path(result["model"]), flashy(:positive, "", t(:event_created)) if result.success?
     render cell(Event::Cell::New, result["model"], context: { current_user: current_user, form: result["contract.default"] })
   end
 
@@ -28,8 +27,15 @@ class Flrs::EventsController < ApplicationController
     render cell(Event::Cell::Edit, result["model"], context: { current_user: current_user, form: result["contract.default"]})
   end
 
+  def update
+    result = run Event::Update
+    return redirect_to flrs_event_path(result["model"]), flashy(:positive, t(:oh_yeah), t(:event_updated)) if result.success?
+    render cell(Event::Cell::Edit, result["model"], context: { current_user: current_user, form: result["contract.default"]})
+  end
+
   def sign_up
-    result = run Event::SignUp
-    return redirect_back(fallback_location: dashboard_path, flash: flashy(:positive, t(:oh_yeah), t(:you_signed_up)) ) if result.success?
+    run Event::SignUp do |result|
+      redirect_back(fallback_location: dashboard_path, flash: flashy(:positive, t(:oh_yeah), t(:you_signed_up)) )
+    end
   end
 end

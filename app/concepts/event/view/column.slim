@@ -4,7 +4,7 @@
     .ui.dimmer
       .content
         .center
-          = link_to t(:show), flrs_event_path(model), class: "ui tiny alliance button"
+          = link_to t(:show), flrs_event_path(model), class: "ui tiny alliance button", data: { turbolinks: false }
     .content
       .header
         =name

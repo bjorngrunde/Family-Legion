@@ -29,4 +29,4 @@
       .ui.vertical.segment
         .content
           .action.right.aligned= if is_owner? || current_user.has_role?(:admin)
-            = link_to "<i class='settings icon'></i> #{t(:edit)}", edit_flrs_event_path(model), class: "ui tiny alliance button"
+            = link_to "<i class='settings icon'></i> #{t(:edit)}", edit_flrs_event_path(model), class: "ui tiny alliance button", data: { turbolinks: false }

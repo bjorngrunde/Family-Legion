@@ -1,6 +1,7 @@
 class Event::Show < Trailblazer::Operation
 
   step Model(Event, :find_by)
+  step Policy::Pundit(EventPolicy, :read?)
   step :invite_model!
 
   def invite_model!(options, **)

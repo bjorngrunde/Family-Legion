@@ -1,9 +1,9 @@
 .ui.inverted.segment
   .ui.grid
     .sixteen.wide.column
-      .right.aligned
-        = link_to t(:create_event), new_flrs_event_path, class: "ui tiny alliance button", data: { turbolinks: false }
+      .dark-box
+        = cell(Event::Cell::Filter)
     .sixteen.wide.column
-      h2= t(:public_events)
-      .ui.four.column.grid
-        = cell(Event::Cell::Public, collection: model )
+      .dark-box
+        .ui.four.column.grid
+          = cell(Event::Cell::Public, collection: model )

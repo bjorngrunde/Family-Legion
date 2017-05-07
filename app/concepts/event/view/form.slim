@@ -38,27 +38,26 @@
         = f.text_field :end_time, class: "timepicker"
         i.alliance-text-color.wait.icon
   .two.fields
-    - unless private?
-      .field
-        .ui.list
+    .field
+      .ui.list
+        .item
+          .inline.field
+            .ui.checkbox
+              = f.check_box :public, {class: "hidden public-event"}, "1", "0"
+              = f.label :public
+                = t(:public_event)
+            span data-tooltip="#{t(:public_event_explained)}"
+              i.help.circle.icon
+
+        - if current_user.has_role?(:admin) || current_user.has_role?(:raid_leader)
           .item
             .inline.field
               .ui.checkbox
-                = f.check_box :public, {class: "hidden public-event", checked: true }, "1", "0"
-                = f.label :public
-                  = t(:public_event)
-              span data-tooltip="#{t(:public_event_explained)}"
+                = f.check_box :guild_event, {class: "hidden"}, "1", "0"
+                = f.label :guild_event
+                  = t(:this_is_guild_event)
+              span data-tooltip="#{t(:guild_event_explained)}"
                 i.help.circle.icon
-
-          - if current_user.has_role?(:admin) || current_user.has_role?(:raid_leader)
-            .item
-              .inline.field
-                .ui.checkbox
-                  = f.check_box :guild_event, {class: "hidden", checked: true }, "1", "0"
-                  = f.label :guild_event
-                    = t(:this_is_guild_event)
-                span data-tooltip="#{t(:guild_event_explained)}"
-                  i.help.circle.icon
 
     div class="field selector transition #{hidden_class}"
       = label_tag :invites

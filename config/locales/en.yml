@@ -240,3 +240,5 @@ en:
   event_created:               "You successfully created an event"
   you_signed_up:               "You signed up to this event"
   must_select_a_role:          "You have been invited but not yet chosen a role. Please select a role or decline if you can't attend."
+  filter:                      "Filter"
+  create_event:                "Create event"

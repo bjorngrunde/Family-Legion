@@ -1,0 +1,13 @@
+= form_tag(flrs_events_path, class: "ui inverted form filter")
+  .five.fields
+    .field
+      = select :dungeon, :filter, select_dungeon, {}, class: "ui search dropdown"
+    .field
+      = select :difficulty, :filter, select_difficulty, {}, class: "ui dropdown"
+    .field
+      = select :event, :filter, select_event_types, {}, class: "ui dropdown"
+    .field
+      = submit_tag t(:filter), class: "ui fluid green button"
+    .field
+       = link_to t(:create_event), new_flrs_event_path, class: "ui fluid alliance button", data: { turbolinks: false }
+

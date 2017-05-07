@@ -7,6 +7,6 @@ $(document).on 'turbolinks:load', ->
     $('.public-event').event 'change', (e) ->
 
       if e.target.checked
-        $('.selector.transition').transition("fade down")
+        $('.selector.transition').transition("hide")
       else
         $('.selector.transition').transition("fade up")

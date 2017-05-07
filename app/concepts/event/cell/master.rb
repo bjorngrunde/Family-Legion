@@ -14,6 +14,7 @@ module Event::Cell
     end
 
     def difficulty
+      return "PVP" if model.dungeon.dungeon_type == "pvp"
       model.difficulty.humanize
     end
 
