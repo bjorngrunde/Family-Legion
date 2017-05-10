@@ -10,3 +10,5 @@ $(document).on 'turbolinks:load', ->
         $('.selector.transition').transition("hide")
       else
         $('.selector.transition').transition("fade up")
+
+    $('.delete-event.modal').modal('attach events', '#delete-event', 'show')

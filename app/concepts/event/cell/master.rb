@@ -45,5 +45,9 @@ module Event::Cell
     def can_access?
       model.public || model.guild_event || model.invites.find_by(user_id: current_user.id )
     end
+
+    def is_owner?
+      model.user == current_user || current_user.has_role(:admin)
+    end
   end
 end

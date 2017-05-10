@@ -65,4 +65,4 @@
       = select :invites, :inviteable, users_select, {allow_blank: false }, class: "ui search dropdown" , multiple: ""
   .field
     = f.submit :submit, class: "ui tiny green button", value: t(:submit)
-    = link_to t(:cancel), flrs_events_path, class: "ui tiny red button"
+    = link_to t(:cancel), model.name.nil? ? flrs_events_path : flrs_event_path(model), class: "ui tiny red button", data: { turbolinks: false }

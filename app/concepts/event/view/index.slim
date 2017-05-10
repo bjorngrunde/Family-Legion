@@ -1,8 +1,8 @@
 .ui.inverted.segment
   .ui.grid
     .sixteen.wide.column
-      .dark-box
-        = cell(Event::Cell::Filter)
+      .dark-box.right.aligned
+        = link_to t(:create_event), new_flrs_event_path, class: "ui tiny alliance button", data: { turbolinks: false }
     .sixteen.wide.column
       .dark-box
         .ui.four.column.grid

@@ -38,4 +38,11 @@ class Flrs::EventsController < ApplicationController
       redirect_back(fallback_location: dashboard_path, flash: flashy(:positive, t(:oh_yeah), t(:you_signed_up)) )
     end
   end
+
+  def destroy
+    run Event::Delete do |result|
+      return redirect_to flrs_events_path, flashy(:positive, "", t(:successfull_delete) )
+    end
+    redirect_back(fallback_location: dashboard_path, flash: flashy(:negative, "", t(:something_went_wrong)) )
+  end
 end
