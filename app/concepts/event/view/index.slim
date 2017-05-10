@@ -7,3 +7,6 @@
       .dark-box
         .ui.four.column.grid
           = cell(Event::Cell::Public, collection: model )
+    .sixteen.wide.column
+      .dark-box.center.aligned
+        = paginate model , :views_prefix => "familylegion/view"
