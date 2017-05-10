@@ -7,4 +7,5 @@ class Invite < ApplicationRecord
   belongs_to :user
 
   scope :role_is, ->(role) { where(role: role ).order(:status) }
+  scope :joined, ->{ where.not(role: nil) }
 end
