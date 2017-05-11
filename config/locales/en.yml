@@ -243,3 +243,4 @@ en:
   filter:                      "Filter"
   create_event:                "Create event"
   select_players:              "Select players"
+  players_selected_successfully: "Players have been selected successfully"
