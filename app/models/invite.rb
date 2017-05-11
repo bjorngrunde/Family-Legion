@@ -8,5 +8,4 @@ class Invite < ApplicationRecord
 
   scope :role_is, ->(role) { where(role: role ).order("status asc").partition { |invite| invite.status == :selected }.flatten }
   scope :joined, -> { where.not(role: nil) }
-  scope :not_declined, -> { where.not(role: 3 )}
 end
