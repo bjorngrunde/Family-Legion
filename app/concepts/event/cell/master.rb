@@ -47,7 +47,7 @@ module Event::Cell
     end
 
     def is_owner?
-      model.user == current_user || current_user.has_role(:admin)
+      model.user == current_user || current_user.has_role?(:admin)
     end
   end
 end

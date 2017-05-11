@@ -45,4 +45,10 @@ class Flrs::EventsController < ApplicationController
     end
     redirect_back(fallback_location: dashboard_path, flash: flashy(:negative, "", t(:something_went_wrong)) )
   end
+
+  def select_players
+    run Event::SelectPlayers do |result|
+      return redirect_back(fallback_location: dashboard_path, flash: flashy(:positive, "", t(:players_selected_successfully)) )
+    end
+  end
 end

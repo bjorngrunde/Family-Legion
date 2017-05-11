@@ -13,45 +13,13 @@
       .four.column.row
         .column
           .ui.list
-            - model.invites.role_is(:tank).each do |invite|
-              .item
-                = user_icon invite.user
-                .content
-                  .header
-                    = user_link invite.user, invite.notice
-                  .description
-                    span class="#{invite.status}"
-                      = invite.status.humanize
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:tank))
         .column
           .ui.list
-            - model.invites.role_is(:healer).each do |invite|
-              .item
-                = user_icon invite.user
-                .content
-                  .header
-                    = user_link invite.user, invite.notice
-                  .description
-                    span class="#{invite.status}"
-                      = invite.status.humanize
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:healer))
         .column
           .ui.list
-            - model.invites.role_is(:ranged).each do |invite|
-              .item
-                = user_icon invite.user
-                .content
-                  .header
-                    = user_link invite.user, invite.notice
-                  .description
-                    span class="#{invite.status}"
-                      = invite.status.humanize
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:ranged))
         .column
           .ui.list
-            - model.invites.role_is(:melee).each do |invite|
-              .item
-                = user_icon invite.user
-                .content
-                  .header
-                    = user_link invite.user, invite.notice
-                  .description
-                    span class="#{invite.status}"
-                      = invite.status.humanize
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:melee))

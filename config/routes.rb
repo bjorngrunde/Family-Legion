@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   namespace :flrs do
     resources :events, concerns: :paginatable do
       member do
+        post "/select_players" => "events#select_players", as: :select_players
         post "/sign_up" => "events#sign_up", as: :sign_up
       end
     end

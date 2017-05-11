@@ -242,3 +242,4 @@ en:
   must_select_a_role:          "You have been invited but not yet chosen a role. Please select a role or decline if you can't attend."
   filter:                      "Filter"
   create_event:                "Create event"
+  select_players:              "Select players"
