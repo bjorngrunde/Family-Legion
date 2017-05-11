@@ -33,4 +33,6 @@
               .item
                 = link_to "<i class='settings icon'></i> #{t(:edit)}", edit_flrs_event_path(model), class: "ui tiny alliance button", data: { turbolinks: false }
               .item
-                .ui.tiny.red.button#delete-event= t(:delete)
+                .ui.tiny.red.button#delete-event
+                  i.trash.icon
+                  = t(:delete)
