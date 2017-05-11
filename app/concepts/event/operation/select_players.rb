@@ -4,6 +4,7 @@ class Event::SelectPlayers < Trailblazer::Operation
   step :find_invites!
 
   def find_invites!(options, params:, **)
-    options["model"].invites.where(id: params[:selected_players]).update_all(status: :selected)
+    users = params[:selected][:players].map { |id| id.to_i unless id.empty? }
+    options["model"].invites.where(id: users).update_all(status: :selected)
   end
 end

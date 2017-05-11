@@ -4,7 +4,7 @@ class EventPolicy
   end
 
   def update?
-    @model.id && (@model.user == @user || @user.has_role(:admin))
+    @model.id && (@model.user == @user || @user.has_role?(:admin))
   end
 
   def read?

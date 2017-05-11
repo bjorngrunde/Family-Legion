@@ -7,7 +7,7 @@
              = form_tag(select_players_flrs_event_path(id: model), class: "ui inverted form") do
               .fields
                 .field
-                  = select_tag :selected_players, options_for_select(select_players), class: "ui small search dropdown", multiple: ""
+                  = select :selected, :players, select_players,{}, class: "ui small search dropdown", multiple: ""
                 .field
                   = submit_tag t(:select_players), class: "ui tiny green button"
     .column
