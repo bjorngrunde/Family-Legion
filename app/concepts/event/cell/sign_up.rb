@@ -6,7 +6,7 @@ module Event::Cell
     end
 
     def select_statuses
-      Invite.statuses.map { |status| [status.first.humanize, status.first ] unless status.first == "selected" }
+      Invite.statuses.map { |status| [status.first.humanize, status.first ] unless status.first == "selected" }.reject { |c| c.nil? }
     end
 
     def invite_model
