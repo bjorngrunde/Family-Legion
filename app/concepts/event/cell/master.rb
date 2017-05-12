@@ -42,7 +42,7 @@ module Event::Cell
       model.guild_event
     end
 
-    def can_access?
+    def can_access? #this kind of checks should be removed before first release
       model.public || model.guild_event || model.invites.find_by(user_id: current_user.id )
     end
 
