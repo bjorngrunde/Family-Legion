@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   #Registration
   resources :guild_applications, only: :create
-
+  #Comments
+  resources :comments
   #Settings
   scope "/user/:username/", as: :user do
     namespace :setting do
@@ -47,6 +48,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
   #Forum
   namespace :forum do
     #Since rails is not perfect it fails to guess correct paths here using 'resources'. Use regular paths with convention action_resource

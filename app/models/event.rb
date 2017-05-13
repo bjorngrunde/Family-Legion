@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :dungeon
   has_many :invites, class_name: 'Invite', as: :inviteable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   scope :today_and_forward, -> { where("DATE(start_date) >= ?", Date.today).order(:start_date) }
   scope :public_or_invited, -> (user_id, guild_event, public_event ) { includes(:invites).where("invites.user_id = ? OR guild_event = ? OR public = ?", user_id, guild_event, public_event).references(:invites) }

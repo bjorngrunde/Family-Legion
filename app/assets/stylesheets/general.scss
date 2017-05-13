@@ -344,3 +344,32 @@ h1,h2,h3,h5,h6 {
 table .users-list tr td .item a {
   vertical-align: center;
 }
+
+/******* comments *******/
+
+.ui.inverted.comments {
+  color: #fff;
+
+  .ui.dividing.header {
+    color: inherit;
+  }
+  .avatar {
+    img {
+      border-radius: 500px;
+    }
+  }
+  .content {
+    .metadata{
+      color: #ccc;
+    }
+    .text {
+      color: inherit;
+    }
+  }
+
+  .actions {
+    a {
+      color: #ccc;
+    }
+  }
+}
