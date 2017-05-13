@@ -1,0 +1,12 @@
+.dark-box
+  .ui.horizontal.list
+    .item
+      button class="ui tiny green button reply-link"
+        i.reply.icon
+        =t(:reply)
+  .ui.inverted.threaded.comments
+    h3.ui.dividing.header= t(:discussion)
+
+    = cell(Comment::Cell::Discussion, collection: model.comments)
+  = cell(Comment::Cell::Form, model)
+
