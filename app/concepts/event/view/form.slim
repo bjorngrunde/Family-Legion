@@ -53,7 +53,7 @@
           .item
             .inline.field
               .ui.checkbox
-                = f.check_box :guild_event, {class: "hidden"}, "1", "0"
+                = f.check_box :guild_event, {class: "hidden guild-event"}, "1", "0"
                 = f.label :guild_event
                   = t(:this_is_guild_event)
               span data-tooltip="#{t(:guild_event_explained)}"

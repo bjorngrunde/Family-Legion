@@ -9,13 +9,13 @@
                 .field
                   = select :selected, :players, select_players,{}, class: "ui small search dropdown", multiple: ""
                 .field
-                  = submit_tag t(:select_players), class: "ui tiny green button"
+                  = submit_tag t(:select_players), class: "ui green button"
     .column
       .action.right.aligned
         .ui.horizontal.list
           .item
-            = link_to "<i class='settings icon'></i> #{t(:edit)}", edit_flrs_event_path(model), class: "ui tiny alliance button", data: { turbolinks: false }
+            = link_to "<i class='settings icon'></i> #{t(:edit)}", edit_flrs_event_path(model), class: "ui alliance button", data: { turbolinks: false }
           .item
-            .ui.tiny.red.button#delete-event
+            .ui.red.button#delete-event
               i.trash.icon
               = t(:delete)

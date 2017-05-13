@@ -60,3 +60,4 @@ D, [2017-05-07T18:10:58.512952 #996] DEBUG -- : DRAGONFLY: shell command: 'ident
 D, [2017-05-07T18:15:49.306790 #996] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170507-996-5cvzix.jpg'
 D, [2017-05-07T18:15:49.321221 #996] DEBUG -- : DRAGONFLY: shell command: 'convert' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170507-996-5cvzix.jpg' '-crop' '300x300+20+20' '+repage' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/dragonfly20170507-996-1lp09lq.jpg'
 D, [2017-05-07T18:15:49.361945 #996] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/dragonfly20170507-996-1lp09lq.jpg'
+D, [2017-05-13T15:24:56.853634 #1185] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170513-1185-l62z0n.png'

@@ -14,7 +14,7 @@ module Event::Cell
     end
 
     def hidden_class
-      return "hidden" unless private?
+      return "hidden" if public? || guild_event?
     end
   end
 end

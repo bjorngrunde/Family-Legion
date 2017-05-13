@@ -4,11 +4,14 @@ $(document).on 'turbolinks:load', ->
 
     $('.fluid.event.card').dimmer on: 'hover'
 
-    $('.public-event').event 'change', (e) ->
+    $('.public-event, .guild-event').event 'change', (e) ->
 
       if e.target.checked
         $('.selector.transition').transition("hide")
       else
-        $('.selector.transition').transition("fade up")
+        if $('.public-event').parent().hasClass('checked') || $('.guild-event').parent().hasClass('checked')
+          return
+        else
+          $('.selector.transition').transition("fade up")
 
     $('.delete-event.modal').modal('attach events', '#delete-event', 'show')
