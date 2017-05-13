@@ -1,6 +1,19 @@
 FactoryGirl.define do
+
+  factory :event do
+    name "Weekly Raid"
+    body "Some interesting stuff here"
+    difficulty "Heroic"
+    start_date Date.today
+    start_time "19:00"
+    end_time "23:00"
+    public true
+    guild_event true
+  end
+
   factory :dungeon do
-    
+    name "Court of Stars"
+    dungeon_type "Dungeon"
   end
 
   factory :forum_comment do

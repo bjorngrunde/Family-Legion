@@ -38,6 +38,7 @@ gem 'kaminari-cells'
 gem 'authority'
 gem "rolify"
 gem 'trix'
+gem 'date_validator'
 
 group :development, :test do
   gem "database_cleaner"

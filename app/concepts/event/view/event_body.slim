@@ -1,0 +1,25 @@
+.ui.vertical.segment
+  .dark-box
+    .ui.grid
+      .four.column.row
+        .column
+          h3= t(:tanks)
+        .column
+          h3= t(:healers)
+        .column
+          h3= t(:ranged)
+        .column
+          h3= t(:melee)
+      .four.column.row
+        .column
+          .ui.list
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:tank))
+        .column
+          .ui.list
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:healer))
+        .column
+          .ui.list
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:ranged))
+        .column
+          .ui.list
+            = cell(Event::Cell::UserList, collection: model.invites.role_is(:melee))

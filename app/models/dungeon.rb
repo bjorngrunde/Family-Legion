@@ -5,4 +5,6 @@ class Dungeon < ApplicationRecord
 
   include Paperdragon::Model
   processable :dungeon_image
+
+  has_many :events
 end

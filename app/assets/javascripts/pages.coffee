@@ -53,6 +53,7 @@ window.errorModal = (status, errors) ->
 $('.ui.dropdown').dropdown()
 
 $('.ui.checkbox').checkbox()
+$('.ui.radio.checkbox').checkbox()
 $('.message .close').on 'click', ->
   $(this).closest('.message').transition 'fade'
   return
