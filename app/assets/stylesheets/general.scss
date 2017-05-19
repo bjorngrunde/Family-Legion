@@ -373,3 +373,17 @@ table .users-list tr td .item a {
     }
   }
 }
+
+/*******  Comments *******/
+.ui.inverted.threaded.comments {
+  width: 100%;
+  max-width: none;
+}
+
+#recent-comments {
+  min-height: 150px;
+}
+
+.white {
+  color: #fff;
+}

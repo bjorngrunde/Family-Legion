@@ -1,8 +1,9 @@
 = form_for(Comment.new, html: { class: "ui equal width inverted form event", remote: true  }) do |f|
   = f.hidden_field :commentable_id, value: model.id
   = f.hidden_field :commentable_type, value: model.class.name
-  .three.fields
-    .field
-      = f.trix_editor :body
-  .field
-    = f.submit :submit, class: "tiny ui green button comment-submit", value: t(:comment)
+  .fields
+    .fourteen.wide.field
+      = f.text_field :body, size: 20, placeholder: "Join the discussion"
+    .two.wide.field
+      = f.submit :submit, class: "ui green submit button", value: t(:comment)
+

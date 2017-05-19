@@ -50,6 +50,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "chromedriver-helper"
   gem "pry"
+  gem "fiddlesticks", '~> 0.2.0'
 end
 
 group :development do

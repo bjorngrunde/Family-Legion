@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :guild_applications, only: :create
   #Comments
   resources :comments
+  get "comments/index/:model/:id" => "comments#index"
+
   #Settings
   scope "/user/:username/", as: :user do
     namespace :setting do
