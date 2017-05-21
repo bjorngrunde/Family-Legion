@@ -3,11 +3,11 @@ class CommentsController < ApplicationController
 
   def create
     result = run Comment::Create
-    return redirect_back(fallback_location: dashboard_path) if result.success?
+    return render status: 200, json: CommentRepresenter.new(result["model"]).to_json if result.success?
   end
 
   def index
     result = run Comment::Index
-    render status: 201, json: CommentRepresenter.for_collection.new(result["comments"]).to_json if result.success?
+    render js: cell(Comment::Cell::Show, result["model"], context: { page: params[:page] } ).(:append)
   end
 end

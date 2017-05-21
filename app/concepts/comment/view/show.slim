@@ -2,11 +2,10 @@
   h3.ui.inverted.header= t(:discussion)
   = cell(Comment::Cell::Form, model)
   .ui.inverted.threaded.comments#recent-comments data-id="#{model.id}" data-model="#{model.class.name}"
+    = cell(Comment::Cell::Discussion, collection: comments)
 
-  .ui.comment.dimmer
-    .ui.white.text.loader
-      | Loading
-    p
-    p
+  - unless comments.last_page?
+    #next
+      = link_to t(:more), next_comments_path(model: model.class.name, id: model.id, page: comments.next_page), class: "ui fluid alliance button", remote: true
 
 

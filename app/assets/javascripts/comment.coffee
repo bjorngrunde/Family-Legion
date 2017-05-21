@@ -1,46 +1,27 @@
 $(document).on 'turbolinks:load', ->
-
   if page.controller() == 'events' && page.action() == "show"
-    element = $('#recent-comments')
 
-    isElementInView = Utils.isElementInView(element, false)
-
-    if isElementInView
-
-      $(".ui.comment.dimmer").dimmer("show")
-
-      id = element.attr('data-id')
-      model = element.attr('data-model')
-
-      $.ajax({
-        url: "/comments/index/" + model + "/" + id,
-        cache: false,
-
-        success: (response) ->
-          $(".ui.comment.dimmer").dimmer("hide").transition("fade out")
-          if response[0] != undefined
-            comments = commentsTemplate(response)
-
-            comments.forEach (comment) ->
-              element.append(comment).transition("fade in")
-          else
-            element.append("<h3 class='center aligned'>No comments yet.</h3>")
-
-        error: (response) ->
-          console.log(response)
-          #TODO manage erros
-
-        complete: ->
-          element.attr('class', element.attr('class') + ' loaded')
-        })
+     $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
+        comment = decorateSingleComment(data)
+        element.prepend(comment)
+        val = $('#comment_body').val("")
+      )
 
 
-
-commentsTemplate = (comments) ->
+decorateComments = (comments) ->
   commentList = []
 
   comments.forEach (comment) ->
-    #Create the container for our comment
+    commentList.push(commentTemplate(comment))
+
+  return commentList
+
+decorateSingleComment = (comment) ->
+  return commentTemplate(comment)
+
+
+commentTemplate = (comment) ->
+   #Create the container for our comment
     container = document.createElement('div')
     container.setAttribute('class', 'comment')
     container.setAttribute('id', comment.id)
@@ -117,9 +98,8 @@ commentsTemplate = (comments) ->
 
     container.appendChild(content)
 
-    commentList.push(container)
+    return container
 
-  return commentList
 
 htmlStr = (htmlStr) ->
   frag = document.createDocumentFragment()
