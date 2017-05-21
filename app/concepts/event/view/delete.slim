@@ -1,0 +1,11 @@
+.ui.basic.delete-event.modal
+  .ui.icon.header
+    i.archive.icon
+    = t(:delete_event?)
+  .content.center.aligned
+    p = t(:alert_delete)
+  .actions
+    .ui.red.basic.cancel.inverted.button
+      i.remove.icon
+      = t(:no)
+    = link_to "<i class='checkmark icon'></i> #{t(:yes)}", flrs_event_path(model), method: :delete, class: "ui green ok inverted button"

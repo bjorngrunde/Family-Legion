@@ -39,6 +39,14 @@ Rails.application.routes.draw do
     post '/store/attachment/' => "image_manager#create"
   end
 
+  namespace :flrs do
+    resources :events, concerns: :paginatable do
+      member do
+        post "/select_players" => "events#select_players", as: :select_players
+        post "/sign_up" => "events#sign_up", as: :sign_up
+      end
+    end
+  end
   #Forum
   namespace :forum do
     #Since rails is not perfect it fails to guess correct paths here using 'resources'. Use regular paths with convention action_resource

@@ -1,8 +1,8 @@
 .ui.fixed.inverted.borderless.menu
   .ui.container
     = link_to "Overview", dashboard_path, class: "item"
-    = link_to "FLRS", "#", class: "item"
-    = link_to "Forum", forum_overview_path, class: "item"
+    = link_to "FLRS", flrs_events_path(page: 1), class: "item", data: { turbolinks: false }
+    = link_to "Forum", forum_overview_path, class: "item", data: { turbolinks: false }
     = link_to "Discord", "#", class: "item"
     = link_to "Guild", "#", class: "item"
 
@@ -10,8 +10,8 @@
       .item
         .ui.inline.dropdown
           .text
-            == avatar_image
-            span class="#{current_user.profile.klass}"
+            == current_user_avatar_image
+            span class="#{current_user_css_class}"
               = current_user.username
           i.dropdown.icon
           .inverted.menu

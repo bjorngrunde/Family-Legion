@@ -1,0 +1,8 @@
+.item
+  = user_icon model.user
+  .content
+    .header
+      = user_link model.user, model.notice
+    .description
+      span class="#{model.status}"
+        = model.status.humanize

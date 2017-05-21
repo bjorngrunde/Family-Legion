@@ -1,0 +1,28 @@
+.dark-box.event-show style="background: url(#{background_image}) no-repeat center center; background-size: cover;"
+  .layer.light
+  .ui.grid
+    .twelve.wide.column
+      .ui.vertical.segment
+        .content
+          .date
+            h5= readable_date
+          .header
+            .first= difficulty
+            .second= dungeon
+          .description
+            h5= name
+            p= model.description
+          .date
+            h5= start_and_end_time
+          .meta
+            .ui.horizontal.list
+              - if private?
+                .item.private-event
+                  = private_event
+              - if public?
+                .item.public-event
+                  = public_event
+              - if guild_event?
+                .item.guild-event
+                  = guild_event
+    .four.wide.column
