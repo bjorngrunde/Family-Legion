@@ -1,12 +1,13 @@
 module Comment::Cell
   class Show < Familylegion::Cell::Master
+    include ActionView::Helpers::JavaScriptHelper
 
-    def show
-      cell(Comment::Cell::Discussion, comments)
+    def discussion
+      render
     end
 
     def comments
-      @comments ||= model.comments.page(page).per(20)
+      @comments ||= model.comments.order(created_at: :desc).page(page).per(2)
     end
 
     def page
@@ -14,7 +15,7 @@ module Comment::Cell
     end
 
     def append
-      %{ $("#next").replaceWith("#{j(show)}") }
+      %{ $("#next").replaceWith("#{j(discussion)}") }
     end
   end
 end

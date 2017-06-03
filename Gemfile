@@ -39,6 +39,7 @@ gem 'authority'
 gem "rolify"
 gem 'trix'
 gem 'date_validator'
+gem 'poly_belongs_to', '~> 1.0'
 
 group :development, :test do
   gem "database_cleaner"

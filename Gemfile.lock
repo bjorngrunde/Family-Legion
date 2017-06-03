@@ -222,6 +222,8 @@ GEM
       dragonfly (~> 1.0.12)
       uber
     pipetree (0.1.1)
+    poly_belongs_to (1.0.0)
+      rails (>= 3.1, < 6)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -402,6 +404,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
   paperdragon
+  poly_belongs_to (~> 1.0)
   pry
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)

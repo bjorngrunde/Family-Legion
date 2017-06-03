@@ -1,8 +1,5 @@
-.dark-box
-  h3.ui.inverted.header= t(:discussion)
-  = cell(Comment::Cell::Form, model)
-  .ui.inverted.threaded.comments#recent-comments data-id="#{model.id}" data-model="#{model.class.name}"
-    = cell(Comment::Cell::Discussion, collection: comments)
+.ui.inverted.threaded.comments#recent-comments data-id="#{model.id}" data-model="#{model.class.name}"
+  = cell(Comment::Cell::Discussion, collection: comments)
 
   - unless comments.last_page?
     #next

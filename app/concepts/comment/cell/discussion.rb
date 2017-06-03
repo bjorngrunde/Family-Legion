@@ -1,8 +1,9 @@
 module Comment::Cell
-  class Discussion < Familylegion::Cell::Master
+  class Discussion < Comment::Cell::Show
 
     def created_at
       super
     end
+
   end
 end
