@@ -3,6 +3,6 @@
 
   - unless comments.last_page?
     #next
-      = link_to t(:more), next_comments_path(model: model.class.name, id: model.id, page: comments.next_page), class: "ui fluid alliance button", remote: true
+      = link_to t(:more), next_comments_path(model: model.class.name, id: model.id, page: comments.next_page), class: "ui fluid alliance button", remote: true, data: { turbolinks: false }
 
 

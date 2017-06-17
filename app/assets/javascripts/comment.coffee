@@ -1,19 +1,17 @@
 $(document).on 'turbolinks:load', ->
-  if page.controller() == 'events' && page.action() == "show"
 
-    $(".comment-reply").event 'click', (e) ->
-      e.preventDefault()
-      form = $("#" + e.target.getAttribute('data-id'))
-      form.transition('fade')
+  $(".comment-reply").event 'click', (e) ->
+    e.preventDefault()
+    form = $("#" + e.target.getAttribute('data-id'))
+    form.transition('fade')
 
 
-     $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
-        element = $("#recent-comments")
-        comment = decorateSingleComment(data)
-        element.prepend(comment)
-        val = $('#comment_body').val("")
-      )
-
+   $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
+      element = $("#recent-comments")
+      comment = decorateSingleComment(data)
+      element.prepend(comment)
+      val = $('#comment_body').val("")
+    )
 
 decorateComments = (comments) ->
   commentList = []

@@ -1,15 +1,15 @@
 .comment
   = cell(Comment::Cell::Reply, model)
 
-    = form_for(Comment.new, html: { class: "ui reply form transition hidden", remote: true, id: "#{model.id}" }) do |f|
-      = f.hidden_field :commentable_id, value: model.id
-      = f.hidden_field :commentable_type, value: model.class.name
-      .field
-        = f.text_area :body, placeholder: "Reply to #{model.user.username.humanize}", rows: 2
-      .field.right.aligned
-        = f.submit :submit, class: "ui green submit button", value: t(:comment)
+  = form_for(Comment.new, html: { class: "ui reply form transition hidden", remote: true, id: "#{model.id}" }) do |f|
+    = f.hidden_field :commentable_id, value: model.id
+    = f.hidden_field :commentable_type, value: model.class.name
+    .field
+      = f.text_area :body, placeholder: "Reply to #{model.user.username.humanize}", rows: 2
+    .field.right.aligned
+      = f.submit :submit, class: "ui green submit button", value: t(:comment)
 
-  - if model.comments
+  - if model.comments.any?
     .comments
       = cell(Comment::Cell::SubReply, collection: model.comments)
 
