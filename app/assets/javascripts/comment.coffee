@@ -6,6 +6,12 @@ $(document).on 'turbolinks:load', ->
     form.transition('fade')
 
 
+  $(document).on 'click', '.comment-show', (e) ->
+    e.preventDefault()
+    element = $("#" + e.target.getAttribute('data-id') )
+    element = element.find(".comments")
+    element.transition('fade')
+
   $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
     element = $("#recent-comments")
     comment = decorateSingleComment(data)

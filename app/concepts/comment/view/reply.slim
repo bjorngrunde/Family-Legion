@@ -9,4 +9,4 @@
     = model.body
   .actions
     = link_to "<i class='reply icon'></i> #{t(:reply)}", "#", class: "comment-reply", data: { id: "#{model.id}"}
-    = link_to "<i class='comment icon'></i> #{t(:comments)} (#{model.comments.count})", "#" if model.comments.any?
+    = link_to "<i class='comment icon'></i> #{t(:comments)} (#{model.comments.count})", "#", class: "comment-show", data: { id: model.id } if model.comments.any?

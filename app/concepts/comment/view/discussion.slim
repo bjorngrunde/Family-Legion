@@ -10,6 +10,6 @@
       = f.submit :submit, class: "ui green submit button", value: t(:comment)
 
   - if model.comments.any?
-    .comments
+    .comments.transition.hidden
       = cell(Comment::Cell::SubReply, collection: model.comments)
 
