@@ -1,9 +1,8 @@
 $(document).on 'turbolinks:load', ->
 
   $(document).on 'click', '.comment-reply', (e) ->
-    console.log("test")
     e.preventDefault()
-    form = $("#" + e.target.getAttribute('data-id'))
+    form = $("#" + e.target.getAttribute('data-id')).find('form')
     form.transition('fade')
 
 
@@ -14,6 +13,24 @@ $(document).on 'turbolinks:load', ->
     val = $('#comment_body').val("")
   )
 
+  $("#sub_comment").on('ajax:success', (e, data, status, xhr)->
+    element = $("#" + e.target.getAttribute('data-id'))
+    comment_tag = element.find(".comments")
+    console.log(comment_tag)
+
+    if !comment_tag.hasClass('comments')
+      comment_tag = newCommentsTag()
+      comment_tag.append(decorateSingleComment(data, true))
+      element.append(comment_tag)
+    else
+      comment_tag.append(decorateSingleComment(data, true))
+
+    $(e.target).transition('fade')
+    )
+
+
+
+
 decorateComments = (comments) ->
   commentList = []
 
@@ -22,11 +39,15 @@ decorateComments = (comments) ->
 
   return commentList
 
-decorateSingleComment = (comment) ->
-  return commentTemplate(comment)
+decorateSingleComment = (comment, sub_reply = false) ->
+  return commentTemplate(comment, sub_reply)
 
+newCommentsTag = ->
+  tag = document.createElement('div')
+  tag.setAttribute('class', 'comments')
+  return tag
 
-commentTemplate = (comment) ->
+commentTemplate = (comment, sub_reply = false) ->
    #Create the container for our comment
     container = document.createElement('div')
     container.setAttribute('class', 'comment')
@@ -86,20 +107,24 @@ commentTemplate = (comment) ->
     content.appendChild(text)
 
     #create actions
+    if sub_reply == false
+      actions = document.createElement('div')
+      actions.setAttribute('class', 'actions')
 
-    actions = document.createElement('div')
-    actions.setAttribute('class', 'actions')
+      #create reply action
+      reply_link = document.createElement('a')
+      reply_link.setAttribute('class', 'comment-reply')
+      reply_link.setAttribute('href', '#')
+      reply_text = document.createTextNode('Reply')
 
-    #create reply action
-    reply_link = document.createElement('a')
-    reply_link.setAttribute('class', 'comment-reply')
-    reply_link.setAttribute('href', '#')
-    reply_text = document.createTextNode('Reply')
+      reply_icon = document.createElement('i')
+      reply_icon.setAttribute('class', 'reply icon')
 
-    #append actions
-    reply_link.appendChild(reply_text)
-    actions.appendChild(reply_link)
-    content.appendChild(actions)
+      #append actions
+      reply_link.appendChild(reply_icon)
+      reply_link.appendChild(reply_text)
+      actions.appendChild(reply_link)
+      content.appendChild(actions)
 
     container.appendChild(content)
 

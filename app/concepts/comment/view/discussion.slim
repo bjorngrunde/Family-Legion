@@ -1,7 +1,7 @@
-.comment
+.comment id="#{model.id}"
   = cell(Comment::Cell::Reply, model)
 
-  = form_for(Comment.new, html: { class: "ui reply form transition hidden", remote: true, id: "#{model.id}" }) do |f|
+  = form_for(Comment.new, html: { class: "ui reply form transition hidden", remote: true, id: "sub_comment"}, data: { id: model.id}) do |f|
     = f.hidden_field :commentable_id, value: model.id
     = f.hidden_field :commentable_type, value: model.class.name
     .field
