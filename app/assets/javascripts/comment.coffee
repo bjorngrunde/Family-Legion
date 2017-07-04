@@ -1,17 +1,18 @@
 $(document).on 'turbolinks:load', ->
 
-  $(".comment-reply").event 'click', (e) ->
+  $(document).on 'click', '.comment-reply', (e) ->
+    console.log("test")
     e.preventDefault()
     form = $("#" + e.target.getAttribute('data-id'))
     form.transition('fade')
 
 
-   $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
-      element = $("#recent-comments")
-      comment = decorateSingleComment(data)
-      element.prepend(comment)
-      val = $('#comment_body').val("")
-    )
+  $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
+    element = $("#recent-comments")
+    comment = decorateSingleComment(data)
+    element.prepend(comment)
+    val = $('#comment_body').val("")
+  )
 
 decorateComments = (comments) ->
   commentList = []
@@ -91,7 +92,6 @@ commentTemplate = (comment) ->
 
     #create reply action
     reply_link = document.createElement('a')
-    reply_link.setAttribute('data-turbolinks', false)
     reply_link.setAttribute('class', 'comment-reply')
     reply_link.setAttribute('href', '#')
     reply_text = document.createTextNode('Reply')

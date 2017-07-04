@@ -1,4 +1,5 @@
 .dark-box
   h3.ui.inverted.header= t(:discussion)
   = cell(Comment::Cell::Form, model)
-  = cell(Comment::Cell::Show, model)
+  .ui.inverted.threaded.comments#recent-comments data-id="#{model.id}" data-model="#{model.class.name}"
+    = cell(Comment::Cell::Show, model)

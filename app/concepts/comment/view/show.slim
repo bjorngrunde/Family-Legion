@@ -1,8 +1,7 @@
-.ui.inverted.threaded.comments#recent-comments data-id="#{model.id}" data-model="#{model.class.name}"
-  = cell(Comment::Cell::Discussion, collection: comments)
+= cell(Comment::Cell::Discussion, collection: comments)
 
-  - unless comments.last_page?
-    #next
-      = link_to t(:more), next_comments_path(model: model.class.name, id: model.id, page: comments.next_page), class: "ui fluid alliance button", remote: true, data: { turbolinks: false }
+- unless comments.last_page?
+  #next
+    = link_to t(:more), next_comments_path(model: model.class.name, id: model.id, page: comments.next_page), class: "ui fluid alliance button", remote: true, data: { turbolinks: false }
 
 
