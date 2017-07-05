@@ -205,7 +205,9 @@ h1,h2,h3,h5,h6 {
   @include box-shadow(0 , 0 , 3px, #151515)
 }
 
-
+a[disabled] {
+    pointer-events: none;
+}
 /**** Hide Wowhead Logo ****/
 .wowhead-tooltip-powered {
   background: none !important;
@@ -386,4 +388,10 @@ table .users-list tr td .item a {
 
 .white {
   color: #fff;
+}
+
+.ui.comments .reply.form textarea {
+  height: 4em;
+  min-height: 4em;
+  widht: 100%;
 }

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   #Comments
   resources :comments
   get "comments/index/:model/:id" => "comments#index", as: :next_comments
+  get "comments/sub_comment/:id" => "comments#sub_comments", as: :sub_comments
 
   #Settings
   scope "/user/:username/", as: :user do

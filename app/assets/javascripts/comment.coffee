@@ -6,11 +6,16 @@ $(document).on 'turbolinks:load', ->
     form.transition('fade')
 
 
-  $(document).on 'click', '.comment-show', (e) ->
-    e.preventDefault()
-    element = $("#" + e.target.getAttribute('data-id') )
-    element = element.find(".comments")
-    element.transition('fade')
+  $(".comment-show").on 'ajax:success', (e, data, status, xhr) ->
+    id = "#" + e.target.getAttribute('data-id')
+    element = $(id)
+    comment_tag = element.find(".comments")
+    comments = decorateComments(data, true)
+
+    for comment in comments
+      comment_tag.prepend(comment)
+
+    element.find(".comment-show").attr('disabled', 'disabled')
 
   $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
     element = $("#recent-comments")
@@ -22,8 +27,7 @@ $(document).on 'turbolinks:load', ->
   $("#sub_comment").on('ajax:success', (e, data, status, xhr)->
     element = $("#" + e.target.getAttribute('data-id'))
     comment_tag = element.find(".comments")
-    console.log(comment_tag)
-
+    console.log(element)
     if !comment_tag.hasClass('comments')
       comment_tag = newCommentsTag()
       comment_tag.append(decorateSingleComment(data, true))
@@ -37,11 +41,11 @@ $(document).on 'turbolinks:load', ->
 
 
 
-decorateComments = (comments) ->
+decorateComments = (comments, sub_reply) ->
   commentList = []
 
   comments.forEach (comment) ->
-    commentList.push(commentTemplate(comment))
+    commentList.push(commentTemplate(comment, sub_reply))
 
   return commentList
 
