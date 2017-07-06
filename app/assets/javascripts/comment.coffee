@@ -12,6 +12,8 @@ $(document).on 'turbolinks:load', ->
     element = $(id)
     element.find(".comment-show").attr('disabled', 'disabled')
 
+  $(document).on 'ajax:success', '#new_comment', (e, data, status, xhr) ->
+    $(e.target).find('textarea').val("")
 
   $(document).on('ajax:success', '#sub_comment', (e, data, status, xhr)->
     element = $("#" + e.target.getAttribute('data-id'))

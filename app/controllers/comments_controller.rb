@@ -19,6 +19,5 @@ class CommentsController < ApplicationController
   def sub_comments
     result = run Comment::SubComment
     return render js: cell(Comment::Cell::SubReply, collection: result["model"]).(:prepend) if result.success?
-    render status: 422, json: { error: t(:something_went_wrong) } if result.failure?
   end
 end
