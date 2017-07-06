@@ -1,0 +1,10 @@
+.comment id="#{model.id}"
+  .avatar
+    = user_avatar model.user
+  .content
+    .author
+      = profile_link model.user
+      .metadata
+        span.date= created_at
+    .text
+      = simple_format(model.body)

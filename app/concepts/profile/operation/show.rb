@@ -1,12 +1,11 @@
 class Profile::Show < Trailblazer::Operation
-
   step :model!
   step Nested(:init_wow_api!)
-  step Nested(:check_items_meta_data!, input: ->(options, mutable_data:,**) do 
+  step Nested(:check_items_meta_data!, input: ->(options, mutable_data:,**) do
     { "username" => mutable_data["model"].username,
       "realm" => mutable_data["model"].profile.server,
       "meta_data" => mutable_data["model"].profile.profile_meta_data,
-    } 
+    }
     end)
   step :save!
 

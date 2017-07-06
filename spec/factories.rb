@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :comment do
+    
+  end
 
   factory :event do
     name "Weekly Raid"

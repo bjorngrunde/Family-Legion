@@ -28,6 +28,10 @@ module Familylegion::Cell
       link_to user.username.humanize, show_profile_path(username: user.username), class: "#{user.profile.klass.sub('_', '-')}", data: { turbolinks: false }
     end
 
+    def user_avatar user
+      image_tag(user.profile.thumbnail, class:"ui avatar image")
+    end
+
     def complete_user_link user
       "#{image_tag(user.profile.thumbnail, class:"ui avatar image")} #{profile_link(user)}"
     end
@@ -37,11 +41,11 @@ module Familylegion::Cell
     end
 
     def updated_at
-      "#{time_ago_in_words(model.updated_at)}".humanize
+      "#{time_ago_in_words(model.updated_at)} ago".humanize
     end
 
     def created_at
-      "#{time_ago_in_words(model.created_at)}".humanize
+      "#{time_ago_in_words(model.created_at)} ago".humanize
     end
 
     def is_owner?
