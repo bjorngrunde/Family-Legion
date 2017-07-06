@@ -6,10 +6,8 @@
     = f.hidden_field :commentable_type, value: model.class.name
     .field
       = f.text_area :body, placeholder: "Reply to #{model.user.username.humanize}"
-    .field.right.aligned
-      = f.submit :submit, class: "ui green small submit button", value: t(:comment)
 
   - if model.comments.any?
     .comments
-      = cell(Comment::Cell::SubReply, collection: model.comments.order(created_at: :desc).limit(2))
+      = cell(Comment::Cell::SubReply, collection: model.comments.order(created_at: :desc).limit(2).reverse)
 

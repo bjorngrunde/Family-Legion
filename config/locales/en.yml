@@ -248,3 +248,5 @@ en:
   #Comments
   comment:                     "Comment"
   no_comments_yet:             "No comments. Be the first one to leave a comment."
+  comments:                    "Comments"
+  load_more:                   "Load more comments"

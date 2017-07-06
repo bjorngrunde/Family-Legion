@@ -6,7 +6,7 @@ $(document).on 'turbolinks:load', ->
     form.transition('fade')
 
 
-  $(".comment-show").on 'ajax:success', (e, data, status, xhr) ->
+  $(document).on 'ajax:success', '.comment-show', (e, data, status, xhr) ->
     id = "#" + e.target.getAttribute('data-id')
     element = $(id)
     comment_tag = element.find(".comments")
@@ -17,14 +17,14 @@ $(document).on 'turbolinks:load', ->
 
     element.find(".comment-show").attr('disabled', 'disabled')
 
-  $("#new_comment").on('ajax:success', (e, data, status, xhr) ->
+  $(document).on('ajax:success', '#new_comment', (e, data, status, xhr) ->
     element = $("#recent-comments")
     comment = decorateSingleComment(data)
     element.prepend(comment)
     val = $('#comment_body').val("")
   )
 
-  $("#sub_comment").on('ajax:success', (e, data, status, xhr)->
+  $(document).on('ajax:success', '#sub_comment', (e, data, status, xhr)->
     element = $("#" + e.target.getAttribute('data-id'))
     comment_tag = element.find(".comments")
     console.log(element)
@@ -38,8 +38,16 @@ $(document).on 'turbolinks:load', ->
     $(e.target).transition('fade')
     )
 
-
-
+  $(document).on 'keypress', '#sub_comment', (e) ->
+    code = if e.keyCode then e.keyCode else e.which
+    textarea = $(e.target)
+    if code == 13 && e.shiftKey
+      textarea.value = e.target.value + "<br />"
+    else if code == 13
+      textarea.submit()
+      textarea.value = ""
+      return true
+    return
 
 decorateComments = (comments, sub_reply) ->
   commentList = []
@@ -97,7 +105,7 @@ commentTemplate = (comment, sub_reply = false) ->
     meta_data.setAttribute('class', 'metadata')
     span = document.createElement('span')
     span.setAttribute('class', 'date')
-    date = document.createTextNode(comment.created_at)
+    date = document.createTextNode(moment(comment.created_at).fromNow())
 
     #Append author to content
     span.appendChild(date)

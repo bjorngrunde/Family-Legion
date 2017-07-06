@@ -5,7 +5,7 @@ class CommentRepresenter < Representable::Decorator
 
   property :id
   property :body
-  property :created_at, getter: ->(represented:, **) { represented.created_at.strftime("%Y, %d %b")  }
+  property :created_at
   property :user do
 
     property :username, getter: -> (represented:, **) { represented.username.humanize }
