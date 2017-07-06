@@ -1,6 +1,6 @@
 $(document).on 'turbolinks:load', ->
 
-  $(document).on 'click', '.comment-reply', (e) ->
+  $('#recent-comments').on 'click', '.comment-reply', (e) ->
     e.preventDefault()
     form = $("#" + e.target.getAttribute('data-id')).find('form')
     form.transition('fade')
@@ -27,13 +27,23 @@ $(document).on 'turbolinks:load', ->
   $(document).on('ajax:success', '#sub_comment', (e, data, status, xhr)->
     element = $("#" + e.target.getAttribute('data-id'))
     comment_tag = element.find(".comments")
-    console.log(element)
     if !comment_tag.hasClass('comments')
       comment_tag = newCommentsTag()
       comment_tag.append(decorateSingleComment(data, true))
       element.append(comment_tag)
     else
       comment_tag.append(decorateSingleComment(data, true))
+
+    commentShow = element.find('.comment-show')
+    if !commentShow.hasClass('comment-show')
+      commentsLink = newCommentsLink(e.target.getAttribute('data-id'))
+      element.find('.actions').append(commentsLink)
+    else
+      text = commentShow.text()
+      numb = parseInt(text.match(/\d+/)) + 1
+      text = "<i class='comment icon'></i> Comments(" + numb + ")"
+      commentShow.html text
+
 
     $(e.target).transition('fade')
     )
@@ -49,6 +59,9 @@ $(document).on 'turbolinks:load', ->
       return true
     return
 
+nl2br = (string) ->
+  return (string + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ '<br />' +'$2');
+
 decorateComments = (comments, sub_reply) ->
   commentList = []
 
@@ -63,6 +76,24 @@ decorateSingleComment = (comment, sub_reply = false) ->
 newCommentsTag = ->
   tag = document.createElement('div')
   tag.setAttribute('class', 'comments')
+  return tag
+
+newCommentsLink = (id) ->
+  tag = document.createElement('a')
+  tag.setAttribute('href', '/comments/subcomments/' + id)
+  tag.setAttribute('data-id', id)
+  tag.setAttribute('class', 'comment-show')
+  tag.setAttribute('data-remote', 'true')
+
+  icon = document.createElement('i')
+  icon.setAttribute('class', 'comment icon')
+
+  tag.appendChild(icon)
+
+  text = document.createTextNode(' Comments(1)')
+
+  tag.appendChild(text)
+
   return tag
 
 commentTemplate = (comment, sub_reply = false) ->
@@ -118,7 +149,7 @@ commentTemplate = (comment, sub_reply = false) ->
     #create text content
     text = document.createElement('div')
     text.setAttribute('class', 'text')
-    body = htmlStr(comment.body)
+    body = htmlStr(nl2br(comment.body))
 
     #append text to content
     text.appendChild(body)
