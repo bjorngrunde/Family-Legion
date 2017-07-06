@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :guild_applications, only: :create
   #Comments
   resources :comments
+  post "comments/sub_comment" => "comments#create_sub_comment", as: :sub_comment
   get "comments/index/:model/:id" => "comments#index", as: :next_comments
   get "comments/sub_comment/:id" => "comments#sub_comments", as: :sub_comments
 

@@ -3,7 +3,12 @@ class CommentsController < ApplicationController
 
   def create
     result = run Comment::Create
-    return render status: 200, json: CommentRepresenter.new(result["model"]).to_json if result.success?
+    return render js: cell(Comment::Cell::Discussion, result["model"]).(:append) if result.success?
+  end
+
+  def create_sub_comment
+    result = run Comment::Create
+    return render js: cell(Comment::Cell::SubReply, result["model"]).(:append) if result.success?
   end
 
   def index
@@ -13,7 +18,7 @@ class CommentsController < ApplicationController
 
   def sub_comments
     result = run Comment::SubComment
-    render status: 200, json: CommentRepresenter.for_collection.new(result["model"]).to_json if result.success?
+    return render js: cell(Comment::Cell::SubReply, collection: result["model"]).(:prepend) if result.success?
     render status: 422, json: { error: t(:something_went_wrong) } if result.failure?
   end
 end

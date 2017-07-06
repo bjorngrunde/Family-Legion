@@ -4,6 +4,8 @@ class GuildApplication < ApplicationRecord
   include Authority::Abilities
   include Paperdragon::Model
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   self.authorizer_name = 'AdminAuthorizer'
   processable :screenshot
 
