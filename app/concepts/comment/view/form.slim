@@ -3,6 +3,6 @@
   = f.hidden_field :commentable_type, value: model.class.name
   .field
     = f.text_area :body, placeholder: "Join the discussion", rows: 3
-  .field.right.aligned
+  .field
     = f.submit :submit, class: "ui green submit button", value: t(:comment)
 

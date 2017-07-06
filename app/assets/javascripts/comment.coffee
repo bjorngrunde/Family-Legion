@@ -3,6 +3,7 @@ $(document).on 'turbolinks:load', ->
   $('#recent-comments').on 'click', '.comment-reply', (e) ->
     e.preventDefault()
     form = $("#" + e.target.getAttribute('data-id')).find('form')
+    form.find('textarea').val("")
     form.transition('fade')
 
 
@@ -10,6 +11,7 @@ $(document).on 'turbolinks:load', ->
     id = "#" + e.target.getAttribute('data-id')
     element = $(id)
     element.find(".comment-show").attr('disabled', 'disabled')
+
 
   $(document).on('ajax:success', '#sub_comment', (e, data, status, xhr)->
     element = $("#" + e.target.getAttribute('data-id'))
@@ -38,6 +40,23 @@ $(document).on 'turbolinks:load', ->
       textarea.value = ""
       return true
     return
+
+newCommentsLink = (id) ->
+  tag = document.createElement('a')
+  tag.setAttribute('href', '/comments/subcomments/' + id)
+  tag.setAttribute('data-id', id)
+  tag.setAttribute('class', 'comment-show')
+  tag.setAttribute('data-remote', 'true')
+  icon = document.createElement('i')
+  icon.setAttribute('class', 'comment icon')
+
+  tag.appendChild(icon)
+
+  text = document.createTextNode(' Comments(1)')
+
+  tag.appendChild(text)
+
+  return tag
 
 nl2br = (string) ->
   return (string + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ '<br />' +'$2');
