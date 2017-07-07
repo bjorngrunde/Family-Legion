@@ -1,0 +1,10 @@
+.ui.inverted.comments .actions a {
+  color: #ccc;
+}
+
+.ui.inverted.comments .actions a:hover, .ui.inverted.comments .actions a:active {
+  color: #ffffff;
+}
+.ui.inverted.comments .actions a[disabled] {
+  color: $tan-green;
+}

@@ -16,7 +16,7 @@ module User::Cell
       end
 
       def edit_link
-        link_to t(:show), admin_user_path(model), id: model.id
+        link_to t(:show), admin_user_path(model), id: model.id, data: { turbolinks: false }
       end
   end
 end

@@ -1,0 +1,12 @@
+.avatar
+  = user_avatar model.user
+.content
+  .author
+    = profile_link model.user
+    .metadata
+      span.date= created_at
+  .text
+    = simple_format(model.body)
+  .actions
+    = link_to "<i class='reply icon'></i> #{t(:reply)}", "#", class: "comment-reply", data: { id: "#{model.id}"}
+    = link_to "<i class='comment icon'></i> #{t(:comments)} (#{model.comments.count})", sub_comments_path(id: model.id), class: "comment-show", remote: true, data: { id: model.id } if model.comments.any?

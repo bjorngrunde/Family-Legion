@@ -205,7 +205,9 @@ h1,h2,h3,h5,h6 {
   @include box-shadow(0 , 0 , 3px, #151515)
 }
 
-
+a[disabled] {
+    pointer-events: none;
+}
 /**** Hide Wowhead Logo ****/
 .wowhead-tooltip-powered {
   background: none !important;
@@ -343,4 +345,53 @@ h1,h2,h3,h5,h6 {
 
 table .users-list tr td .item a {
   vertical-align: center;
+}
+
+/******* comments *******/
+
+.ui.inverted.comments {
+  color: #fff;
+
+  .ui.dividing.header {
+    color: inherit;
+  }
+  .avatar {
+    img {
+      border-radius: 500px;
+    }
+  }
+  .content {
+    .metadata{
+      color: #ccc;
+    }
+    .text {
+      color: inherit;
+    }
+  }
+
+  .actions {
+    a {
+      color: #ccc;
+    }
+  }
+}
+
+/*******  Comments *******/
+.ui.inverted.threaded.comments {
+  width: 100%;
+  max-width: none;
+}
+
+#recent-comments {
+  min-height: 150px;
+}
+
+.white {
+  color: #fff;
+}
+
+.ui.comments .reply.form textarea {
+  height: 4em;
+  min-height: 4em;
+  widht: 100%;
 }

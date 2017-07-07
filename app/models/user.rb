@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :forum_views
   has_many :events
   has_many :invites
+  has_many :comments, as: :commentable, dependent: :destroy
 
   self.authorizer_name = 'AdminAuthorizer'
 

@@ -1,0 +1,11 @@
+.comment id="#{model.id}"
+  = cell(Comment::Cell::Reply, model)
+
+  = form_for(Comment.new, url: sub_comment_path, html: { class: "ui reply form transition hidden", remote: true, id: "sub_comment"}, data: { id: model.id}) do |f|
+    = f.hidden_field :commentable_id, value: model.id
+    = f.hidden_field :commentable_type, value: model.class.name
+    .field
+      = f.text_area :body, placeholder: "Reply to #{model.user.username.humanize}"
+  .comments
+    = cell(Comment::Cell::SubReply, collection: model.comments.order(created_at: :desc).limit(2).reverse) if model.comments.any?
+
