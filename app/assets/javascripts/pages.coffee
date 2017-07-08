@@ -57,3 +57,11 @@ $('.ui.radio.checkbox').checkbox()
 $('.message .close').on 'click', ->
   $(this).closest('.message').transition 'fade'
   return
+
+$('.notification').popup
+  inline: true
+  hoverable: true
+  position: 'bottom right'
+  delay:
+    show: 300
+    hide: 800

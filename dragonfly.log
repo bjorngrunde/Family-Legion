@@ -64,3 +64,5 @@ D, [2017-05-13T15:24:56.853634 #1185] DEBUG -- : DRAGONFLY: shell command: 'iden
 D, [2017-05-21T16:09:58.397323 #1432] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/05/5dhzxckx33g6ld60ypfplvn00000gn/T/RackMultipart20170521-1432-1k00385.png'
 D, [2017-06-10T14:04:13.040949 #2205] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170610-2205-1b9w40c.png'
 D, [2017-07-06T10:49:51.209778 #77057] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/05/5dhzxckx33g6ld60ypfplvn00000gn/T/RackMultipart20170706-77057-7sprle.jpg'
+D, [2017-07-08T14:31:29.555855 #1487] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170708-1487-74cxpc.jpg'
+D, [2017-07-08T14:31:36.099411 #1487] DEBUG -- : DRAGONFLY: shell command: 'identify' '-ping' '-format' '%m %w %h' '/var/folders/xj/nty47b_16791g0qhllbbf4rm0000gn/T/RackMultipart20170708-1487-vb4zja.jpg'

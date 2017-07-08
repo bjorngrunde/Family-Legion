@@ -8,6 +8,14 @@
 
     .ui.inverted.menu.right
       .item
+        .notification
+          i.alarm.icon
+        .ui.inverted.popup.bottom.right.transition.hidden
+          .ui.inverted.items#notifications
+            = cell(Notification::Cell::List, collection: notifications)
+          .ui.fluid.button
+            | More Notifications
+      .item
         .ui.inline.dropdown
           .text
             == current_user_avatar_image

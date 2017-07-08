@@ -393,5 +393,51 @@ table .users-list tr td .item a {
 .ui.comments .reply.form textarea {
   height: 4em;
   min-height: 4em;
-  widht: 100%;
+  width: 100%;
+}
+
+.notification {
+
+  &:hover {
+    cursor: wait;
+  }
+}
+.ui.inverted.popup.bottom.right {
+  min-width: 600px;
+  padding: 0px;
+  background: darken(rgba(108, 122, 137, 1), 35%);
+  box-shadow: 0 0 4px #151515;
+
+  .ui.inverted.items {
+    padding: 0px;
+    margin-bottom: 0px;
+    color: #ccc;
+
+    .item {
+      padding: 10px;
+      border-radius: 3px;
+
+
+      .header {
+        color: #ccc;
+        font-size: 1em;
+      }
+
+      .description {
+        color: #ccc;
+      }
+
+    &:hover {
+      background: $dark-grey;
+      }
+    }
+  }
+  .ui.fluid.button {
+    background: rgba(0, 0 ,0, 0);
+    color: #ccc;
+
+  &:hover {
+    background: $alliance;
+    }
+  }
 }

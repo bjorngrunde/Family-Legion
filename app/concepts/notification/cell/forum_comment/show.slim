@@ -1,0 +1,10 @@
+= link_to "#{forum_thread_address}", class: "item", data: { turbolinks: false } do
+  .ui.avatar.image
+    = image_tag(model.user.profile.thumbnail)
+  .content
+    .meta
+      = created_at
+    .description
+      span class="#{model.user.profile.klass.gsub('-', '_')}"
+        = "#{model.user.username} "
+        = "left a comment on your thread: #{forum_thread_title}"

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :invites
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
 
   self.authorizer_name = 'AdminAuthorizer'
 

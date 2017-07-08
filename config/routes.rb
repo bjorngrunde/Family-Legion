@@ -112,5 +112,5 @@ Rails.application.routes.draw do
     resources :dungeons, concerns: :paginatable
   end
 
-
+  mount ActionCable.server => '/cable'
 end
