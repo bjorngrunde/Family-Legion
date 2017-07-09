@@ -63,7 +63,7 @@ newCommentsLink = (id) ->
 nl2br = (string) ->
   return (string + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ '<br />' +'$2');
 
-
+# Might be usefull later
 # htmlStr = (htmlStr) ->
 #   frag = document.createDocumentFragment()
 #   temp = document.createElement('div')

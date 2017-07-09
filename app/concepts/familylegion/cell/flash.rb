@@ -1,5 +1,5 @@
 module Familylegion::Cell
-  class Flash < Trailblazer::Cell
+  class Flash < Familylegion::Cell::Master
 
     def flash_class(level)
       case level.to_sym

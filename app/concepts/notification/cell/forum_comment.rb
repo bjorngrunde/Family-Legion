@@ -6,7 +6,7 @@ module Notification::Cell
     end
 
     def created_at
-      model.created_at
+      super
     end
 
     def forum_thread_title
@@ -16,5 +16,6 @@ module Notification::Cell
     def forum_thread_address
       forum_show_thread_path(group: comment.forum_group.slug, category: comment.forum_category.slug, thread: comment.forum_thread.slug)
     end
+
   end
 end

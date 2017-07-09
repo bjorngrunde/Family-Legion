@@ -17,8 +17,8 @@ gem 'rbattlenet'
 gem 'slim'
 gem "trailblazer"
 gem "trailblazer-rails"
-gem "trailblazer-cells"
 gem "cells-rails"
+gem "trailblazer-cells"
 gem 'cells-slim'
 gem "reform", ">= 2.2.4"
 gem "reform-rails"

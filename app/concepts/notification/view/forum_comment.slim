@@ -1,4 +1,4 @@
-= link_to "#{forum_thread_address}", class: "item", data: { turbolinks: false } do
+a.item href="#{forum_thread_address}" data-turbolinks="false"
   .ui.avatar.image
     = image_tag(model.user.profile.thumbnail)
   .content

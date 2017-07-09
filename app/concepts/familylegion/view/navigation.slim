@@ -9,7 +9,9 @@
     .ui.inverted.menu.right
       .item
         .notification
-          i.alarm.icon
+          .ui.black.label
+            i.alarm.icon
+            | 0
         .ui.inverted.popup.bottom.right.transition.hidden
           .ui.inverted.items#notifications
             = cell(Notification::Cell::List, collection: notifications)

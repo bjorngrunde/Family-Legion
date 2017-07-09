@@ -1,8 +1,5 @@
 module GuildApplication::Cell
-  class Index < Trailblazer::Cell
-    include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
-    include ActionView::Helpers::DateHelper
+  class Index < Familylegion::Cell::Master
 
     property  :status
     property  :first_name

@@ -1,9 +1,6 @@
 module GuildApplication::Cell
-  class Show < Trailblazer::Cell
+  class Show < Familylegion::Cell::Master
     extend  Paperdragon::Model::Reader
-    include ActionView::Helpers::TranslationHelper
-    include Cell::Translation
-    include ActionView::Helpers::DateHelper
 
     property  :first_name
     property  :last_name
