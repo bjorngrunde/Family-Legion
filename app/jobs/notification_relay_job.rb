@@ -1,9 +1,8 @@
 class NotificationRelayJob < ApplicationJob
-  include Trailblazer::Cell
   queue_as :default
 
   def perform(notification)
-    html = ActionController.render cell("Notification::Cell::#{notification.notifiable_type}".constantize, notification)
+    html = ApplicationController.renderer.render(partial: "notifications/partials/#{notification.notifiable_type.underscore}", locals: { notification: notification })
     ActionCable.server.broadcast "notifications:#{notification.recipient_id}", html: html
   end
 end

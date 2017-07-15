@@ -12,7 +12,7 @@
           .ui.black.label
             i.alarm.icon
             | 0
-        .ui.inverted.popup.bottom.right.transition.hidden
+        .ui.inverted.fluid.popup.transition.hidden
           .ui.inverted.items#notifications
             = cell(Notification::Cell::List, collection: notifications)
           .ui.fluid.button

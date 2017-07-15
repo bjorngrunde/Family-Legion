@@ -1,10 +1,10 @@
-= link_to "#{forum_thread_address}", class: "item", data: { turbolinks: false } do
+= link_to "#{forum_thread_address(notification)}", class: "item", data: { turbolinks: false } do
   .ui.avatar.image
-    = image_tag(model.user.profile.thumbnail)
+    = image_tag(notification.user.profile.thumbnail)
   .content
     .meta
-      = created_at
+      = "#{time_ago_in_words(notification.created_at)}"
     .description
-      span class="#{model.user.profile.klass.gsub('-', '_')}"
-        = "#{model.user.username} "
-        = "left a comment on your thread: #{forum_thread_title}"
+      span class="#{notification.user.profile.klass.gsub('-', '_')}"
+        = "#{notification.user.username} "
+      = "left a comment on your thread: #{forum_thread_title(notification)}"

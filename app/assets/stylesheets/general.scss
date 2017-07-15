@@ -402,7 +402,7 @@ table .users-list tr td .item a {
     cursor: wait;
   }
 }
-.ui.inverted.popup.bottom.right {
+.ui.inverted.fluid.popup {
   min-width: 600px;
   padding: 0px;
   background: darken(rgba(108, 122, 137, 1), 35%);

@@ -1,0 +1,17 @@
+.ui.black.label.red {
+  background-color: $chestnut-red !important;
+}
+
+#notifications {
+  .item {
+    .content {
+      .meta {
+        color: #ccc;
+      }
+
+      .description {
+        font-size: 0.9em;
+      }
+    }
+  }
+}
