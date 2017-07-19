@@ -1,4 +1,4 @@
-a.item href="#{forum_thread_address}" data-turbolinks="false"
+a href="#{forum_thread_address}" class="item notification-#{model.id}" data-turbolinks="false"
   .ui.avatar.image
     = image_tag(model.user.profile.thumbnail)
   .content
@@ -8,3 +8,6 @@ a.item href="#{forum_thread_address}" data-turbolinks="false"
       span class="#{model.user.profile.klass.gsub('-', '_')}"
         = "#{model.user.username} "
       = "left a comment on your thread: #{forum_thread_title}"
+    .extra
+    - if model.is_read == true
+        i.unhide.icon

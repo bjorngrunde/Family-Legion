@@ -403,10 +403,13 @@ table .users-list tr td .item a {
   }
 }
 .ui.inverted.fluid.popup {
-  min-width: 600px;
+  min-width: 400px;
   padding: 0px;
   background: darken(rgba(108, 122, 137, 1), 35%);
   box-shadow: 0 0 4px #151515;
+
+  overflow-y: auto;
+  max-height: 500px;
 
   .ui.inverted.items {
     padding: 0px;

@@ -6,7 +6,7 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    counter = $('.notification .ui.black.label')
+    counter = $('.notification .ui.label')
     val = parseInt counter.text()
     val++
     counter.addClass('red')

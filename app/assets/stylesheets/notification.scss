@@ -1,4 +1,20 @@
-.ui.black.label.red {
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: darken($dark-grey, 5%)
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: $dark-grey;
+}
+
+.ui.red.label, .ui.black.label.red {
   background-color: $chestnut-red !important;
 }
 
@@ -8,6 +24,10 @@
       .meta {
         color: #ccc;
       }
+
+      .extra {
+        color: #ccc;
+        }
 
       .description {
         font-size: 0.9em;

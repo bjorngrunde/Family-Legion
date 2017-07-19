@@ -9,9 +9,9 @@
     .ui.inverted.menu.right
       .item
         .notification
-          .ui.black.label
+          div class="ui #{notifier_css_class} label"
             i.alarm.icon
-            | 0
+            = notifications.count || "0"
         .ui.inverted.fluid.popup.transition.hidden
           .ui.inverted.items#notifications
             = cell(Notification::Cell::List, collection: notifications)
