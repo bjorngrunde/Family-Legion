@@ -7,7 +7,7 @@ module Comment::Cell
     end
 
     def comments
-      @comments ||= model.comments.order(created_at: :desc).page(page).per(5)
+      @comments ||= model.comments.order(created_at: :desc).page(page).per(20)
     end
 
     def page
