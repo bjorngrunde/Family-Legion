@@ -1,3 +1,12 @@
 language: ruby
 rvm:
   - 2.3.1
+  env:
+  - DB=mysql
+script: 
+  - RAILS_ENV=test rails db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - mysql -e 'create database familylegion_test'
+bundler_args: --binstubs=./bundler_stubs
