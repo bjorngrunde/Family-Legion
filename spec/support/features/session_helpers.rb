@@ -9,14 +9,20 @@ module Features
     end
 
     def create_user(roles = nil, user_attr = nil, profile_attr = nil)
+      
       user_attrs = user_attr || attributes_for(:user)
+      
       profile_attrs = profile_attr || attributes_for(:profile)
+      
       user = User.new(user_attrs)
+      
       auth = Tyrant::Authenticatable.new(user)
       auth.digest!(ENV["USER_PW"])
       auth.confirmed!
       auth.sync
+      
       user.save
+      
       profile = Profile.new(profile_attrs)
       profile.user = user
       profile.save
