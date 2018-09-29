@@ -4,7 +4,8 @@
     .menu
       = link_to admin_guild_applications_path(status: :pending), class: "item", data: { turbolinks: false } do
         =t(:pending)
-        .ui.blue.label 3
+        .ui.blue.label
+          = GuildApplication.all.where(:status => :pending).count
 
       = link_to t(:show_all), admin_guild_applications_path, class: "item", data: { turbolinks: false }
 

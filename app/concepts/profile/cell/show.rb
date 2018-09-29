@@ -8,9 +8,9 @@ module Profile::Cell
     def avatar_image
       image_tag(model.profile.thumbnail, class: "ui circular image profile-thumbnail")
     end
-    
+
     def icon_image(image, quality)
-      image_tag("http://eu.media.blizzard.com/wow/icons/36/#{image}.jpg", class: "ui image item-border-#{quality}")
-    end 
+      image_tag("https://render-us.worldofwarcraft.com/icons/36/#{image}.jpg", class: "ui image item-border-#{quality}")
+    end
   end
 end

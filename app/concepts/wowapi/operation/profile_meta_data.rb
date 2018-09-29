@@ -2,14 +2,13 @@ class Wowapi::ProfileMetaData < Trailblazer::Operation
   #Accepts a in-game character name(username:), their associated realm(realm:) profile_meta_data(meta_data:)
   #as well as a reform object (contract) for error collection
 
-  #TODO Add module ERROR with possible error outcomes and split this into resonable step that can deliver readable errors if something goes wrong
-
   step Rescue(CharacterNotFoundError, handler: :rollback!){
     step :create_or_update_meta_data
   }
 
 
   def create_or_update_meta_data(options, username:, realm: , meta_data:, **)
+    #binding.pry
     if meta_data.nil? || meta_data[:updated_at] < 24.hours.ago
 
       data = RBattlenet::Wow::Character.find(name: username, realm: realm, fields: ["items","talents"])
