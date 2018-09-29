@@ -33,7 +33,7 @@ gem "breadcrumbs_on_rails"
 gem 'tyrant'
 gem 'warden'
 gem 'jquery-turbolinks'
-gem 'kaminari'
+gem 'kaminari', '0.17.0'
 gem 'kaminari-cells'
 gem 'authority'
 gem "rolify"
@@ -51,7 +51,6 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "chromedriver-helper"
   gem "pry"
-  gem "fiddlesticks", '~> 0.2.0'
 end
 
 group :development do
